@@ -27,7 +27,7 @@
 
         // Function to fetch JSON dynamically
         function fetchBoatData(boat) {
-            const boatUrl = `${repoUrl}/${boat}/mainProps.json`;  // Construct URL based on selected boat
+            const boatUrl = `${repoUrl}/${boat}/vesselData.json`;  // Construct URL based on selected boat
             fetch(boatUrl)
                 .then(response => response.json())
                 .then(data => {
