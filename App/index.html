@@ -7,52 +7,96 @@
 </head>
 <body>
     <h1>Select a Boat</h1>
-    <select id="boatSelector"></select>
+    
+    <!-- Boat Selector -->
+    <select id="boatSelector">
+        <option value="">Select a boat</option>
+    </select>
+
+    <!-- JSON File Selector -->
+    <h2>Select Data File</h2>
+    <select id="jsonSelector" disabled>
+        <option value="">Select a file</option>
+    </select>
+
+    <!-- Display Data -->
     <div id="boatInfo"></div>
 
     <script>
         const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles"; 
-        const boats = ["Acoustic Explorer", "Ketau"]; // List of boat names (you can expand this)
-
-        const selector = document.getElementById("boatSelector");
+        const fileIndexUrl = `${repoUrl}/fileIndex.json`; // File that lists JSON files
+        let boatsData = {}; // Store fetched file index
+        
+        const boatSelector = document.getElementById("boatSelector");
+        const jsonSelector = document.getElementById("jsonSelector");
         const boatInfo = document.getElementById("boatInfo");
 
-        // Populate dropdown
-        boats.forEach(boat => {
-            let option = document.createElement("option");
-            option.value = boat;
-            option.textContent = boat;
-            selector.appendChild(option);
+        // Fetch the file index
+        fetch(fileIndexUrl)
+            .then(response => response.json())
+            .then(data => {
+                boatsData = data; // Store JSON data
+                populateBoatDropdown(Object.keys(boatsData));
+            })
+            .catch(error => console.error("Error loading file index:", error));
+
+        // Populate the boat dropdown
+        function populateBoatDropdown(boats) {
+            boats.forEach(boat => {
+                let option = document.createElement("option");
+                option.value = boat;
+                option.textContent = boat;
+                boatSelector.appendChild(option);
+            });
+        }
+
+        // Handle boat selection
+        boatSelector.addEventListener("change", () => {
+            jsonSelector.innerHTML = `<option value="">Select a file</option>`; // Reset file list
+            boatInfo.innerHTML = ""; // Clear previous data
+
+            const selectedBoat = boatSelector.value;
+            if (selectedBoat && boatsData[selectedBoat]) {
+                boatsData[selectedBoat].forEach(file => {
+                    let option = document.createElement("option");
+                    option.value = file;
+                    option.textContent = file;
+                    jsonSelector.appendChild(option);
+                });
+                jsonSelector.disabled = false;
+            } else {
+                jsonSelector.disabled = true;
+            }
         });
 
-        // Function to fetch JSON dynamically
-        function fetchBoatData(boat) {
-            const boatUrl = `${repoUrl}/${boat}/vesselData.json`;  // Construct URL based on selected boat
-            fetch(boatUrl)
-                .then(response => response.json())
+        // Handle JSON file selection
+        jsonSelector.addEventListener("change", () => {
+            if (jsonSelector.value) {
+                fetchBoatData(boatSelector.value, jsonSelector.value);
+            } else {
+                boatInfo.innerHTML = ""; // Clear display if no file selected
+            }
+        });
+
+        // Fetch JSON data
+        function fetchBoatData(boat, file) {
+            const fileUrl = `${repoUrl}/${boat}/${file}`;  // Construct URL
+
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("File not found");
+                    }
+                    return response.json();
+                })
                 .then(data => {
-                    boatInfo.innerHTML = `
-                        <h2>${data.name}</h2>
-                        <p><strong>Type:</strong> ${data.type}</p>
-                        <p><strong>Length:</strong> ${data.length}</p>
-                        <p><strong>Year Built:</strong> ${data.yearBuilt}</p>
-                        <p><strong>Manufacturer:</strong> ${data.manufacturer}</p>
-                        <p><strong>Home Port:</strong> ${data.homePort}</p>
-                    `;
+                    boatInfo.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
                 })
                 .catch(error => {
-                    boatInfo.innerHTML = "<p>Error loading boat data.</p>";
+                    boatInfo.innerHTML = "<p>Error loading data.</p>";
                     console.error("Error fetching data:", error);
                 });
         }
-
-        // Load selected boat data on change
-        selector.addEventListener("change", () => {
-            fetchBoatData(selector.value);
-        });
-
-        // Load first boat by default
-        fetchBoatData(boats[0]);
     </script>
 </body>
 </html>
