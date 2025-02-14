@@ -37,3 +37,6 @@ chokidar.watch(dataFolder, { persistent: true, ignoreInitial: false }).on("all",
 
 // Initial run to generate sorted fileIndex.json
 updateIndex();
+
+//    node watcher.js
+// Run This Command in Terminal 

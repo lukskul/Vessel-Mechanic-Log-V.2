@@ -3,114 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boat Info</title>
+    <title>VML.v2</title>
 </head>
 <body>
-    <h1>Select a Boat</h1>
-    
-    <!-- Boat Selector -->
-    <select id="boatSelector">
-        <option value="">Select a boat</option>
-    </select>
-
-    <!-- JSON File Selector -->
-    <h2>Select Data File</h2>
-    <select id="jsonSelector" disabled>
-        <option value="">Select a file</option>
-    </select>
-
-    <!-- Display Data -->
-    <div id="boatInfo"></div>
-
-    <div>
-        <h2>Find a Boat</h2>
-        <a href="https://www.marinetraffic.com/en/ais/home/centerx:-30.4/centery:36.3/zoom:2" target="_blank">
-            Click here
-        </a>
+    <!-- Vessel Select -->
+    <div class="main-vessel-block">
+        <div id="vessel-form" class="vesselForm" style="display:block;">
+            <form id="data-form" class="vesselDataForm">
+                <h1 class="vesselFormLabel" data-translate="vesselFormLabel">Vessel</h1>
+                <label for="vessel-name"></label>
+                <input type="text" id="vessel-name" name="vessel-name" autocomplete="off" required>
+            </form>
+            <div id="autocomplete-suggestions" class="autocompleteSuggestions"></div>
+        </div>
     </div>
-    
-    <button id="language-select">Switch Language</button>
+    <!-- Tasks -->
+    <div id="task-main-block" class="taskMainBlock" style="display: none;">
+        <ul id="task-list">
+        <!-- Task items will be dynamically populated here -->
+        </ul>
+        <form id="tasks">
+            <div class="form-group">
+                <div class="task-options" id="task-options">
+                    <div class="task-option" data-task="archive">
+                        <img class="svg-icon" src="icons/archive.svg" alt="Archive">
+                        <span data-translate="archive">Archive</span>
+                    </div>
+                    <div class="task-option" data-task="electricMotors">
+                        <img class="svg-icon" src="icons/motor.svg" alt="Motors">
+                        <span data-translate="motor">Motor</span>
+                    </div>
+                    <div class="task-option" data-task="engines">
+                        <img class="svg-icon" src="icons/engine.svg" alt="Engines">
+                        <span data-translate="engine">Engine</span>
+                    </div>
+                    <div class="task-option" data-task="props">
+                        <img class="svg-icon" src="icons/props.svg" alt="Props">
+                        <span data-translate="propeller">Propeller</span>
+                    </div>
+                    <div class="task-option" data-task="shafts">
+                        <img class="svg-icon" src="icons/shafts.svg" alt="Shafts">
+                        <span data-translate="shafting">Shafting</span>
+                    </div>
+                    <div class="task-option" data-task="generators">
+                        <img class="svg-icon" src="icons/generator.svg" alt="Generator">
+                        <span data-translate="generator">Generator</span>
+                    </div>
+                    <div class="task-option" data-task="bow-thrusters">
+                        <img class="svg-icon" src="icons/bowThruster.svg" alt="Thrusters">
+                        <span data-translate="thruster">Thruster</span>
+                    </div>
+                    <div class="task-option" data-task="rudder">
+                        <img class="svg-icon" src="icons/rudder.svg" alt="Rudder">
+                        <span data-translate="rudder">Rudder</span>
+                    </div>
+                    <div class="task-option" data-task="sea-screens">
+                        <img class="svg-icon" src="icons/screen.svg" alt="Screens">
+                        <span data-translate="screens">Screens</span>
+                    </div>
+                    <div class="task-option" data-task="doors">
+                        <img class="svg-icon" src="icons/door.svg" alt="Doors">
+                        <span data-translate="doors">Doors</span>
+                    </div>
+                    <div class="task-option" data-task="zincs">
+                        <img class="svg-icon" src="icons/zincs.svg" alt="Zincs">
+                        <span data-translate="zincs">Zincs</span>
+                    </div>
+                    <div class="task-option" data-task="misc">
+                        <img class="svg-icon" src="icons/plus.svg" alt="Add New">
+                        <span data-translate="misc">Misc</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-    <h1 data-translate="Welcome">Welcome</h1>
-    <p data-translate="description">This is a simple language switcher.</p>
-
-
-<script>
-        const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles"; 
-        const fileIndexUrl = `${repoUrl}/fileIndex.json`; // File that lists JSON files
-        let boatsData = {}; // Store fetched file index
-        
-        const boatSelector = document.getElementById("boatSelector");
-        const jsonSelector = document.getElementById("jsonSelector");
-        const boatInfo = document.getElementById("boatInfo");
-
-        // Fetch the file index
-        fetch(fileIndexUrl)
-            .then(response => response.json())
-            .then(data => {
-                boatsData = data; // Store JSON data
-                populateBoatDropdown(Object.keys(boatsData));
-            })
-            .catch(error => console.error("Error loading file index:", error));
-
-        // Populate the boat dropdown
-        function populateBoatDropdown(boats) {
-            boats.forEach(boat => {
-                let option = document.createElement("option");
-                option.value = boat;
-                option.textContent = boat;
-                boatSelector.appendChild(option);
-            });
-        }
-
-        // Handle boat selection
-        boatSelector.addEventListener("change", () => {
-            jsonSelector.innerHTML = `<option value="">Select a file</option>`; // Reset file list
-            boatInfo.innerHTML = ""; // Clear previous data
-
-            const selectedBoat = boatSelector.value;
-            if (selectedBoat && boatsData[selectedBoat]) {
-                boatsData[selectedBoat].forEach(file => {
-                    let option = document.createElement("option");
-                    option.value = file;
-                    option.textContent = file;
-                    jsonSelector.appendChild(option);
-                });
-                jsonSelector.disabled = false;
-            } else {
-                jsonSelector.disabled = true;
-            }
-        });
-
-        // Handle JSON file selection
-        jsonSelector.addEventListener("change", () => {
-            if (jsonSelector.value) {
-                fetchBoatData(boatSelector.value, jsonSelector.value);
-            } else {
-                boatInfo.innerHTML = ""; // Clear display if no file selected
-            }
-        });
-
-        // Fetch JSON data
-        function fetchBoatData(boat, file) {
-            const fileUrl = `${repoUrl}/${boat}/${file}`;  // Construct URL
-
-            fetch(fileUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("File not found");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    boatInfo.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-                })
-                .catch(error => {
-                    boatInfo.innerHTML = "<p>Error loading data.</p>";
-                    console.error("Error fetching data:", error);
-                });
-        }
-    </script> 
+    <div id="form-container"></div>
+    <div>
+        <div id="alert-popup"></div>
+    </div>
 
     <!-- Dev Script -->
     <script type="module" src="../dist/bundle.js"></script> 
