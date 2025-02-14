@@ -3,7 +3,7 @@ export let language = 'en'; // Set default language to 'en'
 const languageSelectButton = document.getElementById('language-select');
 
 export function changeLanguage(newLang) {
-    fetch(`https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/language/${newLang}.json`)
+    fetch(`/language/${newLang}.json`)
         .then(response => response.json())
         .then(data => {
             document.querySelectorAll('[data-translate]').forEach(element => {
