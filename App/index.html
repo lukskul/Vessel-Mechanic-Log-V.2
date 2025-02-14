@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">  <!-- For Development -->
     <title>Boat Info</title>
 </head>
 <body>
@@ -29,8 +30,13 @@
         </a>
     </div>
     
+    <button id="language-select">Switch Language</button>
 
-    <script>
+    <h1 data-translate="title">Welcome</h1>
+    <p data-translate="description">This is a simple language switcher.</p>
+
+
+<script>
         const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles"; 
         const fileIndexUrl = `${repoUrl}/fileIndex.json`; // File that lists JSON files
         let boatsData = {}; // Store fetched file index
@@ -105,6 +111,10 @@
                     console.error("Error fetching data:", error);
                 });
         }
-    </script>
+    </script> 
+
+    <!-- Dev Script -->
+    <script type="module" src="../dist/bundle.js"></script> 
+
 </body>
 </html>

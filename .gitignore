@@ -21,6 +21,3 @@ build/
 # Ignore system files
 .DS_Store
 Thumbs.db
-
-# Ignore fileIndex.json if you don’t want it pushed
-DataFiles/fileIndex.json
