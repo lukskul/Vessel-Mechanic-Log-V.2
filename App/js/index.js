@@ -1,9 +1,4 @@
-import "../css/styles.css"; // Import the main CSS file
-/*import { setupDropdowns } from "./dropdownHandler.js";*/
+import "../css/styles.css"; 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const boats = ["Acoustic Explorer", "Ketau", "Amore"];
-    const categories = ["vesselData.json", "runningGear.json", "engineSpecs.json"];
+import  './language.js';
 
-    setupDropdowns(boats, categories);
-});
