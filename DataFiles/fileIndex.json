@@ -1,5 +1,5 @@
 {
     "Acoustic Explorer": ["vesselData.json", "mainProps.json"],
-    "Ketau": ["vesselData.json", "mainProps"], 
-    "Amore": ["vesselData.json", "runningGear"]
+    "Ketau": ["vesselData.json", "mainProps.json"], 
+    "Amore": ["vesselData.json", "runningGear.json"]
 }
