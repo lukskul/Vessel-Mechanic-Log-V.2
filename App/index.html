@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/wrench-hammer.svg" type="image/svg+xml"">
-        <link rel="apple-touch-icon" href="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/wrench-hammer.svg">
-        <link rel="icon" type="image/png" href=//lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/wrench-hammer.svg">
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/wrench-hammer.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/wrench-hammer-180x180.png">
+    <link rel="icon" type="image/png" href="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/wrench-hammer-192x192.png">
     <title>VML.v2</title>
 </head>
 <body>
     <div id="vessel-title"></div>
-    <!-- Vessel Select -->
+    
+    <!-- Vessel Select Form -->
     <div class="main-vessel-block">
-        <div id="vessel-form" class="vesselForm" style="display:block;">
+        <div id="vessel-form" class="vesselForm">
             <form id="data-form" class="vesselDataForm">
                 <h1 class="vesselFormLabel" data-translate="vesselFormLabel">Vessel</h1>
                 <label for="vessel-name"></label>
@@ -21,15 +23,18 @@
             <div id="autocomplete-suggestions" class="autocompleteSuggestions"></div>
         </div>
     </div>
+    
+    <!-- Task Data Container -->
     <div id="task-data-container">
         <!-- Task data will be loaded here -->
     </div>
+
     <!-- Task Menu (Slider) -->
     <div id="task-menu" class="task-menu">
         <div class="task-container">
             <div class="task-option" data-task="info">
                 <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/archive.svg" alt="Archive">
-                <span data-translate="archive">Archive</span>
+                <span data-translate="info">Info</span>
             </div>
             <div class="task-option" data-task="bow-thrusters">
                 <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/bowThruster.svg" alt="Thrusters">
@@ -44,7 +49,7 @@
                 <span data-translate="couplers">Couplers</span>
             </div>
             <div class="task-option" data-task="seals">
-                <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/seals.svg" alt="Seals">
+                <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/seal.svg" alt="Seals">
                 <span data-translate="shaftSeals">Seals</span>
             </div>
             <div class="task-option" data-task="shafts">
@@ -85,31 +90,46 @@
             </div>
         </div>
     </div>
+
+    <!-- Info Dropdown -->
     <div id="info-dropdown" class="hidden">
         <input type="text" id="info-input" placeholder="Enter information here...">
     </div>
+
+    <!-- Converter Container -->
     <div id="converter-container" class="hidden">
         <span data-translate="standard"></span>
-        <input type="text" id="inches-input"/>
-        <input type="number" id="mm-input"/> 
+        <input type="text" id="inches-input" />
+        <input type="number" id="mm-input"/>
         <span data-translate="metric"></span>
     </div>
-    
+
     <!-- Menu -->
-    <div id="menu" class="menu"> 
+    <div id="menu" class="menu">
         <div class="menuBoxItems">
-            <button id="information" class="button" style="display:block;"><img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/magnifier.svg" alt="archive"></button>
-            <button id="convert" class="button" style="display:block;"><img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/convert.svg" alt="save"></button>
-            <button id="search-ship-button" class="button" type="submit" style="display:block;"><img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/globe.svg" alt="save"></button>
-            <button id="language-select" class="button"><img></button>
-            <button id="return-button" class="button" style="display:block;"><img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/return.svg" alt="go-back"></button>
+            <button id="information" class="button" style="display:block;">
+                <img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/magnifier.svg" alt="archive">
+            </button>
+            <button id="convert" class="button" style="display:block;">
+                <img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/convert.svg" alt="save">
+            </button>
+            <button id="search-ship-button" class="button" type="submit" style="display:block;">
+                <img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/globe.svg" alt="save">
+            </button>
+            <button id="language-select" class="button">
+                <img alt="language selection">
+            </button>
+            <button id="return-button" class="button" style="display:block;">
+                <img src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/return.svg" alt="go-back">
+            </button>
         </div>
     </div>
-    <div>
-        <div id="alert-popup"></div>
-    </div>
-    <!-- Dev Script 
-    <script type="module" src="../dist/bundle.js"></script> -->
+
+    <!-- Alert Popup -->
+    <div id="alert-popup"></div>
+
+    <!-- Dev Script -->
+    <!-- <script type="module" src="../dist/bundle.js"></script> -->
     <script src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/dist/bundle.js"></script>
 </body>
 </html>
