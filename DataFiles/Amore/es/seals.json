@@ -1,0 +1,15 @@
+{
+    "Coupler": {
+        "Fwd Coupler -> Transmission flange": "Par - 330 ft-lbs",
+        "Dampner -> Coupler (flange to flange)": "Par - 790 ft-lbs",
+        "Retaining Nut": "3 tornillos Allen de tamaño 14mm"
+    },
+    "Seal": {
+        "Type": "PSS",
+        "Compression Spec": "1 pulgada de compresión",
+        "Set Screws": "3/16"
+    },
+    "Prop": {
+        "Nut Size": "3 7/8"
+    }
+}

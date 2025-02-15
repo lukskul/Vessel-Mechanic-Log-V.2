@@ -1,3 +1,5 @@
+import { shakeAlert } from "./alert"; 
+
 const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fileIndex.json";
 
 // Mapping JSON files to task IDs (unchanged)
@@ -57,7 +59,8 @@ function setupAutocomplete(input, suggestionsBox, vesselData) {
         });
 
         if (filtered.length === 0) {
-            suggestionsBox.innerHTML = "<div class='no-results'>No matches</div>";
+            shakeAlert("No Matches")
+            //suggestionsBox.innerHTML = "<div class='no-results'>No matches</div>";
         }
     });
 }
@@ -164,8 +167,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     function loadTaskData(vesselName, taskName) {
+        const selectedLanguage = localStorage.getItem("language") || "en"; // Default to English
         // Dynamically fetch the vessel folder and task file
-        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${taskName}.json`;
+        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${selectedLanguage}/${vesselName}/${taskName}.json`;
     
         fetch(taskFilePath)
             .then(response => response.json())
