@@ -86,15 +86,24 @@
             </div>
         </div>
     </div>
-
+    <div id="info-dropdown" class="hidden">
+        <input type="text" id="info-input" placeholder="Enter information here...">
+    </div>
+    <div id="converter-container" class="hidden">
+        <h1 data-translate="standard"></h1>
+        <input type="text" id="inches-input"/>
+        <input type="number" id="mm-input"/> 
+        <h1 data-translate="metric"></h1>
+    </div>
+    
     <!-- Menu -->
     <div id="menu" class="menu"> 
         <div class="menuBoxItems">
-            <button id="archive-button" class="button" style="display:block;"><img src="icons/archive.svg" alt="archive"></button>
-            <button id="add-work-button" class="button" style="display:block;"><img src="icons/plus.svg" alt="save"></button>
+            <button id="information" class="button" style="display:block;"><img src="icons/archive.svg" alt="archive"></button>
+            <button id="convert" class="button" style="display:block;"><img src="icons/convert.svg" alt="save"></button>
+            <button id="search-ship-button" class="button" type="submit" style="display:block;"><img src="icons/globe.svg" alt="save"></button>
+            <button id="language-select" class="button"><img></button>
             <button id="return-button" class="button" style="display:block;"><img src="icons/return.svg" alt="go-back"></button>
-            <button id="shared-submit-button" class="button" type="submit" style="display:block;"><img src="icons/edit.svg" alt="save"></button>
-            <button id="language-select" class="button"><img src="icons/globe.svg" alt="globe"></button>
         </div>
     </div>
     <div>

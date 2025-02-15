@@ -11,6 +11,7 @@ import '../css/global.css';
 import './language.js';     
 import './alert.js'; 
 import './vessel.js'; 
+import './menu.js'; 
 
 
 

@@ -100,6 +100,9 @@ function setupAutocomplete(input, suggestionsBox, vesselData) {
 
 async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
     currentVesselName = vesselName;
+
+    localStorage.setItem("selectedBoat", vesselName); 
+
     vesselName = String(vesselName);
 
     // Hide the search menu and display the selected vessel
