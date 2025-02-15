@@ -1,9 +1,33 @@
-.task-options {
+.task-menu {
+    position: fixed;
+    bottom: 60px; /* Places it above the bottom menu */
+    width: 100%;
+    background-color: radial-gradient(circle, #1b2735, #090a0f);
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 15%;
-    gap: 30px;  /* Reduced gap between buttons */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.task-menu {
+    display: none; 
+}
+
+.task-container {
+    display: flex;
+    gap: 10px;
+    padding: 0 10px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide scrollbar for modern browsers */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+.task-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
 }
 
 .task-option {
@@ -11,48 +35,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80px;  /* Smaller button size */
-    height: 80px;  /* Smaller button size */
+    min-width: 80px;
+    height: 80px;
     padding: 5px;
-    border: 2px solid transparent;
-    border-radius: 50%;  /* Circle shape */
+    border-radius: 50%;
     cursor: pointer;
-    position: relative;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     text-align: center;
     color: white;
-    margin-bottom: 10%; /* Slightly smaller margin */
 }
 
-.task-option::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px solid #0ff;
-    border-radius: 50%;  /* Circle effect */
-    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-    z-index: -1;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-.task-option:hover::before {
-    opacity: 1;
+.task-option:hover, .task-option.active {
+    border-color: #0ff;
+    box-shadow: 0 0 10px #0ff;
 }
 
 .task-option img {
-    max-width: 50px;  /* Smaller image size */
+    max-width: 40px;
     margin-bottom: 5px;
 }
 
-.task-option span {
-    font-size: 0.9em;  /* Smaller text size */
-    padding-top: 5px;  /* Adjust space between image and text */
-}
-
-.taskMainBlock {
-    margin-top: 5%; 
-}
