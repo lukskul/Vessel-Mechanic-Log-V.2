@@ -1,6 +1,6 @@
 const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fileIndex.json";
 
-// Mapping JSON files to task IDs
+// Mapping JSON files to task IDs (unchanged)
 const fileTaskMapping = {
     "vesselData.json": "archive", 
     "mainProps.json": "props",
@@ -94,7 +94,7 @@ function selectVessel(vesselName, vesselFiles, input, suggestionsBox) {
 
 /** Display tasks based on selected vessel */
 function displayTasks(vesselName, files) {
-    const taskBlock = document.getElementById("task-main-block");
+    const taskBlock = document.getElementById("task-menu");
     const taskList = document.getElementById("task-options");
     const allTasks = taskList.querySelectorAll(".task-option");
 
@@ -133,12 +133,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             // Load JSON based on data-task attribute
             const taskName = this.getAttribute("data-task");
-            loadTaskData(taskName);
+            loadTaskData(vesselName, taskName);
         });
     });
 
-    function loadTaskData(taskName) {
-        fetch(`DataFiles/${taskName}.json`)
+    function loadTaskData(vesselName, taskName) {
+        // Dynamically fetch the vessel folder and task file
+        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${taskName}.json`;
+
+        fetch(taskFilePath)
             .then(response => response.json())
             .then(data => {
                 console.log(`Loaded data for ${taskName}:`, data);
