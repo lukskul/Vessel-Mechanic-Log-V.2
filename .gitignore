@@ -15,7 +15,6 @@ pnpm-debug.log*
 .env.production.local
 
 # Ignore build output
-dist/
 build/
 
 # Ignore system files
