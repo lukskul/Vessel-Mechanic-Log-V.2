@@ -8,19 +8,17 @@ Version 2 of the Vessel Mechanic Log is a **read-only** system, allowing users t
 - ⚡ **Lightweight** – Optimized for speed and minimal resource usage.  
 - 🌐 **Decentralized** – Fully functional on **IPFS** and **GitHub Pages**, no backend required.  
 
-## How It Works  
-- Data is stored in **JSON files** inside the repository.  
-- The web page dynamically loads data based on user Vessel selection.  
+## How It Works   
+- The web page dynamically loads data based on Vessel selection.  
+- The use of github pages will allow the project to grow without effecting the webpage CID. 
 
-# 🚀 Vessel Mechanic Log V.2 - Contributing Guide
+# 🚀 - Contributing Guide
 
-Welcome to the **Vessel Mechanic Log** project! We’re excited that you want to contribute. Whether you're fixing bugs, adding new features, or improving documentation, this guide will walk you through the steps to get started.
+Welcome to the **Vessel Mechanic Log** project! We’re excited that you want to contribute. Whether you're fixing bugs, adding new features, or adding information, this guide will walk you through the steps to get started.
 
 ## 🔹 Table of Contents
 1. [Getting Started](#getting-started)
 2. [Contributing Steps](#contributing-steps)
-3. [Code of Conduct](#code-of-conduct)
-4. [Questions?](#questions)
 
 ---
 
