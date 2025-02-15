@@ -2,19 +2,23 @@ const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fil
 
 // Mapping JSON files to task IDs (unchanged)
 const fileTaskMapping = {
-    "vesselData.json": "archive", 
-    "mainProps.json": "props",
-    "runningGear.json": "shafts",
-    "mainEngines.json": "engines",
-    "electricMotors.json": "electricMotors",
-    "generator.json": "generators",
+    "info.json": "archive", 
     "bowThruster.json": "bow-thrusters",
+    "engines.json": "engines",
+    "couplers.json": "couplers", 
+    "seals.json": "seals", 
+    "shafts.json": "shafts",
+    "props.json": "props",
     "rudder.json": "rudder",
     "seaScreens.json": "sea-screens",
-    "doors.json": "doors",
     "zincs.json": "zincs",
+    "generator.json": "generators",
+    "electricMotors.json": "electricMotors",
+    "doors.json": "doors",
     "misc.json": "misc"
 };
+
+let currentVesselName = ""; // Store the currently selected vessel name globally
 
 /** Fetch vessel data */
 async function fetchVesselData() {
@@ -28,7 +32,6 @@ async function fetchVesselData() {
     }
 }
 
-/** Set up autocomplete and handle selection */
 function setupAutocomplete(input, suggestionsBox, vesselData) {
     input.addEventListener("input", () => {
         const searchValue = input.value.toLowerCase();
@@ -47,6 +50,7 @@ function setupAutocomplete(input, suggestionsBox, vesselData) {
             div.textContent = name;
             div.classList.add("suggestion");
             div.addEventListener("click", () => {
+                // Make sure name is passed as the vesselName
                 selectVessel(name, vesselData[name], input, suggestionsBox);
             });
             suggestionsBox.appendChild(div);
@@ -58,8 +62,13 @@ function setupAutocomplete(input, suggestionsBox, vesselData) {
     });
 }
 
-/** Handles vessel selection */
 function selectVessel(vesselName, vesselFiles, input, suggestionsBox) {
+    // Store the vessel name globally
+    currentVesselName = vesselName;
+
+    // Make sure vesselName is a string
+    vesselName = String(vesselName);  // Convert to string, just to be sure
+
     // Hide the search menu
     document.getElementById("vessel-form").style.display = "none";
 
@@ -77,22 +86,32 @@ function selectVessel(vesselName, vesselFiles, input, suggestionsBox) {
     const taskBlock = document.getElementById("task-menu");
     taskBlock.style.display = "block";
 
-    // Update tasks visibility based on selected vessel
+    // Get all task options
     const allTasks = document.querySelectorAll(".task-option");
-    allTasks.forEach(task => task.style.display = "none"); // Hide all
 
-    vesselFiles.forEach(file => {
-        const taskName = file.replace(".json", ""); 
-        const taskElement = document.querySelector(`.task-option[data-task="${taskName}"]`);
-        if (taskElement) {
-            taskElement.style.display = "flex"; // Show only relevant tasks
+    // Loop through all tasks and apply the appropriate styling
+    allTasks.forEach(task => {
+        const taskId = task.getAttribute("data-task");
+
+        // Check if the current task is in the list of available tasks for the selected vessel
+        const isTaskAvailable = vesselFiles.some(file => fileTaskMapping[file] === taskId);
+
+        // If the task is available (in the vesselFiles), make it clickable and show in default color
+        if (isTaskAvailable) {
+            task.style.display = "flex"; // Ensure the task is displayed
+            task.classList.remove("disabled"); // Remove 'disabled' class if task is available
+            task.classList.add("clickable");  // Add 'clickable' class to make it interactive
+        } else {
+            task.style.display = "flex"; // Ensure the task is displayed
+            task.classList.remove("clickable"); // Remove 'clickable' class
+            task.classList.add("disabled");  // Add 'disabled' class to grey it out and make unclickable
         }
     });
 
+    // Call displayTasks with vesselName and vesselFiles
     displayTasks(vesselName, vesselFiles);
 }
 
-/** Display tasks based on selected vessel */
 function displayTasks(vesselName, files) {
     const taskBlock = document.getElementById("task-menu");
     const taskList = document.getElementById("task-options");
@@ -107,8 +126,11 @@ function displayTasks(vesselName, files) {
 
     allTasks.forEach(task => {
         const taskId = task.getAttribute("data-task");
+
+        // Check if this task exists in the vessel's available files
         const isTaskAvailable = files.some(file => fileTaskMapping[file] === taskId);
 
+        // Show task if available, else hide
         task.style.display = isTaskAvailable ? "flex" : "none";
     });
 }
@@ -131,22 +153,49 @@ document.addEventListener("DOMContentLoaded", async () => {
             taskOptions.forEach(opt => opt.classList.remove("active"));
             this.classList.add("active");
 
-            // Load JSON based on data-task attribute
+            // Use the global currentVesselName variable here
             const taskName = this.getAttribute("data-task");
-            loadTaskData(vesselName, taskName);
+            if (currentVesselName) {
+                loadTaskData(currentVesselName, taskName);
+            } else {
+                console.error("Vessel name is not defined");
+            }
         });
     });
 
     function loadTaskData(vesselName, taskName) {
         // Dynamically fetch the vessel folder and task file
         const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${taskName}.json`;
-
+    
         fetch(taskFilePath)
             .then(response => response.json())
             .then(data => {
                 console.log(`Loaded data for ${taskName}:`, data);
-                // Process and display the data in your UI as needed
+    
+                // Display the task data in your UI
+                const taskContainer = document.getElementById("task-data-container");
+                taskContainer.innerHTML = ""; // Clear previous content
+    
+                // Create a div to display the task name
+                const taskTitle = document.createElement("h3");
+                taskTitle.textContent = `${taskName} for ${vesselName}`;
+                taskContainer.appendChild(taskTitle);
+    
+                // Iterate over the task data and display each item
+                for (let key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        const itemDiv = document.createElement("div");
+                        itemDiv.classList.add("task-item");
+                        itemDiv.innerHTML = `<strong>${key}:</strong> ${data[key]}`;
+                        taskContainer.appendChild(itemDiv);
+                    }
+                }
             })
-            .catch(error => console.error("Error loading task data:", error));
+            .catch(error => {
+                console.error("Error loading task data:", error);
+                const taskContainer = document.getElementById("task-data-container");
+                taskContainer.innerHTML = "<p>Error loading task data. Please try again later.</p>";
+            });
     }
+    
 });
