@@ -1,6 +1,7 @@
+import { language } from './language'; 
+
 const messageContainer = document.getElementById('alert-popup');
 let shakeCounter = 0;
-import { language } from './language'; 
 
 export function shakeAlert() {
     const vesselNameDiv = document.getElementById('data-form'); 

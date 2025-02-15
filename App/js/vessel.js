@@ -1,13 +1,27 @@
-import { displayTasks } from './taskDisplay.js';
-
 const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fileIndex.json";
 
-/** Fetch vessel names and their tasks from fileIndex.json */
-export async function fetchVesselData() {
+// Mapping JSON files to task IDs
+const fileTaskMapping = {
+    "vesselData.json": "archive", 
+    "mainProps.json": "props",
+    "runningGear.json": "shafts",
+    "mainEngines.json": "engines",
+    "electricMotors.json": "electricMotors",
+    "generator.json": "generators",
+    "bowThruster.json": "bow-thrusters",
+    "rudder.json": "rudder",
+    "seaScreens.json": "sea-screens",
+    "doors.json": "doors",
+    "zincs.json": "zincs",
+    "misc.json": "misc"
+};
+
+/** Fetch vessel data */
+async function fetchVesselData() {
     try {
         const response = await fetch(repoUrl);
         const data = await response.json();
-        return data; // Returns full vessel data with tasks
+        return data;
     } catch (error) {
         console.error("Error fetching vessel data:", error);
         return {};
@@ -15,7 +29,7 @@ export async function fetchVesselData() {
 }
 
 /** Set up autocomplete and handle selection */
-export function setupAutocomplete(input, suggestionsBox, vesselData) {
+function setupAutocomplete(input, suggestionsBox, vesselData) {
     input.addEventListener("input", () => {
         const searchValue = input.value.toLowerCase();
         suggestionsBox.innerHTML = ""; // Clear old suggestions
@@ -49,33 +63,58 @@ function selectVessel(vesselName, vesselFiles, input, suggestionsBox) {
     // Hide the search menu
     document.getElementById("vessel-form").style.display = "none";
 
-    // Show the task section
-    const taskBlock = document.getElementById("task-main-block");
-    taskBlock.style.display = "block";
+    // Display vessel name at the top
+    const vesselTitle = document.getElementById("vessel-title");
+    vesselTitle.textContent = vesselName;
+    vesselTitle.style.display = "block"; 
 
     // Disable input and clear suggestions
     input.value = vesselName;
     input.disabled = true;
     suggestionsBox.innerHTML = "";
 
-    // Populate task icons
-    const taskList = document.getElementById("task-options");
-    const allTasks = taskList.querySelectorAll(".task-option");
+    // Show the task section
+    const taskBlock = document.getElementById("task-menu");
+    taskBlock.style.display = "block";
 
-    allTasks.forEach(task => {
-        const taskName = task.getAttribute("data-task");
-        if (vesselFiles.includes(`${taskName}.json`)) {
-            task.style.display = "flex"; // Show only relevant tasks
-        } else {
-            task.style.display = "none"; // Hide irrelevant tasks
+    // Update tasks visibility based on selected vessel
+    const allTasks = document.querySelectorAll(".task-option");
+    allTasks.forEach(task => task.style.display = "none"); // Hide all
+
+    vesselFiles.forEach(file => {
+        const taskName = file.replace(".json", ""); 
+        const taskElement = document.querySelector(`.task-option[data-task="${taskName}"]`);
+        if (taskElement) {
+            taskElement.style.display = "flex"; // Show only relevant tasks
         }
     });
 
-    // Now display the tasks
     displayTasks(vesselName, vesselFiles);
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+/** Display tasks based on selected vessel */
+function displayTasks(vesselName, files) {
+    const taskBlock = document.getElementById("task-main-block");
+    const taskList = document.getElementById("task-options");
+    const allTasks = taskList.querySelectorAll(".task-option");
+
+    if (!files || files.length === 0) {
+        console.warn(`No tasks available for ${vesselName}`);
+        return;
+    }
+
+    taskBlock.style.display = "block";
+
+    allTasks.forEach(task => {
+        const taskId = task.getAttribute("data-task");
+        const isTaskAvailable = files.some(file => fileTaskMapping[file] === taskId);
+
+        task.style.display = isTaskAvailable ? "flex" : "none";
+    });
+}
+
+/** Handle task selection */
+document.addEventListener("DOMContentLoaded", async () => {
     const vesselInput = document.getElementById("vessel-name");
     const suggestionsBox = document.getElementById("autocomplete-suggestions");
 
@@ -84,4 +123,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initialize autocomplete with vessel names & tasks
     setupAutocomplete(vesselInput, suggestionsBox, vesselData);
+
+    // Handle task selection
+    const taskOptions = document.querySelectorAll(".task-option");
+    taskOptions.forEach(option => {
+        option.addEventListener("click", function () {
+            taskOptions.forEach(opt => opt.classList.remove("active"));
+            this.classList.add("active");
+
+            // Load JSON based on data-task attribute
+            const taskName = this.getAttribute("data-task");
+            loadTaskData(taskName);
+        });
+    });
+
+    function loadTaskData(taskName) {
+        fetch(`DataFiles/${taskName}.json`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(`Loaded data for ${taskName}:`, data);
+                // Process and display the data in your UI as needed
+            })
+            .catch(error => console.error("Error loading task data:", error));
+    }
 });
