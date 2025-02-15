@@ -55,3 +55,40 @@
     margin-bottom: 5px;
 }
 
+#task-data-container {
+    margin-top: 20px;
+}
+
+.task-item {
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-item strong {
+    font-weight: bold;
+}
+
+
+/* Styling for tasks that are disabled (greyed out and unclickable) */
+.task-option.disabled {
+    color: black;
+    cursor: not-allowed;
+    pointer-events: none;  /* Prevent clicks on disabled tasks */
+    opacity: 0.5; /* Optional: Make it visually clear that it's disabled */
+}
+
+/* Styling for tasks that are clickable (enabled and interactive) */
+.task-option.clickable {
+    color: white;
+    cursor: pointer;
+}
+
+/* Optionally, make the text color more prominent for clickable tasks */
+.task-option.clickable:hover {
+    color: #0056b3; /* Change to a hover color of your choice */
+}
+
+
+
