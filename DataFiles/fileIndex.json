@@ -1,16 +1,36 @@
 {
-    "Acoustic Explorer": [
-        "info.json",
-        "props.json"
-    ],
-    "Amore": [
-        "coupler.json",
-        "info.json",
-        "props.json",
-        "seals.json"
-    ],
-    "Ketau": [
-        "info.json",
-        "props.json"
-    ]
+    "Acoustic Explorer": {
+        "en": [
+            "info.json",
+            "props.json"
+        ],
+        "es": [
+            "info.json",
+            "props.json"
+        ]
+    },
+    "Amore": {
+        "en": [
+            "coupler.json",
+            "info.json",
+            "props.json",
+            "seals.json"
+        ],
+        "es": [
+            "coupler.json",
+            "info.json",
+            "props.json",
+            "seals.json"
+        ]
+    },
+    "Ketau": {
+        "en": [
+            "info.json",
+            "props.json"
+        ],
+        "es": [
+            "info.json",
+            "props.json"
+        ]
+    }
 }
