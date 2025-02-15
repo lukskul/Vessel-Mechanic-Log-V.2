@@ -1,31 +1,35 @@
-export let language = 'en'; // Set default language to 'en'
+export let language = localStorage.getItem("language") || "en"; // Get saved language or default to 'en'
 
-const languageSelectButton = document.getElementById('language-select');
+const languageSelectButton = document.getElementById("language-select");
 
-export function changeLanguage(newLang) {
+function changeLanguage(newLang) {
     fetch(`https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/language/${newLang}.json`)
-
         .then(response => response.json())
         .then(data => {
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
+            document.querySelectorAll("[data-translate]").forEach(element => {
+                const key = element.getAttribute("data-translate");
                 element.textContent = data[key];
             });
+
             language = newLang; // Update the language variable
+            localStorage.setItem("language", newLang); // Save language to local storage
         })
-        .catch(error => console.error('Error loading translation:', error));
+        .catch(error => console.error("Error loading translation:", error));
 }
 
 if (languageSelectButton) {
-    languageSelectButton.addEventListener('click', () => {
-        const currentLang = document.documentElement.lang;
-        const newLang = currentLang === 'en' ? 'es' : 'en';
+    languageSelectButton.addEventListener("click", () => {
+        const currentLang = localStorage.getItem("language") || "en";
+        const newLang = currentLang === "en" ? "es" : "en";
+
         document.documentElement.lang = newLang;
         changeLanguage(newLang);
     });
 }
 
-// Call changeLanguage on page load to set the initial language
-document.addEventListener('DOMContentLoaded', () => {
-    changeLanguage(language);
+// Set the initial language on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const savedLanguage = localStorage.getItem("language") || "en";
+    document.documentElement.lang = savedLanguage;
+    changeLanguage(savedLanguage);
 });
