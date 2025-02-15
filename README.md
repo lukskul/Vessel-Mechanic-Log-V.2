@@ -10,30 +10,53 @@ Version 2 of the Vessel Mechanic Log is a **read-only** system, allowing users t
 
 ## How It Works  
 - Data is stored in **JSON files** inside the repository.  
-- The web page dynamically loads data based on user selection.  
-- A **static index file** (`fileIndex.json`) lists available data files per vessel.  
-- Users can select a vessel and a specific JSON file to view its data.  
+- The web page dynamically loads data based on user Vessel selection.  
 
-## Getting Started  
-1. **Access the website** via GitHub Pages or IPFS.  
-2. **Select a boat** from the dropdown menu.  
-3. **Choose a data file** to view its contents.  
+# 🚀 Vessel Mechanic Log V.2 - Contributing Guide
 
-## Data Structure  
-Each vessel has its own folder inside `/DataFiles`, containing various JSON files:  
+Welcome to the **Vessel Mechanic Log** project! We’re excited that you want to contribute. Whether you're fixing bugs, adding new features, or improving documentation, this guide will walk you through the steps to get started.
 
+## 🔹 Table of Contents
+1. [Getting Started](#getting-started)
+2. [Contributing Steps](#contributing-steps)
+3. [Code of Conduct](#code-of-conduct)
+4. [Questions?](#questions)
 
-- `fileIndex.json` maps boats to their available JSON files.  
-- The web app reads this index and dynamically loads available data.  
-
-## Deployment  
-- **GitHub Pages**: Hosted directly from the repository.  
-- **IPFS**: Can be uploaded and accessed without reliance on centralized servers.  
-
-## Future Improvements  
-- Automate `fileIndex.json` updates.  
-- Add support for markdown descriptions.  
-- Enhance UI for better navigation.  
 ---
 
+## 🔹 Getting Started
+To start contributing, you'll need a GitHub account and a basic understanding of how Git works.
 
+1. **Fork the repository**:  
+   This creates your own copy of the repository where you can freely make changes.
+
+2. **Clone your fork**:  
+   Download your forked repository to your local machine.
+
+3. **Create a new branch**:  
+   It’s always a good practice to create a new branch for each new feature or fix.
+
+4. **Make your changes**:  
+   Work on the code, documentation, or tests based on the issue or feature you're tackling.
+
+5. **Commit your changes**:  
+   Write clear, concise commit messages explaining your changes.
+
+6. **Push your branch**:  
+   After committing your changes, push your branch to your GitHub fork.
+
+7. **Create a Pull Request**:  
+   Submit a PR to the original repository to merge your changes. This is where the project maintainers review your changes.
+
+---
+
+## 🔹 Contributing Steps
+
+### **1. Fork the Repository**
+To begin contributing, click on the **Fork** button at the top-right of the repository page. This will create a copy of the project in your GitHub account.
+
+### **2. Clone Your Fork**
+Clone the forked repository to your local machine:
+```sh
+git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO.git
+cd YOUR-FORKED-REPO
