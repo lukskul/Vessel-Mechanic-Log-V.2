@@ -1,5 +1,6 @@
 import { shakeAlert } from "./alert";
-import { loadHTML } from "./info";
+import { infoPopulate } from "./info"; 
+import { propsPopulate } from "./props";
 
 const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fileIndex.json";
 
@@ -207,6 +208,67 @@ async function loadTaskData(vesselName, taskName) {
     // Load the HTML page for the selected task
     loadHTML();
 }
+
+/** Dynamically pull json files  */
+export function loadHTML() {
+    const taskName = localStorage.getItem("currentTask");
+    const htmlPath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/html/${taskName}.html`;
+    console.log(htmlPath); 
+
+    fetch(htmlPath)
+        .then(response => response.text())
+        .then(data => {
+            const container = document.getElementById("html-container");
+            container.innerHTML = data;
+
+            // Wait for the HTML to be fully inserted, then fade in JSON
+            setTimeout(() => {
+                loadTaskJSON();
+            }, 500); // 0.5-second delay
+        })
+        .catch(error => console.error("Error loading HTML:", error));
+}
+
+async function loadTaskJSON() {
+    const vesselName = localStorage.getItem("selectedBoat");
+    const selectedLanguage = localStorage.getItem("language") || "en";
+    const currentTask = localStorage.getItem("currentTask");
+
+    if (!vesselName) {
+        console.warn("Missing vessel. JSON not loaded.");
+        const taskContainer = document.getElementById("task-data-container");
+        if (taskContainer) taskContainer.innerHTML = "";
+        return;
+    }
+
+    const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/${currentTask}.json`;
+
+    try {
+        const response = await fetch(taskFilePath);
+        if (!response.ok) throw new Error(`Failed to fetch ${taskFilePath}`);
+        
+        const data = await response.json();
+        console.log("Loaded taskData:", data);
+
+        // Dynamically import the task function based on the currentTask value
+        try {
+            const taskModule = await import(`./${currentTask}.js`); // Assuming you have a file per task
+            const functionName = `${currentTask}Populate`;
+
+            if (typeof taskModule[functionName] === "function") {
+                taskModule[functionName](data);  // Call the dynamically imported function
+            } else {
+                console.error(`Function ${functionName} does not exist in ${currentTask}.js`);
+            }
+        } catch (error) {
+            console.error(`Error importing ${currentTask}.js:`, error);
+        }
+
+    } catch (error) {
+        console.error("Error loading task JSON:", error);
+    }
+}
+
 
 /*  Reset everything when back button is pushed */
 export async function clearPageContent() {
