@@ -33,7 +33,7 @@ async function loadTaskJSON() {
     }
 
     // Construct file path dynamically
-    const infoFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${selectedLanguage}/${vesselName}/info.json`;
+    const infoFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/info.json`;
 
     try {
         // Fetch JSON data
@@ -47,7 +47,7 @@ async function loadTaskJSON() {
         populateInfoHTML(data);
 
         // You can add other JSON-based content here if needed (taskData, etc.)
-        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${selectedLanguage}/${vesselName}/info.json`;
+        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/info.json`;
         const taskResponse = await fetch(taskFilePath);
         if (taskResponse.ok) {
             const taskData = await taskResponse.json();
