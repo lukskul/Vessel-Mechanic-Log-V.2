@@ -11,13 +11,13 @@
     },
     "Amore": {
         "en": [
-            "coupler.json",
+            "couplers.json",
             "info.json",
             "props.json",
             "seals.json"
         ],
         "es": [
-            "coupler.json",
+            "couplers.json",
             "info.json",
             "props.json",
             "seals.json"
