@@ -206,81 +206,83 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    async function loadTaskData(vesselName, taskName) {
-        const selectedLanguage = localStorage.getItem("language") || "en"; // Default to English
-    
-        // Define the folder path based on the selected language
-        const languageFolder = selectedLanguage === "es" ? "es" : "en"; // Default to "en" if anything else is selected
-    
-        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${languageFolder}/${taskName}.json`;
-        console.log(`Fetching data from: ${languageFolder} folder`); // Debugging
-    
-        try {
-            const response = await fetch(taskFilePath);
-    
-            // Check if the fetch request was successful
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${taskFilePath}`);
-            }
-    
-            const data = await response.json();
-    
-            // Display the task data in the UI
-            const taskContainer = document.getElementById("task-data-container");
-            taskContainer.innerHTML = ""; // Clear previous content
-    
-            const taskTitle = document.createElement("h3");
-            taskTitle.textContent = `${taskName} for ${vesselName}`;
-            taskContainer.appendChild(taskTitle);
-    
-            // Function to create collapsible UI for nested objects
-            function createCollapsibleContent(obj, parentElement) {
-                Object.keys(obj).forEach(key => {
-                    const value = obj[key];
-    
-                    const itemDiv = document.createElement("div");
-                    itemDiv.classList.add("task-item");
-    
-                    if (typeof value === "object" && value !== null) {
-                        // Create a collapsible container
-                        const collapsible = document.createElement("div");
-                        collapsible.classList.add("collapsible");
-    
-                        // Create a header that toggles the visibility
-                        const header = document.createElement("div");
-                        header.classList.add("collapsible-header");
-                        header.textContent = key;
-                        header.onclick = function () {
-                            content.classList.toggle("collapsed");
-                        };
-    
-                        // Create a content div to hold the nested data
-                        const content = document.createElement("div");
-                        content.classList.add("collapsible-content", "collapsed");
-    
-                        // Recursively add child elements
-                        createCollapsibleContent(value, content);
-    
-                        collapsible.appendChild(header);
-                        collapsible.appendChild(content);
-                        itemDiv.appendChild(collapsible);
-                    } else {
-                        // If it's not an object, just display key-value pair
-                        itemDiv.innerHTML = `<strong>${key}:</strong> ${value}`;
-                    }
-    
-                    parentElement.appendChild(itemDiv);
-                });
-            }
-    
-            // Populate the UI
-            createCollapsibleContent(data, taskContainer);
-        } catch (error) {
-            console.error("Error loading task data:", error);
-            const taskContainer = document.getElementById("task-data-container");
-            taskContainer.innerHTML = "<p>Error loading task data. Please try again later.</p>";
-        }
-    }
-    
-    
 });
+
+
+async function loadTaskData(vesselName, taskName) {
+    const selectedLanguage = localStorage.getItem("language") || "en"; // Default to English
+
+    // Define the folder path based on the selected language
+    const languageFolder = selectedLanguage === "es" ? "es" : "en"; // Default to "en" if anything else is selected
+
+    const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${languageFolder}/${taskName}.json`;
+    console.log(`Fetching data from: ${languageFolder} folder`); // Debugging
+
+    try {
+        const response = await fetch(taskFilePath);
+
+        // Check if the fetch request was successful
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${taskFilePath}`);
+        }
+
+        const data = await response.json();
+
+        // Display the task data in the UI
+        const taskContainer = document.getElementById("task-data-container");
+        taskContainer.innerHTML = ""; // Clear previous content
+
+        const taskTitle = document.createElement("h3");
+        taskTitle.textContent = `${taskName} for ${vesselName}`;
+        taskContainer.appendChild(taskTitle);
+
+        // Function to create collapsible UI for nested objects
+        function createCollapsibleContent(obj, parentElement) {
+            Object.keys(obj).forEach(key => {
+                const value = obj[key];
+
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("task-item");
+
+                if (typeof value === "object" && value !== null) {
+                    // Create a collapsible container
+                    const collapsible = document.createElement("div");
+                    collapsible.classList.add("collapsible");
+
+                    // Create a header that toggles the visibility
+                    const header = document.createElement("div");
+                    header.classList.add("collapsible-header");
+                    header.textContent = key;
+                    header.onclick = function () {
+                        content.classList.toggle("collapsed");
+                    };
+
+                    // Create a content div to hold the nested data
+                    const content = document.createElement("div");
+                    content.classList.add("collapsible-content", "collapsed");
+
+                    // Recursively add child elements
+                    createCollapsibleContent(value, content);
+
+                    collapsible.appendChild(header);
+                    collapsible.appendChild(content);
+                    itemDiv.appendChild(collapsible);
+                } else {
+                    // If it's not an object, just display key-value pair
+                    itemDiv.innerHTML = `<strong>${key}:</strong> ${value}`;
+                }
+
+                parentElement.appendChild(itemDiv);
+            });
+        }
+
+        // Populate the UI
+        createCollapsibleContent(data, taskContainer);
+    } catch (error) {
+        console.error("Error loading task data:", error);
+        const taskContainer = document.getElementById("task-data-container");
+        taskContainer.innerHTML = "<p>Error loading task data. Please try again later.</p>";
+    }
+}
+    
+    
