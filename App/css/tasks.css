@@ -2,10 +2,9 @@
     position: fixed;
     bottom: 60px; /* Places it above the bottom menu */
     width: 100%;
-    background-color: radial-gradient(circle, #1b2735, #090a0f);
+    background-color: #171727;
     overflow-x: auto; /* Enables horizontal scrolling */
     white-space: nowrap;
-    padding: 10px 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     z-index: 9999;
     display: flex;
@@ -57,20 +56,18 @@
 }
 
 #task-data-container {
-    margin-top: 20px;
+    margin-top: 15%;
+    margin-bottom: 65%; 
 }
 
 .task-item {
     margin: 10px 0;
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .task-item strong {
     font-weight: bold;
 }
-
 
 /* Styling for tasks that are disabled (greyed out and unclickable) */
 .task-option.disabled {
@@ -87,32 +84,6 @@
     cursor: pointer;
 }
 
-.collapsible {
-    border: 1px solid #ccc;
-    margin: 5px 0;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.collapsible-header {
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px 5px 0 0;
-}
-
-.collapsible-content {
-    padding: 10px;
-    background: #f9f9f9;
-    display: none;
-    border-radius: 0 0 5px 5px;
-}
-
-.collapsible-content.collapsed {
-    display: block;
-}
 
 
 
