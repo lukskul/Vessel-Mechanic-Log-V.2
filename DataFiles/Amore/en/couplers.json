@@ -1,9 +1,8 @@
 {
     "couplers": [
       {
-        "id": "forward_coupler",
         "name": "Forward Coupler",
-        "description": "Forward Coupler double flange transmission to dampener.",
+        "description": "Transmission to dampener.",
         "specs": {
           "bolt_size": "???",
           "bolt_type": "Hex Head",

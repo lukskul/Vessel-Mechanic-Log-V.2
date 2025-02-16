@@ -146,17 +146,17 @@ async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
     // Call displayTasks with vesselName and vesselFiles
     displayTasks(vesselName, vesselFiles);
 
-    if (availableTasks.has("info")) {
-        // Remove the 'active' class from all tasks
-        document.querySelectorAll('.task-option').forEach(task => {
-            task.classList.remove("active");
-        });
-    
-        // Load task data for "info" and mark it as active
-        loadTaskData(vesselName, "info");
-        document.querySelector(`[data-task="info"]`)?.classList.add("active");
-    }
-    
+if (availableTasks.has("info")) {
+    // Remove the 'active' class from all tasks
+    document.querySelectorAll('.task-option').forEach(task => {
+        task.classList.remove("active");
+    });
+
+    // Load task data for "info" and mark it as active
+    loadTaskData(vesselName, "info");
+    document.querySelector(`[data-task="info"]`)?.classList.add("active");
+}
+
 }
 
 
@@ -292,3 +292,4 @@ async function loadTaskData(vesselName, taskName) {
 }
     
     
+
