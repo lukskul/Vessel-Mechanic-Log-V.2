@@ -76,9 +76,9 @@ function populateInfoHTML(data) {
     for (const key in data.shipDetails) {
         if (data.shipDetails.hasOwnProperty(key)) {
             const detailDiv = document.createElement('div');
-            detailDiv.classList.add('detail');
+            detailDiv.classList.add('detail-row');
             detailDiv.innerHTML = `
-                <div class="detail-label">${key.replace(/([A-Z])/g, ' $1')}: </div>
+                <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
                 <div class="detail-value">${data.shipDetails[key] || '<i>N/A</i>'}</div>
             `;
             detailsContainer.appendChild(detailDiv);
