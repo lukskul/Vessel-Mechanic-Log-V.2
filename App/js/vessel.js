@@ -145,6 +145,11 @@ async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
 
     // Call displayTasks with vesselName and vesselFiles
     displayTasks(vesselName, vesselFiles);
+
+    if (availableTasks.has("info")) {
+        loadTaskData(vesselName, "info");
+        document.querySelector(`[data-task="info"]`)?.classList.add("active");
+    }
 }
 
 
