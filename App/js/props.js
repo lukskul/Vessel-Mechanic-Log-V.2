@@ -33,7 +33,7 @@ async function loadTaskJSON() {
     }
 
     // Construct file path dynamically
-    const infoFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/info.json`;
+    const infoFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/props.json`;
 
     try {
         // Fetch JSON data
@@ -47,7 +47,7 @@ async function loadTaskJSON() {
         populateInfoHTML(data);
 
         // You can add other JSON-based content here if needed (taskData, etc.)
-        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/info.json`;
+        const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/props.json`;
         const taskResponse = await fetch(taskFilePath);
         if (taskResponse.ok) {
             const taskData = await taskResponse.json();
@@ -57,32 +57,5 @@ async function loadTaskJSON() {
 
     } catch (error) {
         console.error("Error loading info.json:", error);
-    }
-}
-
-function populateInfoHTML(data) {
-    const infoHtmlContainer = document.querySelector('.info-html');
-
-    // Update the heading dynamically
-    const heading = infoHtmlContainer.querySelector('h2');
-    const description = infoHtmlContainer.querySelector('p');
-    heading.textContent = `Information about ${data.name}`;
-    description.textContent = `This section provides general information about ${data.name} couplers.`;
-
-    // Get the details container where you will display ship details dynamically
-    const detailsContainer = document.querySelector('.details');
-    detailsContainer.innerHTML = ''; // Clear existing content
-
-    // Loop through ship details and create HTML elements for each
-    for (const key in data.shipDetails) {
-        if (data.shipDetails.hasOwnProperty(key)) {
-            const detailDiv = document.createElement('div');
-            detailDiv.classList.add('detail-row');
-            detailDiv.innerHTML = `
-                <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-                <div class="detail-value">${data.shipDetails[key] || '<i>N/A</i>'}</div>
-            `;
-            detailsContainer.appendChild(detailDiv);
-        }
     }
 }
