@@ -1,6 +1,6 @@
 export function loadHTML() {
     const taskName = localStorage.getItem("currentTask");
-    const htmlPath = `./html/${taskName}.html`;
+    const htmlPath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/html/${taskName}.html`;
 
     fetch(htmlPath)
         .then(response => response.text())
