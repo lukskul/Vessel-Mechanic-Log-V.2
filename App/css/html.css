@@ -1,0 +1,39 @@
+#html-container {
+    position: relative; 
+    z-index: 9998; 
+    padding-top: 17%; 
+    margin-bottom: 60%;
+}
+
+#task-data-container {
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.details {
+    display: grid;
+    padding-left: 2%; 
+    max-width: 600px; /* Adjust as needed */
+}
+
+.detail-row {
+    display: flex; /* Switch to flex for inline behavior */
+    justify-content: space-between; /* Ensures spacing between key and value */
+    align-items: center; /* Aligns items properly */
+    padding: 8px 0;
+    border-bottom: solid grey .01px; 
+}
+
+.detail-key {
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+    min-width: 200px; /* Ensures labels stay aligned */
+}
+
+.detail-value {
+    color: #333;
+    padding: 5px 10px;
+    text-align: left;
+    flex: 1; /* Allows it to take up remaining space */
+}
