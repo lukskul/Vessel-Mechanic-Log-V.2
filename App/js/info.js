@@ -1,6 +1,7 @@
 export function loadHTML() {
     const taskName = localStorage.getItem("currentTask");
     const htmlPath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/html/${taskName}.html`;
+    console.log(htmlPath); 
 
     fetch(htmlPath)
         .then(response => response.text())
@@ -32,7 +33,7 @@ async function loadTaskJSON() {
     }
 
     // Construct file path dynamically
-    const infoFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/info.json`;
+    const infoFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${selectedLanguage}/${vesselName}/info.json`;
 
     try {
         // Fetch JSON data
