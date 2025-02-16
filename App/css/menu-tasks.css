@@ -1,24 +1,21 @@
+/* General Styles for Task Menu */
 .task-menu {
     position: fixed;
     bottom: 60px; /* Places it above the bottom menu */
     width: 100%;
-    background-color: #171727;
+    background-color: #222237;
     overflow-x: auto; /* Enables horizontal scrolling */
     white-space: nowrap;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     z-index: 9999;
-    display: flex;
+    display: none; /* Initially hidden, controlled by JS */
     justify-content: flex-start;
     align-items: center;
 }
 
-.task-menu {
-    display: none; 
-}
-
 .task-container {
     display: flex;
-    gap: 10px;
+    margin-left: 2%; 
     padding: 0 10px;
     overflow-x: auto;
     scrollbar-width: none; /* Hide scrollbar for modern browsers */
@@ -29,6 +26,7 @@
     display: none; /* Hide scrollbar for Webkit browsers */
 }
 
+/* Task Option - Styling Each Task in Menu */
 .task-option {
     display: flex;
     flex-direction: column;
@@ -55,11 +53,28 @@
     margin-bottom: 5px;
 }
 
+/* Disabled Task Option (Greyed Out and Unclickable) */
+.task-option.disabled {
+    color: black;
+    cursor: not-allowed;
+    pointer-events: none;  /* Prevent clicks on disabled tasks */
+    opacity: 0.4; /* Optional: Make it visually clear that it's disabled */
+}
+
+/* Styling for Clickable Tasks */
+.task-option.clickable {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Task Data Container (where JSON or task-specific data appears) */
 #task-data-container {
     margin-top: 17%;
     margin-bottom: 65%; 
 }
 
+/* Task Item in Task Data Container */
 .task-item {
     margin: 10px 0;
     padding: 5px;
@@ -69,41 +84,26 @@
     font-weight: bold;
 }
 
-/* Styling for tasks that are disabled (greyed out and unclickable) */
-.task-option.disabled {
-    color: black;
-    cursor: not-allowed;
-    pointer-events: none;  /* Prevent clicks on disabled tasks */
-    opacity: 0.4; /* Optional: Make it visually clear that it's disabled */
+/* Menu Buttons */
+.menuBoxItems {
+    display: flex;
+    gap: 10px;
 }
 
-/* Styling for tasks that are clickable (enabled and interactive) */
-.task-option.clickable {
-    color: white;
-    font-weight: bold;
+.button {
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-}
-
-.collapsible-header {
-    border: white 2px solid; 
-}
-
-.collapsible-content {
     padding: 10px;
-    display: none; /* Content is hidden by default */
-    border-radius: 0 0 5px 5px;
 }
 
-.collapsible-content.collapsed {
-    display: block; /* Show content when collapsed class is added */
+.button img {
+    width: 24px;
+    height: 24px;
 }
 
-
-
-
-
-
-
-
-
+/* Hidden Elements for Dropdowns and Converters */
+.hidden {
+    display: none;
+}
 
