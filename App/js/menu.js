@@ -1,3 +1,5 @@
+import { clearPageContent } from "./vessel.js";
+
 /** Information Button */
 document.addEventListener("DOMContentLoaded", () => {
     const informationButton = document.getElementById("information");
@@ -155,8 +157,7 @@ document.getElementById("search-ship-button").addEventListener("click", () => {
     window.open(searchUrl, "_blank"); // Open in a new tab
 });
 
-
-/** Return Button  */
+/** Return Button */
 document.addEventListener("DOMContentLoaded", () => {
     // Get references to elements
     const returnButton = document.getElementById("return-button");
@@ -167,24 +168,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const vesselInput = document.getElementById("vessel-name"); // Search input field
     const suggestionsBox = document.getElementById("autocomplete-suggestions"); // Autocomplete suggestions box
 
-    // Add event listener to return button
     returnButton.addEventListener("click", () => {
-        // Clear the boat name display
-        vesselNameElement.textContent = ""; 
+        clearPageContent();
+        // **Clear localStorage values**
+        localStorage.removeItem("selectedBoat");
+        localStorage.removeItem("currentTask");
 
-        // Hide the task menu and task details section
-        taskMenu.style.display = "none"; 
-        taskDetails.innerHTML = ""; // Clears any displayed task JSON content
-
-        // Show the search bar again
-        vesselForm.style.display = "block";
-
-        // Clear and enable the search input field
-        vesselInput.value = "";
-        suggestionsBox.innerHTML = ""; // Remove autocomplete suggestions
-        vesselInput.disabled = false; // Ensure it's re-enabled if it was disabled
+        // **Ensure elements exist before modifying them**
+        if (vesselNameElement) vesselNameElement.textContent = "";
+        if (taskMenu) taskMenu.style.display = "none";
+        if (taskDetails) taskDetails.innerHTML = ""; // Clears any displayed task JSON content
+        if (vesselForm) vesselForm.style.display = "block";
+        if (vesselInput) {
+            vesselInput.value = "";
+            vesselInput.disabled = false;
+        }
+        if (suggestionsBox) suggestionsBox.innerHTML = ""; // Remove autocomplete suggestions
     });
 });
+
 
 /** Language Button Image Display */
 const languageSelectButton = document.getElementById("language-select");

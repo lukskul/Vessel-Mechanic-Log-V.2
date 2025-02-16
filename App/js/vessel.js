@@ -1,26 +1,10 @@
 import { shakeAlert } from "./alert";
+import { loadHTML } from "./info";
 
 const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fileIndex.json";
 
-// Mapping JSON files to task IDs (unchanged)
-const fileTaskMapping = {
-    "info.json": "archive",
-    "bowThruster.json": "bow-thrusters",
-    "engines.json": "engines",
-    "couplers.json": "couplers",
-    "seals.json": "seals",
-    "shafts.json": "shafts",
-    "props.json": "props",
-    "rudder.json": "rudder",
-    "seaScreens.json": "sea-screens",
-    "zincs.json": "zincs",
-    "generator.json": "generators",
-    "electricMotors.json": "electricMotors",
-    "doors.json": "doors",
-    "misc.json": "misc"
-};
-
-let currentVesselName = ""; // Store the currently selected vessel name globally
+let currentVesselName = localStorage.getItem("selectedBoat") || "";
+let currentTask = ""; 
 
 /** Fetch vessel data */
 async function fetchVesselData() {
@@ -38,17 +22,11 @@ async function fetchVesselFiles(vesselName, selectedLanguage) {
 
     try {
         const indexResponse = await fetch(indexUrl);
-        
-        // Check if the fetch request was successful
-        if (!indexResponse.ok) {
-            throw new Error(`Failed to fetch ${indexUrl}`);
-        }
+        if (!indexResponse.ok) throw new Error(`Failed to fetch ${indexUrl}`);
 
         const fileIndex = await indexResponse.json();
-
-        // Check if the vessel and language exist in the fileIndex
         if (fileIndex[vesselName] && fileIndex[vesselName][selectedLanguage]) {
-            const files = fileIndex[vesselName][selectedLanguage];  // Get the files for the specific vessel and language
+            const files = fileIndex[vesselName][selectedLanguage];
             const filesData = [];
 
             for (let file of files) {
@@ -63,14 +41,14 @@ async function fetchVesselFiles(vesselName, selectedLanguage) {
                 }
             }
 
-            return filesData;  // Return the fetched file data (name and content)
+            return filesData;
         } else {
             console.error(`Error: No files found for ${vesselName} in ${selectedLanguage}`);
-            return [];  // Return an empty array if no files are found for the given vessel and language
+            return [];
         }
     } catch (error) {
         console.error(`Error fetching file index for ${vesselName}:`, error);
-        return [];  // Return an empty array in case of error
+        return [];
     }
 }
 
@@ -98,71 +76,10 @@ function setupAutocomplete(input, suggestionsBox, vesselData) {
     });
 }
 
-async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
-    currentVesselName = vesselName;
-
-    localStorage.setItem("selectedBoat", vesselName); 
-
-    vesselName = String(vesselName);
-
-    // Hide the search menu and display the selected vessel
-    document.getElementById("vessel-form").style.display = "none";
-    const vesselTitle = document.getElementById("vessel-title");
-    vesselTitle.textContent = vesselName;
-    vesselTitle.style.display = "block";
-
-    // Disable input and clear suggestions
-    input.value = vesselName;
-    input.disabled = true;
-    suggestionsBox.innerHTML = "";
-
-    // Show task menu
-    document.getElementById("task-menu").style.display = "block";
-    const allTasks = document.querySelectorAll(".task-option");
-
-    // Get selected language from localStorage or default to 'en'
-    const selectedLanguage = localStorage.getItem("language") || "en";
-
-    // Fetch vessel files (pass the selected language here)
-    const vesselFiles = await fetchVesselFiles(vesselName, selectedLanguage);
-
-    // Ensure we extract the file names correctly
-    const availableTasks = new Set(vesselFiles.map(file => 
-        typeof file.file === "string" ? file.file.replace(".json", "") : ""
-    ));
-
-    allTasks.forEach(task => {
-        const taskId = task.getAttribute("data-task");
-  
-        if (availableTasks.has(taskId)) {
-            task.classList.remove("disabled");
-            task.classList.add("clickable");
-        } else {
-            task.classList.remove("clickable");
-            task.classList.add("disabled");
-        }
-    });
-
-    // Call displayTasks with vesselName and vesselFiles
-    displayTasks(vesselName, vesselFiles);
-
-if (availableTasks.has("info")) {
-    // Remove the 'active' class from all tasks
-    document.querySelectorAll('.task-option').forEach(task => {
-        task.classList.remove("active");
-    });
-
-    // Load task data for "info" and mark it as active
-    loadTaskData(vesselName, "info");
-    document.querySelector(`[data-task="info"]`)?.classList.add("active");
-}
-
-}
-
-
+/** Display Available Tasks */
 function displayTasks(vesselName, files) {
     const taskBlock = document.getElementById("task-menu");
-    const taskContainer = document.querySelector(".task-container"); // Correct selector
+    const taskContainer = document.querySelector(".task-container");
     const allTasks = taskContainer.querySelectorAll(".task-option");
 
     if (!files || files.length === 0) {
@@ -176,7 +93,6 @@ function displayTasks(vesselName, files) {
 
     allTasks.forEach(task => {
         const taskId = task.getAttribute("data-task");
-
         if (availableTasks.has(taskId)) {
             task.classList.remove("disabled");
             task.classList.add("clickable");
@@ -187,109 +103,135 @@ function displayTasks(vesselName, files) {
     });
 }
 
-/** Handle task selection */
+/** Handle Task Selection */
 document.addEventListener("DOMContentLoaded", async () => {
     const vesselInput = document.getElementById("vessel-name");
     const suggestionsBox = document.getElementById("autocomplete-suggestions");
 
-    // Fetch vessel data and initialize autocomplete
     const vesselData = await fetchVesselData();
     setupAutocomplete(vesselInput, suggestionsBox, vesselData);
 
-    // Handle task selection
     const taskOptions = document.querySelectorAll(".task-option");
     taskOptions.forEach(option => {
         option.addEventListener("click", function () {
-            taskOptions.forEach(opt => opt.classList.remove("active"));
-            this.classList.add("active");
-
-            if (currentVesselName) {
-                const taskName = this.getAttribute("data-task");
-                loadTaskData(currentVesselName, taskName);
-            } else {
-                console.error("Vessel name is not defined");
-            }
+            const taskName = this.getAttribute("data-task");
+            activateTask(taskName);
         });
     });
 
+    // **Re-activate previous task on page reload**
+    if (currentVesselName && currentTask) {
+        // If a vessel and task are already selected, activate the "info" task by default
+        activateTask(currentTask);
+    }
 });
 
+/** Select Vessel & Activate 'info' Task Automatically */
+async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
+    currentVesselName = vesselName;
+    localStorage.setItem("selectedBoat", vesselName);
 
-async function loadTaskData(vesselName, taskName) {
-    const selectedLanguage = localStorage.getItem("language") || "en"; // Default to English
+    // **Set currentTask to "info" on vessel selection**
+    currentTask = "info";  // Always default to the 'info' task
+    localStorage.setItem("currentTask", currentTask);  // Save task to localStorage
 
-    // Define the folder path based on the selected language
-    const languageFolder = selectedLanguage === "es" ? "es" : "en"; // Default to "en" if anything else is selected
+    // Hide the search menu and display the selected vessel
+    document.getElementById("vessel-form").style.display = "none";
+    const vesselTitle = document.getElementById("vessel-title");
+    vesselTitle.textContent = vesselName;
+    vesselTitle.style.display = "block";
 
-    const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${languageFolder}/${taskName}.json`;
-    console.log(`Fetching data from: ${languageFolder} folder`); // Debugging
+    input.value = vesselName;
+    input.disabled = true;
+    suggestionsBox.innerHTML = "";
 
-    try {
-        const response = await fetch(taskFilePath);
+    document.getElementById("task-menu").style.display = "block";
+    const allTasks = document.querySelectorAll(".task-option");
 
-        // Check if the fetch request was successful
-        if (!response.ok) {
-            throw new Error(`Failed to fetch ${taskFilePath}`);
+    const selectedLanguage = localStorage.getItem("language") || "en";
+    const vesselFiles = await fetchVesselFiles(vesselName, selectedLanguage);
+
+    const availableTasks = new Set(vesselFiles.map(file => file.file.replace(".json", "")));
+
+    allTasks.forEach(task => {
+        const taskId = task.getAttribute("data-task");
+        if (availableTasks.has(taskId)) {
+            task.classList.remove("disabled");
+            task.classList.add("clickable");
+        } else {
+            task.classList.remove("clickable");
+            task.classList.add("disabled");
         }
+    });
 
-        const data = await response.json();
+    displayTasks(vesselName, vesselFiles);
 
-        // Display the task data in the UI
-        const taskContainer = document.getElementById("task-data-container");
-        taskContainer.innerHTML = ""; // Clear previous content
+    // **Automatically select the 'info' task after vessel selection**
+    activateTask("info");  // Activate the 'info' task by default
+}
 
-        const taskTitle = document.createElement("h3");
-        taskTitle.textContent = `${taskName} for ${vesselName}`;
-        taskContainer.appendChild(taskTitle);
+/** Set new active task */
+function activateTask(taskName) {
+    const taskOptions = document.querySelectorAll(".task-option");
 
-        // Function to create collapsible UI for nested objects
-        function createCollapsibleContent(obj, parentElement) {
-            Object.keys(obj).forEach(key => {
-                const value = obj[key];
+    // Clear previously active task
+    taskOptions.forEach(opt => opt.classList.remove("active"));
 
-                const itemDiv = document.createElement("div");
-                itemDiv.classList.add("task-item");
-
-                if (typeof value === "object" && value !== null) {
-                    // Create a collapsible container
-                    const collapsible = document.createElement("div");
-                    collapsible.classList.add("collapsible");
-
-                    // Create a header that toggles the visibility
-                    const header = document.createElement("div");
-                    header.classList.add("collapsible-header");
-                    header.textContent = key;
-                    header.onclick = function () {
-                        content.classList.toggle("collapsed");
-                    };
-
-                    // Create a content div to hold the nested data
-                    const content = document.createElement("div");
-                    content.classList.add("collapsible-content", "collapsed");
-
-                    // Recursively add child elements
-                    createCollapsibleContent(value, content);
-
-                    collapsible.appendChild(header);
-                    collapsible.appendChild(content);
-                    itemDiv.appendChild(collapsible);
-                } else {
-                    // If it's not an object, just display key-value pair
-                    itemDiv.innerHTML = `<strong>${key}:</strong> ${value}`;
-                }
-
-                parentElement.appendChild(itemDiv);
-            });
+    // Ensure the taskName and currentVesselName are valid
+    if (currentTask && currentVesselName) {
+        // Find the new task
+        const activeTask = document.querySelector(`.task-option[data-task="${taskName}"]`);
+        
+        if (activeTask) {
+            activeTask.classList.add("active");
+            currentTask = taskName;
+            localStorage.setItem("currentTask", taskName); // Store task in localStorage
+            loadTaskData(currentVesselName, taskName); // Load task-specific data
+        } else {
+            console.warn(`Task '${taskName}' not found.`);
         }
-
-        // Populate the UI
-        createCollapsibleContent(data, taskContainer);
-    } catch (error) {
-        console.error("Error loading task data:", error);
-        const taskContainer = document.getElementById("task-data-container");
-        taskContainer.innerHTML = "<p>Error loading task data. Please try again later.</p>";
+    } else {
+        console.warn("currentTask or currentVesselName is missing. Skipping task activation.");
     }
 }
-    
-    
+
+/** Load Task Data */
+async function loadTaskData(vesselName, taskName) {
+    if (!vesselName || !taskName) {
+        console.warn("Vessel or task not selected. Aborting load.");
+        return;
+    }
+
+    console.log(`Loading HTML for: ${taskName}`);
+
+    // Load the HTML page for the selected task
+    loadHTML();
+}
+
+/*  Reset everything when back button is pushed */
+export async function clearPageContent() {
+    // Clear the HTML container where hard-coded content is rendered
+    const htmlContainer = document.getElementById("html-container");
+    if (htmlContainer) {
+        htmlContainer.innerHTML = "";  // Clear out any child elements (HTML content)
+    }
+
+    // Clear the task data container where the task-specific HTML and JSON data are rendered
+    const taskDataContainer = document.getElementById("task-data-container");
+    if (taskDataContainer) {
+        taskDataContainer.innerHTML = "";  // Clear out any child elements (task data)
+    }
+
+    // Clear the task menu if necessary
+    const taskMenu = document.getElementById("task-menu");
+    if (taskMenu) {
+        taskMenu.style.display = "none";  // Optionally hide the task menu when switching views
+    }
+
+    // Optionally clear any other elements you want to reset when changing views
+    const vesselForm = document.getElementById("vessel-form");
+    if (vesselForm) {
+        vesselForm.style.display = "block";  // Re-enable vessel form if needed for new selection
+    }
+}
 
