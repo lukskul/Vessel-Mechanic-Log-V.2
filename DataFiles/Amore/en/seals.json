@@ -1,15 +1,7 @@
 {
-    "Coupler": {
-        "Fwd Coupler -> Transmission flange": "Torque - 330 ft-lbs",
-        "Dampner -> Coupler (flange to flange)": "Torque - 790 ft-lbs",
-        "Retaining Nut": "3 Allen bolts size 14mm"
-    },
     "Seal": {
         "Type": "PSS",
         "Compression Spec": "1 inch of compression",
         "Set Screws": "3/16"
-    },
-    "Prop": {
-        "Nut Size": "3 7/8"
     }
 }
