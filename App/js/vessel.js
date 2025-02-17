@@ -1,6 +1,4 @@
 import { shakeAlert } from "./alert";
-import { infoPopulate } from "./info"; 
-import { propsPopulate } from "./props";
 
 const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/fileIndex.json";
 
@@ -249,7 +247,9 @@ async function loadTaskJSON() {
         
         const data = await response.json();
         console.log("Loaded taskData:", data);
-
+        console.log("selected Vessel", vesselName); 
+        console.log("selectedLanguage", selectedLanguage); 
+        console.log("current task", currentTask)
         // Dynamically import the task function based on the currentTask value
         try {
             const taskModule = await import(`./${currentTask}.js`); // Assuming you have a file per task
