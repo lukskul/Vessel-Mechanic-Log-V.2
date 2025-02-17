@@ -1,14 +1,13 @@
 {
-    "propDetails": {
-      "name": "Mains",
-      "type": "RH",
-      "serialNumber": "1425",
-      "markings": "Made in Mexico",
-      "Bore": "3",
-      "PropNutSize": "1 7/8",
-      "PropNutCount": "2 Main Nut and Locking Nut",
-      "NutRestraint": "Cotter Pin",
-      "Material": "Bronze"
-    }
+  "propDetails": {
+    "name": "Mains",
+    "type": "RH",
+    "serialNumber": "1425",
+    "markings": "Made in Mexico",
+    "Bore": "3",
+    "PropNutSize": "1 7/8",
+    "PropNutCount": "2 Main Nut and Locking Nut",
+    "NutRestraint": "Cotter Pin",
+    "Material": "Bronze"
   }
-  
+}
