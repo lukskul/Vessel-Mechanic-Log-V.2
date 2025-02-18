@@ -1,3 +1,27 @@
 {
-    "hello": "Hola desde las hélices"
-}
+    "propDetails": [
+      {
+        "hélice": "Main",
+        "dirección": "RH",
+        "númeroDeSerie": "",
+        "marcas": "",
+        "boca": "",
+        "tamañoTuercaDeHélice": "",
+        "cantidadTuercasDeHélice": "",
+        "restricciónDeTuerca": "",
+        "material": "Bronze"
+      },
+      {
+        "hélice": "Main",
+        "dirección": "LH",
+        "númeroDeSerie": "",
+        "marcas": "",
+        "boca": "",
+        "tamañoTuercaDeHélice": "",
+        "cantidadTuercasDeHélice": "",
+        "restricciónDeTuerca": "",
+        "material": "Bronze"
+      }
+    ]
+  }
+  

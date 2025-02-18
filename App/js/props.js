@@ -32,8 +32,11 @@ export function propsPopulate(data) {
 
             // Create a dropdown
             const dropdown = document.createElement('details');
+            dropdown.setAttribute('open', ''); // Set dropdown to open initially
             const summary = document.createElement('summary');
-            summary.textContent = `Prop ${index + 1} (${prop.direction || "Unknown Direction"})`;
+
+            // Use the 'direction' value as the title for the dropdown
+            summary.textContent = prop.direction || "Unknown Direction";
             dropdown.appendChild(summary);
 
             for (const key in prop) {

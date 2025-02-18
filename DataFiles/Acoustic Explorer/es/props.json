@@ -1,4 +1,26 @@
 {
-    "LH": "Estribor",
-    "RH": "Babor"
-}
+    "propDetails": [
+      {
+        "hélice": "Main",
+        "dirección": "RH Port",
+        "númeroDeSerie": "",
+        "marcas": "",
+        "boca": "",
+        "tamañoTuercaDeHélice": "",
+        "cantidadTuercasDeHélice": "",
+        "restricciónDeTuerca": "",
+        "material": "Bronze"
+      },
+      {
+        "hélice": "Main",
+        "dirección": "LH Stbd",
+        "númeroDeSerie": "",
+        "marcas": "",
+        "boca": "",
+        "tamañoTuercaDeHélice": "",
+        "cantidadTuercasDeHélice": "",
+        "restricciónDeTuerca": "",
+        "material": "Bronze"
+      }
+    ]
+  }
