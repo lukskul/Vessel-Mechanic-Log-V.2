@@ -6,8 +6,6 @@ export function infoPopulate(data) {
     // Update the heading dynamically
     const heading = infoHtmlContainer.querySelector('h2');
     const description = infoHtmlContainer.querySelector('p');
-    heading.textContent = `Information about ${currentVesselName}`;
-    description.textContent = `This section provides general information about ${currentVesselName}.`;
 
     // Get the details container where you will display ship details dynamically
     const detailsContainer = document.querySelector('.details');

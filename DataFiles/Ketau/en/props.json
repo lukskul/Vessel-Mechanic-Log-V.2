@@ -1,13 +1,26 @@
 {
-  "propDetails": {
-    "name": "Mains",
-    "type": "RH",
-    "serialNumber": "1425",
-    "markings": "Made in Mexico",
-    "Bore": "3",
-    "PropNutSize": "1 7/8",
-    "PropNutCount": "2 Main Nut and Locking Nut",
-    "NutRestraint": "Cotter Pin",
-    "Material": "Bronze"
-  }
+  "propDetails": [
+    {
+      "propeller": "Mains",
+      "direction": "Clockwise",
+      "serialNumber": "12345",
+      "markings": "ABC",
+      "Bore": "50mm",
+      "PropNutSize": "M12",
+      "PropNutCount": "2",
+      "NutRestraint": "Locking Plate",
+      "Material": "Bronze"
+    },
+    {
+      "propeller": "Auxiliary",
+      "direction": "Counterclockwise",
+      "serialNumber": "67890",
+      "markings": "XYZ",
+      "Bore": "55mm",
+      "PropNutSize": "M14",
+      "PropNutCount": "3",
+      "NutRestraint": "Cotter Pin",
+      "Material": "Stainless Steel"
+    }
+  ]
 }
