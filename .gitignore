@@ -20,3 +20,6 @@ build/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+# Ignore Json Templates
+JsonTemplates/

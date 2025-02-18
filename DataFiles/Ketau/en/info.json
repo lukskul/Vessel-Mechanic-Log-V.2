@@ -2,6 +2,7 @@
   "shipDetails": {
     "name": "Ketau",
     "type": "Catameran",
+    "manufacturer": "", 
     "imoNumber": "",
     "mmsiNumber": "",
     "callSign": "",
