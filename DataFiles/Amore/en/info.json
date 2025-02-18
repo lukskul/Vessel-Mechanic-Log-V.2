@@ -1,9 +1,22 @@
 {
-    "name": "Amore",
-    "type": "Motor Yacht, built in the United States. 1 of 4,157 models.",
-    "length": "47.85 m",
-    "yearBuilt": "2005",
-    "manufacturer": "Christensen",
-    "homePort": "Currently sailing under the Cayman Islands flag"
+    "shipDetails": {
+      "name": "Amore",
+      "type": "Motor Yacht",
+      "manufacturer": "Christensen", 
+      "imoNumber": "",
+      "mmsiNumber": "",
+      "callSign": "",
+      "flag": "Cayman Islands",
+      "yearBuilt": "2005",
+      "owner": "",
+      "homePort": "",
+      "length": "47.85 m",
+      "beam": "",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
 }
-  

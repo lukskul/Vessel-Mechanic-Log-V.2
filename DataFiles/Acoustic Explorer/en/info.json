@@ -1,9 +1,23 @@
 {
-    "name": "Acoustic Explorer",
-    "type": "(MMSI: 338070397) Military Ops and is sailing under the flag of USA",
-    "length": "Her length overall (LOA) is 131 feet (40 meters) and her width is 32 feet (10 meters)",
-    "yearBuilt": "upgrade to unlock",
-    "manufacturer": "upgrade to unlock",
-    "homePort": "San Diego, CA"
+    "shipDetails": {
+      "name": "Acoustic Explorer",
+      "type": " Military Ops",
+      "manufacturer":  "",
+      "imoNumber": "",
+      "mmsiNumber": "338070397",
+      "callSign": "",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "San Diego",
+      "length": "131 feet (40 meters)",
+      "beam": "32 feet (10 meters)",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
 }
   
