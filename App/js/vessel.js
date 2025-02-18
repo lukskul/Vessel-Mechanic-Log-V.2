@@ -207,11 +207,11 @@ async function loadTaskData(vesselName, taskName) {
     loadHTML();
 }
 
-/** Dynamically pull json files  */
+/** Dynamically pull JSON files and watch for content updates */
 export function loadHTML() {
     const taskName = localStorage.getItem("currentTask");
     const htmlPath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/html/${taskName}.html`;
-    console.log(htmlPath); 
+    console.log(htmlPath);
 
     fetch(htmlPath)
         .then(response => response.text())
@@ -219,12 +219,32 @@ export function loadHTML() {
             const container = document.getElementById("html-container");
             container.innerHTML = data;
 
-            // Wait for the HTML to be fully inserted, then fade in JSON
-            setTimeout(() => {
-                loadTaskJSON();
-            }, 500); // 0.5-second delay
+            // Start observing for dynamic content
+            loadTaskJSON(); 
+            watchDynamicContent();
         })
         .catch(error => console.error("Error loading HTML:", error));
+}
+
+/** MutationObserver to detect and populate dynamically loaded content */
+function watchDynamicContent() {
+    const observerTarget = document.getElementById("html-container");
+
+    if (!observerTarget) {
+        console.error("html-container not found.");
+        return;
+    }
+
+    const observer = new MutationObserver((mutations, obs) => {
+        mutations.forEach(mutation => {
+            if (mutation.type === "childList") {
+                loadTaskJSON(); // Automatically loads the correct task JSON and function
+                obs.disconnect();
+            }
+        });
+    });
+
+    observer.observe(observerTarget, { childList: true, subtree: true });
 }
 
 async function loadTaskJSON() {
@@ -268,7 +288,6 @@ async function loadTaskJSON() {
         console.error("Error loading task JSON:", error);
     }
 }
-
 
 /*  Reset everything when back button is pushed */
 export async function clearPageContent() {
