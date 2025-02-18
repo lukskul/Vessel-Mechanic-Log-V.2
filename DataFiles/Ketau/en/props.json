@@ -1,7 +1,7 @@
 {
   "propDetails": [
     {
-      "propeller": "Mains",
+      "propeller": "Main",
       "direction": "Clockwise",
       "serialNumber": "12345",
       "markings": "ABC",
@@ -10,17 +10,6 @@
       "PropNutCount": "2",
       "NutRestraint": "Locking Plate",
       "Material": "Bronze"
-    },
-    {
-      "propeller": "Auxiliary",
-      "direction": "Counterclockwise",
-      "serialNumber": "67890",
-      "markings": "XYZ",
-      "Bore": "55mm",
-      "PropNutSize": "M14",
-      "PropNutCount": "3",
-      "NutRestraint": "Cotter Pin",
-      "Material": "Stainless Steel"
     }
   ]
 }
