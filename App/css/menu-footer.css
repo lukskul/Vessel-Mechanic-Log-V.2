@@ -66,7 +66,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 80vh; /* Adjust to fit above the menu */
+    height: 94vh; /* Adjust to fit above the menu */
     background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
     display: flex;
     justify-content: center;
@@ -144,23 +144,28 @@
 
 /* Information dropdown styling */
 #info-dropdown {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 94vh; /* Adjust to fit above the menu */
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
-    border-radius: 8px;
+    color: #00ff99; /* Neon green text for cyberpunk feel */
+    font-size: 1.5rem;
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.6); /* Glowing effect */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease, transform 0.5s ease-in-out; /* Smooth transition for appearing */
+    transform: translateY(-100%); /* Initially off-screen */
 }
 
 #info-dropdown.visible {
-    display: flex;
+    opacity: 1;
+    transform: translateY(0); /* Slide into view */
 }
 
 #info-input {

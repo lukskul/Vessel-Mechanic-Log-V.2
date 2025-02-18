@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const infoInput = document.getElementById("info-input");
 
     const englishPlaceholders = {
-        information: "Enter information here..."
+        information: "Forms coming soon..."
     };
 
     const spanishPlaceholders = {
-        information: "Ingresa información aquí..."
+        information: "Formularios próximamente..."
     };
 
     // Set initial placeholder in English
