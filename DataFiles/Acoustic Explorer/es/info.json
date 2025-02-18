@@ -1,8 +1,22 @@
 {
-    "nombre": "Acoustic Explorer",
-    "tipo": "(MMSI: 338070397) Operaciones Militares y navega bajo la bandera de EE.UU.",
-    "longitud": "Su eslora total (LOA) es de 131 pies (40 metros) y su manga es de 32 pies (10 metros).",
-    "anoConstruccion": "actualiza para desbloquear",
-    "fabricante": "actualiza para desbloquear",
-    "puertoBase": "San Diego, CA"
+    "shipDetails": {
+        "nombre": "Acoustic Explorer",
+        "tipo": "Military Ops",
+        "fabricante": "", 
+        "numeroIMO": "",
+        "numeroMMSI": "338070397",
+        "indicativoLlamada": "",
+        "bandera": "USA",
+        "anioConstruccion": "",
+        "propietario": "",
+        "puertoBase": "San Diego",
+        "eslora": "131 feet (40 meters)",
+        "manga": "32 feet (10 meeters)",
+        "calado": "",
+        "tonelajeBruto": "",
+        "tonelajePesoMuerto": "",
+        "tipoMotor": "",
+        "potenciaMotor": "",
+        "velocidadMaxima": ""
+    }
 }
