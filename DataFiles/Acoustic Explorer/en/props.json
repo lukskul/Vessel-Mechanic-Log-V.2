@@ -1,4 +1,26 @@
 {
-    "LH": "Starboard", 
-    "RH": "Port"
+    "propDetails": [
+      {
+        "propeller": "Main",
+        "direction": "RH Port",
+        "serialNumber": "",
+        "markings": "",
+        "Bore": "",
+        "PropNutSize": "",
+        "PropNutCount": "",
+        "NutRestraint": "",
+        "Material": "Bronze"
+      },
+      {
+        "propeller": "Main",
+        "direction": "LH Stbd",
+        "serialNumber": "",
+        "markings": "",
+        "Bore": "",
+        "PropNutSize": "",
+        "PropNutCount": "",
+        "NutRestraint": "",
+        "Material": "Bronze"
+      }
+    ]
 }

@@ -1,5 +1,27 @@
 {
-    "Prop": {
-        "Nut Size": "3 7/8"
-    }
-}
+    "propDetails": [
+      {
+        "hélice": "Main",
+        "dirección": "RH",
+        "númeroDeSerie": "",
+        "marcas": "",
+        "boca": "",
+        "tamañoTuercaDeHélice": "3 7/8",
+        "cantidadTuercasDeHélice": "",
+        "restricciónDeTuerca": "",
+        "material": "Bronze"
+      },
+      {
+        "hélice": "Main",
+        "dirección": "LH",
+        "númeroDeSerie": "",
+        "marcas": "",
+        "boca": "",
+        "tamañoTuercaDeHélice": "3 7/8",
+        "cantidadTuercasDeHélice": "",
+        "restricciónDeTuerca": "",
+        "material": "Bronze"
+      }
+    ]
+  }
+  

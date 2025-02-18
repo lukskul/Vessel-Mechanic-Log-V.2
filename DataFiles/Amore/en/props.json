@@ -1,5 +1,26 @@
 {
-    "Prop": {
-        "Nut Size": "3 7/8"
-    }
+    "propDetails": [
+      {
+        "propeller": "Main",
+        "direction": "RH",
+        "serialNumber": "",
+        "markings": "",
+        "Bore": "",
+        "PropNutSize": "3 7/8",
+        "PropNutCount": "",
+        "NutRestraint": "",
+        "Material": "Bronze"
+      },
+      {
+        "propeller": "Main",
+        "direction": "LH",
+        "serialNumber": "",
+        "markings": "",
+        "Bore": "",
+        "PropNutSize": "3 7/8",
+        "PropNutCount": "",
+        "NutRestraint": "",
+        "Material": "Bronze"
+      }
+    ]
 }

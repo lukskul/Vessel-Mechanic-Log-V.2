@@ -2,25 +2,25 @@
   "propDetails": [
     {
       "propeller": "Main",
-      "direction": "Clockwise",
-      "serialNumber": "12345",
-      "markings": "ABC",
-      "Bore": "50mm",
-      "PropNutSize": "M12",
-      "PropNutCount": "2",
-      "NutRestraint": "Locking Plate",
+      "direction": "RH",
+      "serialNumber": "",
+      "markings": "",
+      "Bore": "",
+      "PropNutSize": "",
+      "PropNutCount": "",
+      "NutRestraint": "",
       "Material": "Bronze"
     },
     {
-      "propeller": "Auxiliary",
-      "direction": "Counterclockwise",
-      "serialNumber": "67890",
-      "markings": "XYZ",
-      "Bore": "55mm",
-      "PropNutSize": "M14",
-      "PropNutCount": "3",
-      "NutRestraint": "Cotter Pin",
-      "Material": "Stainless Steel"
+      "propeller": "Main",
+      "direction": "LH",
+      "serialNumber": "",
+      "markings": "",
+      "Bore": "",
+      "PropNutSize": "",
+      "PropNutCount": "",
+      "NutRestraint": "",
+      "Material": "Bronze"
     }
   ]
 }
