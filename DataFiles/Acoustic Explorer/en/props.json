@@ -1,25 +1,24 @@
 {
     "propDetails": [
       {
-        "propeller": "Main",
         "direction": "RH Port",
+        "PropNutCount": "",
+        "PropNutSize": "",
+        "NutRestraint": "",
+        "diameter x pitch": "",
         "serialNumber": "D B-94-5377",
         "markings": "62 Diameter x 60 Pitch",
         "Bore": "",
-        "PropNutSize": "",
-        "PropNutCount": "",
-        "NutRestraint": "",
         "Material": "Bronze"
       },
       {
-        "propeller": "Main",
         "direction": "LH Stbd",
+        "PropNutCount": "",
+        "PropNutSize": "",
+        "NutRestraint": "",
         "serialNumber": "12 Q.B-94-5376",
         "markings": "MADE IN MEXICO",
         "Bore": "",
-        "PropNutSize": "",
-        "PropNutCount": "",
-        "NutRestraint": "",
         "Material": "Bronze"
       }
     ]
