@@ -1,9 +1,22 @@
 {
-    "name": "Ketau",
-    "type": "Catamaran",
-    "length": "???",
-    "yearBuilt": "???",
-    "manufacturer": "???",
-    "homePort": "???"
+    "shipDetails": {
+        "nombre": "Ketau",
+        "tipo": "Catamarán",
+        "fabricante": "", 
+        "numeroIMO": "",
+        "numeroMMSI": "",
+        "indicativoLlamada": "",
+        "bandera": "",
+        "anioConstruccion": "",
+        "propietario": "",
+        "puertoBase": "",
+        "eslora": "",
+        "manga": "",
+        "calado": "",
+        "tonelajeBruto": "",
+        "tonelajePesoMuerto": "",
+        "tipoMotor": "",
+        "potenciaMotor": "",
+        "velocidadMaxima": ""
+    }
 }
-  

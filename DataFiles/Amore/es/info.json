@@ -1,8 +1,22 @@
 {
-    "name": "Amore",
-    "type": "Yate a motor, construido en los Estados Unidos. Es uno de 4,157 modelos.",
-    "length": "47,85 m",
-    "yearBuilt": "2005",
-    "manufacturer": "Christensen",
-    "homePort": "Actualmente navega bajo la bandera de las Islas Caimán"
+    "shipDetails": {
+        "nombre": "Amore",
+        "tipo": "Motor Yacht",
+        "fabricante": "Christensen", 
+        "numeroIMO": "",
+        "numeroMMSI": "",
+        "indicativoLlamada": "",
+        "bandera": "Cayman Islands",
+        "anioConstruccion": "2005",
+        "propietario": "",
+        "puertoBase": "",
+        "eslora": "47.85 m",
+        "manga": "",
+        "calado": "",
+        "tonelajeBruto": "",
+        "tonelajePesoMuerto": "",
+        "tipoMotor": "",
+        "potenciaMotor": "",
+        "velocidadMaxima": ""
+    }
 }
