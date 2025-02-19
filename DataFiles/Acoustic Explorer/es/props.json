@@ -1,26 +1,23 @@
 {
-    "propDetails": [
-      {
-        "hélice": "Main",
-        "dirección": "RH Port",
-        "númeroDeSerie": "D B-94-5377",
-        "marcas": "62 Diameter x 60 Pitch",
-        "boca": "",
-        "tamañoTuercaDeHélice": "",
-        "cantidadTuercasDeHélice": "",
-        "restricciónDeTuerca": "",
-        "material": "Bronze"
-      },
-      {
-        "hélice": "Main",
-        "dirección": "LH Stbd",
-        "númeroDeSerie": "12 Q.B-94-5376",
-        "marcas": "MADE IN MEXICO",
-        "boca": "",
-        "tamañoTuercaDeHélice": "",
-        "cantidadTuercasDeHélice": "",
-        "restricciónDeTuerca": "",
-        "material": "Bronze"
-      }
-    ]
-  }
+  "detallesHélice": [
+    {
+      "dirección": "RH Port",
+      "númeroDeSerie": "D B-94-5377",
+      "información": "", 
+
+      "tamañoTuercaHélice": "",
+      "cantidadTuercaHélice": "",
+      "restricciónTuerca": "",
+
+      "diámetroXPaso": "62 Diameter x 60 Pitch",
+      "marcas": "MADE IN MEXICO",
+      "agujero": "",
+      "material": "Bronze"
+    },
+    {
+      "dirección": "LH Stbd",
+      "númeroDeSerie": "12 Q.B-94-5376",
+      "información": ""
+    }
+  ]
+}

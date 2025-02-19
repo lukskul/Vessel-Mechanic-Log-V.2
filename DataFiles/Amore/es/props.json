@@ -1,27 +1,23 @@
 {
-    "propDetails": [
-      {
-        "hélice": "Main",
-        "dirección": "RH",
-        "númeroDeSerie": "",
-        "marcas": "",
-        "boca": "",
-        "tamañoTuercaDeHélice": "3 7/8",
-        "cantidadTuercasDeHélice": "",
-        "restricciónDeTuerca": "",
-        "material": "Bronze"
-      },
-      {
-        "hélice": "Main",
-        "dirección": "LH",
-        "númeroDeSerie": "",
-        "marcas": "",
-        "boca": "",
-        "tamañoTuercaDeHélice": "3 7/8",
-        "cantidadTuercasDeHélice": "",
-        "restricciónDeTuerca": "",
-        "material": "Bronze"
-      }
-    ]
-  }
-  
+  "detallesHélice": [
+    {
+      "dirección": "RH",
+      "númeroDeSerie": "",
+      "información": "", 
+
+      "tamañoTuercaHélice": "3 7/8",
+      "cantidadTuercaHélice": "",
+      "restricciónTuerca": "",
+
+      "diámetroXPaso": "",
+      "marcas": "",
+      "agujero": "",
+      "material": "Bronze"
+    },
+    {
+      "dirección": "LH",
+      "númeroDeSerie": "",
+      "información": ""
+    }
+  ]
+}

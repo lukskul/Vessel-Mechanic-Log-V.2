@@ -2,24 +2,22 @@
     "propDetails": [
       {
         "direction": "RH Port",
-        "PropNutCount": "",
-        "PropNutSize": "",
-        "NutRestraint": "",
-        "diameter x pitch": "",
         "serialNumber": "D B-94-5377",
-        "markings": "62 Diameter x 60 Pitch",
+        "info": "", 
+
+        "PropNutSize": "",
+        "PropNutCount": "",
+        "NutRestraint": "",
+
+        "diameter x pitch": "62 Diameter x 60 Pitch",
+        "markings": "MADE IN MEXICO",
         "Bore": "",
         "Material": "Bronze"
       },
       {
         "direction": "LH Stbd",
-        "PropNutCount": "",
-        "PropNutSize": "",
-        "NutRestraint": "",
         "serialNumber": "12 Q.B-94-5376",
-        "markings": "MADE IN MEXICO",
-        "Bore": "",
-        "Material": "Bronze"
+        "info": ""
       }
     ]
 }

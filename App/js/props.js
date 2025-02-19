@@ -10,106 +10,74 @@ export function propsPopulate(data) {
     // Clear previous content
     detailsContainer.innerHTML = "";
 
-    // Keys for "Prop Info" section
-    const propInfoKeys = ["direction", "diameter x pitch", "serialNumber", "markings", "Bore"];
+    // Loop through propDetails and create dropdowns
+    data.propDetails.forEach((prop, index) => {
+        const detailsSection = document.createElement('div');
+        detailsSection.classList.add('prop-section');
 
-    if (data.propDetails.length === 1) {
-        // If only one prop, show details directly
-        const prop = data.propDetails[0];
 
-        // Create "Prop Info" section
-        const propInfoSection = document.createElement("div");
-        propInfoSection.classList.add("detail-section");
+        // Create a dropdown using the "direction" key as the label
+        const dropdown = document.createElement('details');
+        const summary = document.createElement('summary');
+        dropdown.setAttribute('open', '');
+        summary.textContent = prop.direction || "Unknown Direction";
+        dropdown.appendChild(summary);
 
-        const propInfoHeading = document.createElement("h3");
-        propInfoHeading.textContent = "Prop Info";
-        propInfoSection.appendChild(propInfoHeading);
+        // Add serial number inside dropdown
+        const serialDiv = document.createElement('div');
+        serialDiv.classList.add('prop-info');
+        serialDiv.innerHTML = `<strong>#</strong> ${prop.serialNumber || '<i>N/A</i>'}`;
+        dropdown.appendChild(serialDiv);
 
-        const propInfoList = document.createElement("ul");
+        // Add info inside dropdown
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('prop-info');
+        infoDiv.innerHTML = ` ${prop.info || '<i>""</i>'}`;
+        dropdown.appendChild(infoDiv);
 
-        for (const key of propInfoKeys) {
-            if (prop.hasOwnProperty(key)) {
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `<strong>${key.replace(/([A-Z])/g, ' $1')}:</strong> ${prop[key] || '<i>N/A</i>'}`;
-                propInfoList.appendChild(listItem);
-            }
-        }
+        detailsSection.appendChild(dropdown);
+        detailsContainer.appendChild(detailsSection);
+    });
 
-        propInfoSection.appendChild(propInfoList);
-        detailsContainer.appendChild(propInfoSection);
+    // Create Nut Section
+    const nutSection = document.createElement("div");
+    nutSection.classList.add("heading");
 
-        // Create remaining details section
-        const otherDetailsSection = document.createElement("div");
-        otherDetailsSection.classList.add("detail-section");
+    const nutHeading = document.createElement("h3"); 
+    nutHeading.textContent = "Nut:";
+    nutSection.appendChild(nutHeading);
 
-        const otherDetailsHeading = document.createElement("h3");
-        otherDetailsHeading.textContent = "Prop Removal";
-        otherDetailsSection.appendChild(otherDetailsHeading);
+    const nutKeys = ["PropNutSize", "PropNutCount", "NutRestraint"];
+    nutKeys.forEach(key => {
+        const nutDetailDiv = document.createElement('div');
+        nutDetailDiv.classList.add('detail-prop-row');
+        nutDetailDiv.innerHTML = `
+            <div class="detail-prop-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
+            <div class="detail-prop-value">${data.propDetails[0][key] || ''}</div>
+        `;
+        nutSection.appendChild(nutDetailDiv);
+    });
 
-        for (const key in prop) {
-            if (prop.hasOwnProperty(key) && !propInfoKeys.includes(key)) {
-                const detailDiv = document.createElement('div');
-                detailDiv.classList.add('detail-row');
-                detailDiv.innerHTML = `
-                    <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-                    <div class="detail-value">${prop[key] || '<i>N/A</i>'}</div>
-                `;
-                otherDetailsSection.appendChild(detailDiv);
-            }
-        }
+    detailsContainer.appendChild(nutSection);
 
-        detailsContainer.appendChild(otherDetailsSection);
+    // Create Specs Section
+    const specsSection = document.createElement("div");
+    specsSection.classList.add("heading");
 
-    } else {
-        // If multiple props, create dropdowns
-        data.propDetails.forEach((prop, index) => {
-            const detailsSection = document.createElement('div');
-            detailsSection.classList.add('prop-section');
+    const specsHeading = document.createElement("h3");
+    specsHeading.textContent = "Specs:";
+    specsSection.appendChild(specsHeading);
 
-            // Create a dropdown
-            const dropdown = document.createElement('details');
-            dropdown.setAttribute('open', ''); // Set dropdown to open initially
-            const summary = document.createElement('summary');
-            summary.textContent = prop.direction || "Unknown Direction";
-            dropdown.appendChild(summary);
+    const specsKeys = ["diameter x pitch", "markings", "Bore", "Material"];
+    specsKeys.forEach(key => {
+        const specDetailDiv = document.createElement('div');
+        specDetailDiv.classList.add('detail-prop-row');
+        specDetailDiv.innerHTML = `
+            <div class="detail-prop-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
+            <div class="detail-prop-value">${data.propDetails[0][key] || ''}</div>
+        `;
+        specsSection.appendChild(specDetailDiv);
+    });
 
-            // Add "Prop Info" section inside dropdown
-            const propInfoHeading = document.createElement("h3");
-            propInfoHeading.textContent = "Specs:";
-            dropdown.appendChild(propInfoHeading);
-
-            for (const key of propInfoKeys) {
-                if (prop.hasOwnProperty(key)) {
-                    const detailDiv = document.createElement('div');
-                    detailDiv.classList.add('detail-row');
-                    detailDiv.innerHTML = `
-                        <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-                        <div class="detail-value">${prop[key] || '<i>N/A</i>'}</div>
-                    `;
-                    dropdown.appendChild(detailDiv);
-                }
-            }
-
-            // Add "Other Prop Details" section inside dropdown
-            const otherDetailsHeading = document.createElement("h3");
-            otherDetailsHeading.textContent = "Nut:";
-            dropdown.appendChild(otherDetailsHeading);
-
-            for (const key in prop) {
-                if (prop.hasOwnProperty(key) && !propInfoKeys.includes(key)) {
-                    const detailDiv = document.createElement('div');
-                    detailDiv.classList.add('detail-row');
-                    detailDiv.innerHTML = `
-                        <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-                        <div class="detail-value">${prop[key] || '<i>N/A</i>'}</div>
-                    `;
-                    dropdown.appendChild(detailDiv);
-                }
-            }
-
-            detailsSection.appendChild(dropdown);
-            detailsContainer.appendChild(detailsSection);
-        });
-    }
+    detailsContainer.appendChild(specsSection);
 }
-

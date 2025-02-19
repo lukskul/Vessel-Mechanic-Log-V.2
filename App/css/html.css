@@ -37,3 +37,66 @@
     text-align: left;
     flex: 1; /* Allows it to take up remaining space */
 }
+
+.prop-section {
+    float: right;
+    width: 95%; 
+}
+
+details {
+    display: block;
+    margin-bottom: 10px;
+    text-align: right; /* Align contents inside dropdown */
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details summary {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none;
+}
+
+details summary::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 3%; 
+    transition: transform 0.3s ease;
+}
+
+.prop-info {
+    margin-top: 1%; 
+    text-align: right; /* Ensures serial number and info are right-aligned */
+}
+
+.heading h3 {
+    margin-top: 5%; 
+    margin-bottom: 3%; 
+}
+
+.detail-prop-row {
+    overflow: hidden;  /* Clear the float */
+    padding: 4px 0;
+    border-bottom: 2px solid; 
+}
+
+.detail-prop-key {
+    float: left;
+    color: #555;
+    width: 50%;  /* You can adjust this width */
+    text-align: left;
+    line-height: 2rem; 
+}
+
+.detail-prop-value {
+    color: #00ff99;
+    float: right;
+    width: 50%;  /* You can adjust this width */
+    text-align: left;
+    line-height: 1.5rem; 
+}
