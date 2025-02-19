@@ -1,12 +1,11 @@
 {
-  "detallesHélice": [
+  "propDetails": [
     {
       "dirección": "",
       "númeroDeSerie": "",
       "información": "", 
 
       "tamañoTuercaHélice": "",
-      "cantidadTuercaHélice": "",
       "restricciónTuerca": "",
 
       "diámetroXPaso": "",
