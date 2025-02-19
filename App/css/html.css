@@ -55,17 +55,22 @@ details[open] summary::before {
 
 details summary {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     align-items: center;
     cursor: pointer;
     font-weight: bold;
     list-style: none;
+    -webkit-appearance: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
 }
 
 details summary::before {
     content: "▶";
     display: inline-block;
-    margin-right: 3%; 
+    margin-right: 3%;
     transition: transform 0.3s ease;
 }
 
@@ -77,12 +82,12 @@ details summary::before {
 .heading h3 {
     margin-top: 5%; 
     margin-bottom: 3%; 
+    border-bottom: 1px solid; 
 }
 
 .detail-prop-row {
     overflow: hidden;  /* Clear the float */
     padding: 4px 0;
-    border-bottom: 2px solid; 
 }
 
 .detail-prop-key {
