@@ -3,7 +3,7 @@
     position: fixed;
     bottom: 60px; /* Places it above the bottom menu */
     width: 100%;
-    background-color: #222237;
+    background-color: #090a0f;
     overflow-x: auto; /* Enables horizontal scrolling */
     white-space: nowrap;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);

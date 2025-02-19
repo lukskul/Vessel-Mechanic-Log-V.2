@@ -18,7 +18,7 @@ export function infoPopulate(data) {
             detailDiv.classList.add('detail-row');
             detailDiv.innerHTML = `
                 <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-                <div class="detail-value">${data.shipDetails[key] || '<i>N/A</i>'}</div>
+                <div class="detail-value">${data.shipDetails[key] || '<i>""</i>'}</div>
             `;
             detailsContainer.appendChild(detailDiv);
         }

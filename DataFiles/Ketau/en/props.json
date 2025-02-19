@@ -1,27 +1,23 @@
 {
   "propDetails": [
     {
-      "propeller": "Main",
-      "direction": "RH",
+      "direction": "",
       "serialNumber": "",
-      "markings": "",
-      "Bore": "",
+      "info": "", 
+
       "PropNutSize": "",
       "PropNutCount": "",
       "NutRestraint": "",
-      "Material": "Bronze"
+
+      "diameter x pitch": "",
+      "markings": "",
+      "Bore": "",
+      "Material": ""
     },
     {
-      "propeller": "Main",
-      "direction": "LH",
+      "direction": "",
       "serialNumber": "",
-      "markings": "",
-      "Bore": "",
-      "PropNutSize": "",
-      "PropNutCount": "",
-      "NutRestraint": "",
-      "Material": "Bronze"
+      "info": ""
     }
   ]
 }
-
