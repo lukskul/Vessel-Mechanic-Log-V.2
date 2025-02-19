@@ -8,9 +8,8 @@ Version 2 of the Vessel Mechanic Log is a **read-only** system, allowing users t
 - ⚡ **Lightweight** – Optimized for speed and minimal resource usage.  
 - 🌐 **Decentralized** – Fully functional on **IPFS** and **GitHub Pages**, no backend required.  
 
-## How It Works   
-- The web page dynamically loads data based on Vessel selection.  
-- The use of github pages will allow the project to grow without effecting the webpage CID. 
+## Things To Do    
+- Create en or es check and change the array of english words with spanish words in props.js file. Good Luck!  
 
 # 🚀 - Contributing Guide
 
