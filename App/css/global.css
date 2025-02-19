@@ -60,6 +60,12 @@ body {
     margin-bottom: 20px; 
 }
 
+select {
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+}
+
 .vesselDisplay, #task-main-block {
     overflow-y: auto;
 }
