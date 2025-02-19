@@ -1,12 +1,11 @@
 {
-  "detallesHélice": [
+  "propDetails": [
     {
       "dirección": "RH",
       "númeroDeSerie": "",
       "información": "", 
 
       "tamañoTuercaHélice": "3 7/8",
-      "cantidadTuercaHélice": "",
       "restricciónTuerca": "",
 
       "diámetroXPaso": "",

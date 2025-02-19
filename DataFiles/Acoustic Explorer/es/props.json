@@ -1,12 +1,11 @@
 {
-  "detallesHélice": [
+  "propDetails": [
     {
       "dirección": "RH Port",
       "númeroDeSerie": "D B-94-5377",
       "información": "", 
 
       "tamañoTuercaHélice": "",
-      "cantidadTuercaHélice": "",
       "restricciónTuerca": "",
 
       "diámetroXPaso": "62 Diameter x 60 Pitch",

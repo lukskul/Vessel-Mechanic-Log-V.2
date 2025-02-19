@@ -26,7 +26,7 @@ export function propsPopulate(data) {
         // Add serial number inside dropdown
         const serialDiv = document.createElement('div');
         serialDiv.classList.add('prop-info');
-        serialDiv.innerHTML = `<strong>#</strong> ${prop.serialNumber || '<i>N/A</i>'}`;
+        serialDiv.innerHTML = `<strong>Searial Num.</strong> ${prop.serialNumber || '<i>N/A</i>'}`;
         dropdown.appendChild(serialDiv);
 
         // Add info inside dropdown
