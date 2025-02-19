@@ -47,7 +47,7 @@ export function propsPopulate(data) {
     nutHeading.textContent = "Nut:";
     nutSection.appendChild(nutHeading);
 
-    const nutKeys = ["PropNutSize", "PropNutCount", "NutRestraint"];
+    const nutKeys = ["PropNutSize", "NutRestraint"];
     nutKeys.forEach(key => {
         const nutDetailDiv = document.createElement('div');
         nutDetailDiv.classList.add('detail-prop-row');
