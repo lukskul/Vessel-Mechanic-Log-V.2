@@ -10,7 +10,7 @@
         "seals.json"
     ],
     "California Princess": [
-        "coupler.json",
+        "couplers.json",
         "info.json"
     ],
     "Ketau": [
@@ -18,11 +18,11 @@
         "props.json"
     ],
     "Mystic Whaler": [
-        "coupler.json",
+        "couplers.json",
         "info.json"
     ],
     "Newport Hornblower": [
-        "coupler.json",
+        "couplers.json",
         "info.json"
     ]
 }
