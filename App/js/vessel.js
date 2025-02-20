@@ -259,7 +259,7 @@ async function loadTaskJSON() {
         return;
     }
 
-    const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/${currentTask}.json`;
+    const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${currentTask}.json`;
 
     try {
         const response = await fetch(taskFilePath);
