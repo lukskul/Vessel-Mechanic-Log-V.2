@@ -2,7 +2,7 @@
   {
     "couplerDetails": [
       {
-        "location": "Port",
+        "location": "Port 2 Couplers",
         "info": "Forward Coupler= Flange -> transmission, Middle Coupler= Flange -> Dampner", 
   
         "Coupler Bolt": "790 ft-lbs",
@@ -12,8 +12,8 @@
         "Removal Info": ""
       },
       {
-        "location": "Stbd",
-        "info": ""
+        "location": "Stbd 2 Couplers",
+        "info": "Forward Coupler= Flange -> transmission, Middle Coupler= Flange -> Dampner"
       }
     ]
 }

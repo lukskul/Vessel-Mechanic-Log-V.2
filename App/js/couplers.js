@@ -1,74 +1,66 @@
 export function couplersPopulate(data) {
-    const detailsContainer = document.querySelector('.details');
+    const couplersHtmlContainer = document.querySelector('.couplers-html');
+    const detailsContainer = document.querySelector('.details'); 
 
-    if (!data || !Array.isArray(data.couplersDetails)) {
-        console.error("Missing or incorrect couplers details. Expecting an array.");
+    // Check language preference from local storage
+    const lang = localStorage.getItem('language') || 'en';
+
+    if (!data || !Array.isArray(data.couplerDetails)) {
+        console.error("Missing or incorrect coupler details. Expecting an array.");
         return;
     }
 
     // Clear previous content
     detailsContainer.innerHTML = "";
 
-    // Loop through couplersDetails and create dropdowns
-    data.couplersDetails.forEach((couplers, index) => {
+    // Define the keys for specs with English and Spanish translations
+    const specKeys = {
+        "Coupler Bolt": lang === "es" ? "Perno de Acoplamiento" : "Coupler Bolt",
+        "Retaining Nut": lang === "es" ? "Tuerca de Retención" : "Retaining Nut",
+        "Safety Lock": lang === "es" ? "Bloqueo de Seguridad" : "Safety Lock",
+        "Removal Info": lang === "es" ? "Información de Remoción" : "Removal Info"
+    };
+
+    // Loop through couplerDetails and create dropdowns
+    data.couplerDetails.forEach((coupler, index) => {
         const detailsSection = document.createElement('div');
-        detailsSection.classList.add('couplers-section');
+        detailsSection.classList.add('dropdown-section');
 
         // Create a dropdown using the "location" key as the label
         const dropdown = document.createElement('details');
-        dropdown.setAttribute('open', ''); // Ensures the dropdown remains open by default
-
         const summary = document.createElement('summary');
-        summary.textContent = couplers.location || "Unknown Location";
+        dropdown.setAttribute('close', '');
+        summary.textContent = coupler.location || (lang === 'es' ? "Ubicación Desconocida" : "Unknown Location");
         dropdown.appendChild(summary);
 
-        // Add info inside dropdown
+        // Add coupler info inside dropdown
         const infoDiv = document.createElement('div');
-        infoDiv.classList.add('couplers-info');
-        infoDiv.innerHTML = `<strong>Info:</strong> ${couplers.info || '<i>N/A</i>'}`;
+        infoDiv.classList.add('section-info');
+        infoDiv.innerHTML = `<strong>Info:</strong> ${coupler.info || '<i>N/A</i>'}`;
         dropdown.appendChild(infoDiv);
 
         detailsSection.appendChild(dropdown);
         detailsContainer.appendChild(detailsSection);
     });
 
-    // Create Torque Specifications Section
-    const torqueSection = document.createElement("div");
-    torqueSection.classList.add("heading");
+    const specSection = document.createElement("div");
+    specSection.classList.add("heading");
 
-    const torqueHeading = document.createElement("h3");
-    torqueHeading.textContent = "Torque Specifications:";
-    torqueSection.appendChild(torqueHeading);
+    const specHeading = document.createElement("h3");
+    specHeading.textContent = lang === 'es' ? "Especificaciones:" : "Specs:";
+    specSection.appendChild(specHeading);
 
-    const torqueKeys = ["Coupler Bolt", "Retaining Nut", "Safety Lock"];
-    torqueKeys.forEach(key => {
-        const torqueDetailDiv = document.createElement('div');
-        torqueDetailDiv.classList.add('detail-couplers-row');
-        torqueDetailDiv.innerHTML = `
-            <div class="detail-couplers-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-            <div class="detail-couplers-value">${data.couplerDetails[0][key] || ''}</div>
+    // Loop through the translated specKeys
+    Object.keys(specKeys).forEach(key => {
+        const specDetailDiv = document.createElement('div');
+        specDetailDiv.classList.add('detail-prop-row');
+        specDetailDiv.innerHTML = `
+            <div class="detail-prop-key">${specKeys[key]}: </div>
+            <div class="detail-prop-value">${data.couplerDetails[0][key] || ''}</div>
         `;
-        torqueSection.appendChild(torqueDetailDiv);
+        specSection.appendChild(specDetailDiv);
     });
 
-    detailsContainer.appendChild(torqueSection);
+    detailsContainer.appendChild(specSection);
 
-    // Create Removal Info Section
-    const removalSection = document.createElement("div");
-    removalSection.classList.add("heading");
-
-    const removalHeading = document.createElement("h3");
-    removalHeading.textContent = "Removal Info:";
-    removalSection.appendChild(removalHeading);
-
-    data.couplerDetails.forEach((couplers) => {
-        if (couplers["Removal Info"]) {
-            const removalDetailDiv = document.createElement('div');
-            removalDetailDiv.classList.add('detail-couplers-row');
-            removalDetailDiv.innerHTML = `<div class="detail-couplers-value">${couplers["Removal Info"]}</div>`;
-            removalSection.appendChild(removalDetailDiv);
-        }
-    });
-
-    detailsContainer.appendChild(removalSection);
 }
