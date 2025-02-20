@@ -24,7 +24,7 @@ export function propsPopulate(data) {
     // Loop through propDetails and create dropdowns
     data.propDetails.forEach((prop, index) => {
         const detailsSection = document.createElement('div');
-        detailsSection.classList.add('prop-section');
+        detailsSection.classList.add('dropdown-section');
 
         // Create a dropdown using the "direction" key as the label
         const dropdown = document.createElement('details');
@@ -35,13 +35,13 @@ export function propsPopulate(data) {
 
         // Add serial number inside dropdown
         const serialDiv = document.createElement('div');
-        serialDiv.classList.add('prop-info');
+        serialDiv.classList.add('section-info');
         serialDiv.innerHTML = `<strong>${lang === 'es' ? "Número de Serie" : "Serial Num."}</strong> ${prop.serialNumber || '<i>N/A</i>'}`;
         dropdown.appendChild(serialDiv);
 
         // Add info inside dropdown
         const infoDiv = document.createElement('div');
-        infoDiv.classList.add('prop-info');
+        infoDiv.classList.add('section-info');
         infoDiv.innerHTML = ` ${prop.info || '<i>""</i>'}`;
         dropdown.appendChild(infoDiv);
 

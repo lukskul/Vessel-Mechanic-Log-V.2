@@ -38,7 +38,7 @@
     flex: 1; /* Allows it to take up remaining space */
 }
 
-.prop-section {
+.dropdown-section {
     float: right;
     width: 95%; 
 }
@@ -74,7 +74,7 @@ details summary::before {
     transition: transform 0.3s ease;
 }
 
-.prop-info {
+.section-info {
     margin-top: 1%; 
     text-align: right; /* Ensures serial number and info are right-aligned */
 }
