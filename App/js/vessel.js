@@ -22,34 +22,36 @@ async function fetchVesselFiles(vesselName, selectedLanguage) {
     try {
         const indexResponse = await fetch(indexUrl);
         if (!indexResponse.ok) throw new Error(`Failed to fetch ${indexUrl}`);
-
+    
         const fileIndex = await indexResponse.json();
-        if (fileIndex[vesselName] && fileIndex[vesselName][selectedLanguage]) {
-            const files = fileIndex[vesselName][selectedLanguage];
+        if (fileIndex[vesselName]) { // No language check
+            const files = fileIndex[vesselName];
             const filesData = [];
-
+    
             for (let file of files) {
                 const filePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${file}`;
-
+    
                 try {
                     const response = await fetch(filePath);
+                    if (!response.ok) throw new Error(`Failed to fetch ${filePath}`);
+                    
                     const data = await response.json();
                     filesData.push({ file, data });
                 } catch (error) {
                     console.error(`Error fetching ${file}:`, error);
                 }
             }
-
+    
             return filesData;
         } else {
-            console.error(`Error: No files found for ${vesselName} in ${selectedLanguage}`);
+            console.error(`Error: No files found for ${vesselName}`);
             return [];
         }
     } catch (error) {
         console.error(`Error fetching file index for ${vesselName}:`, error);
         return [];
     }
-}
+}    
 
 /** Set up the autocomplete functionality */
 function setupAutocomplete(input, suggestionsBox, vesselData) {
