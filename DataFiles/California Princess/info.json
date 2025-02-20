@@ -1,0 +1,22 @@
+{
+    "shipDetails": {
+      "name": "California Princess",
+      "type": "Passenger",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "367413730",
+      "callSign": "WCZ4468",
+      "flag": "",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "115 ft",
+      "beam": "23 ft",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

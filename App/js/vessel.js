@@ -29,7 +29,7 @@ async function fetchVesselFiles(vesselName, selectedLanguage) {
             const filesData = [];
 
             for (let file of files) {
-                const filePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${selectedLanguage}/${file}`;
+                const filePath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${vesselName}/${file}`;
 
                 try {
                     const response = await fetch(filePath);
@@ -201,8 +201,6 @@ async function loadTaskData(vesselName, taskName) {
         return;
     }
 
-    console.log(`Loading HTML for: ${taskName}`);
-
     // Load the HTML page for the selected task
     loadHTML();
 }
@@ -211,7 +209,6 @@ async function loadTaskData(vesselName, taskName) {
 export function loadHTML() {
     const taskName = localStorage.getItem("currentTask");
     const htmlPath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/html/${taskName}.html`;
-    console.log(htmlPath);
 
     fetch(htmlPath)
         .then(response => response.text())
@@ -266,10 +263,6 @@ async function loadTaskJSON() {
         if (!response.ok) throw new Error(`Failed to fetch ${taskFilePath}`);
         
         const data = await response.json();
-        console.log("Loaded taskData:", data);
-        console.log("selected Vessel", vesselName); 
-        console.log("selectedLanguage", selectedLanguage); 
-        console.log("current task", currentTask)
         // Dynamically import the task function based on the currentTask value
         try {
             const taskModule = await import(`./${currentTask}.js`); // Assuming you have a file per task

@@ -1,36 +1,28 @@
 {
-    "Acoustic Explorer": {
-        "en": [
-            "info.json",
-            "props.json"
-        ],
-        "es": [
-            "info.json",
-            "props.json"
-        ]
-    },
-    "Amore": {
-        "en": [
-            "couplers.json",
-            "info.json",
-            "props.json",
-            "seals.json"
-        ],
-        "es": [
-            "couplers.json",
-            "info.json",
-            "props.json",
-            "seals.json"
-        ]
-    },
-    "Ketau": {
-        "en": [
-            "info.json",
-            "props.json"
-        ],
-        "es": [
-            "info.json",
-            "props.json"
-        ]
-    }
+    "Acoustic Explorer": [
+        "info.json",
+        "props.json"
+    ],
+    "Amore": [
+        "couplers.json",
+        "info.json",
+        "props.json",
+        "seals.json"
+    ],
+    "California Princess": [
+        "coupler.json",
+        "info.json"
+    ],
+    "Ketau": [
+        "info.json",
+        "props.json"
+    ],
+    "Mystic Whaler": [
+        "coupler.json",
+        "info.json"
+    ],
+    "Newport Hornblower": [
+        "coupler.json",
+        "info.json"
+    ]
 }

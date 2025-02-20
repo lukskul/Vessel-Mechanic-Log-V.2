@@ -1,68 +1,20 @@
-{
-    "couplers": [
+
+  {
+    "couplerDetails": [
       {
-        "name": "Forward Coupler",
-        "description": "Transmission to dampener.",
-        "specs": {
-          "bolt_size": "???",
-          "bolt_type": "Hex Head",
-          "torque_specs": "330 ft-lbs"
-        },
-        "tools_needed": [
-          {
-            "tool_name": "Torque Wrench",
-            "size": "??? (range includes 330 ft-lbs)"
-          },
-          {
-            "tool_name": "Hex Socket",
-            "size": "M12"
-          },
-          {
-            "tool_name": "Threadlocker",
-            "type": "Blue (Medium Strength)"
-          }
-        ],
-        "installation_steps": [
-          "Align the coupler with the shaft.",
-          "Insert the bolts and hand-tighten.",
-          "Apply anti-seize to the bolt threads.",
-          "Torque the bolts in a crisscross pattern.",
-          "Inspect for proper alignment before operation."
-        ]
+        "location": "Port",
+        "info": "Forward Coupler= Flange -> transmission, Middle Coupler= Flange -> Dampner", 
+  
+        "Coupler Bolt": "790 ft-lbs",
+        "Retaining Nut": "m12 Allen Torque 180 ft-lbs",
+        "Safety Lock": "Wire Locker", 
+
+        "Removal Info": ""
       },
       {
-        "id": "dampener",
-        "name": "Dampener Coupler",
-        "description": "Coupler to dampener retaining nut to shaft.",
-        "specs": {
-          "bolt_size": "???",
-          "bolt_type": "Hex Head",
-          "torque_specs": "790 ft-lbs coupler bolts and 180 ft-lbs for retaining plate"
-        },
-        "tools_needed": [
-          {
-            "tool_name": "Two Wrenches",
-            "size": "???"
-          },
-          {
-            "tool_name": "Allen Wrench",
-            "size": "M12"
-          },
-          {
-            "tool_name": "Socket Wrench",
-            "size": "1/2\"",
-            "socket_size": "???"
-          }
-        ],
-        "installation_steps": [
-          "Slam the dampener onto the shaft.",
-          "Secure with lock plate and 3 Allen bolts.",
-          "Apply anti-seize to the Allen bolt threads.",
-          "Torque the bolts in a crisscross pattern, and use safety wire.",
-          "Torque the Aft flange to the forward flange",
-          "Inspect for proper alignment before operation."
-        ]
+        "location": "Stbd",
+        "info": ""
       }
     ]
-  }
+}
   

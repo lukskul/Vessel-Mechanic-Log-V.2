@@ -1,0 +1,18 @@
+{
+    "couplerDetails": [
+      {
+        "location": "Port",
+        "info": "", 
+  
+        "Coupler Bolt": "33 mm",
+        "Retaining Nut": "3 1/8\" Thin Wall Socket",
+        "Safety Lock": "Nyloc Nut", 
+
+        "Removal Info": "5/8\" Allthread 12\" length"
+      },
+      {
+        "location": "Stbd",
+        "info": ""
+      }
+    ]
+}
