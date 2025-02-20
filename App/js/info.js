@@ -1,5 +1,5 @@
 export function infoPopulate(data) {
-    const infoContainer = document.querySelector('.info-container');
+    const infoContainer = document.querySelector('.info-html');
 
     // Check language preference from local storage
     const lang = localStorage.getItem('language') || 'en';

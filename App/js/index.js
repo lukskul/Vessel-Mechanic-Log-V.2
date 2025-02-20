@@ -14,6 +14,7 @@ import './alert.js';
 import './vessel.js'; 
 import './menu.js'; 
 import './info.js'; 
+import './coupler.js'; 
 
 
 

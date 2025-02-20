@@ -1,0 +1,22 @@
+{
+    "shipDetails": {
+      "name": "Mystic Whaler",
+      "type": "Sailing Vessel",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "367048590",
+      "callSign": "WDN2011",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "105 ft",
+      "beam": "23 ft",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

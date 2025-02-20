@@ -15,22 +15,19 @@ function updateIndex() {
         .map(dirent => dirent.name)
         .sort(); // Sort boat names
 
-    boatFolders.forEach(boatName => {
-        const boatPath = path.join(dataFolder, boatName);
-        boats[boatName] = {}; // Store languages inside each boat
-
-        // Check for 'en' and 'es' folders
-        ["en", "es"].forEach(lang => {
-            const langPath = path.join(boatPath, lang);
-            if (fs.existsSync(langPath)) {
-                const files = fs.readdirSync(langPath)
+        boatFolders.forEach(boatName => {
+            const boatPath = path.join(dataFolder, boatName);
+            boats[boatName] = []; // Store JSON files directly in the boat object
+        
+            if (fs.existsSync(boatPath)) {
+                const files = fs.readdirSync(boatPath)
                     .filter(file => file.endsWith(".json"))
                     .sort(); // Sort JSON file names
-
-                boats[boatName][lang] = files; // Store files under the language
+        
+                boats[boatName] = files; // Store JSON files directly
             }
         });
-    });
+        
 
     fs.writeFileSync(indexFile, JSON.stringify(boats, null, 4));
     console.log("✅ fileIndex.json updated with language subfolders!");
