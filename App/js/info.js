@@ -1,26 +1,53 @@
-
 export function infoPopulate(data) {
-    const infoHtmlContainer = document.querySelector('.info-html');
-    let currentVesselName = localStorage.getItem("selectedBoat") || "";
+    const infoContainer = document.querySelector('.info-container');
 
-    // Update the heading dynamically
-    const heading = infoHtmlContainer.querySelector('h2');
-    const description = infoHtmlContainer.querySelector('p');
+    // Check language preference from local storage
+    const lang = localStorage.getItem('language') || 'en';
 
-    // Get the details container where you will display ship details dynamically
-    const detailsContainer = document.querySelector('.details');
-    detailsContainer.innerHTML = ''; // Clear existing content
-
-    // Loop through ship details and create HTML elements for each
-    for (const key in data.shipDetails) {
-        if (data.shipDetails.hasOwnProperty(key)) {
-            const detailDiv = document.createElement('div');
-            detailDiv.classList.add('detail-row');
-            detailDiv.innerHTML = `
-                <div class="detail-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-                <div class="detail-value">${data.shipDetails[key] || '<i>""</i>'}</div>
-            `;
-            detailsContainer.appendChild(detailDiv);
-        }
+    if (!data || !data.shipDetails) {
+        console.error("Missing or incorrect ship details.");
+        return;
     }
+
+    // Clear previous content
+    infoContainer.innerHTML = "";
+
+    // Define translations for ship details
+    const shipKeys = {
+        "name": lang === "es" ? "Nombre" : "Name",
+        "type": lang === "es" ? "Tipo" : "Type",
+        "manufacturer": lang === "es" ? "Fabricante" : "Manufacturer",
+        "imoNumber": lang === "es" ? "Número IMO" : "IMO Number",
+        "mmsiNumber": lang === "es" ? "Número MMSI" : "MMSI Number",
+        "callSign": lang === "es" ? "Señal de llamada" : "Call Sign",
+        "flag": lang === "es" ? "Bandera" : "Flag",
+        "yearBuilt": lang === "es" ? "Año de construcción" : "Year Built",
+        "owner": lang === "es" ? "Propietario" : "Owner",
+        "homePort": lang === "es" ? "Puerto base" : "Home Port",
+        "length": lang === "es" ? "Eslora" : "Length",
+        "beam": lang === "es" ? "Manga" : "Beam",
+        "draft": lang === "es" ? "Calado" : "Draft",
+        "grossTonnage": lang === "es" ? "Tonelaje bruto" : "Gross Tonnage",
+        "deadweightTonnage": lang === "es" ? "Tonelaje de peso muerto" : "Deadweight Tonnage",
+        "engineType": lang === "es" ? "Tipo de motor" : "Engine Type",
+        "enginePower": lang === "es" ? "Potencia del motor" : "Engine Power",
+        "maxSpeed": lang === "es" ? "Velocidad máxima" : "Max Speed"
+    };
+
+    // Create a section for ship details
+    const shipSection = document.createElement("div");
+    shipSection.classList.add("ship-details");
+
+    Object.keys(shipKeys).forEach(key => {
+        const detailDiv = document.createElement('div');
+        detailDiv.classList.add('detail-row');
+        detailDiv.innerHTML = `
+            <div class="detail-key">${shipKeys[key]}:</div>
+            <div class="detail-value">${data.shipDetails[key] || ''}</div>
+        `;
+        shipSection.appendChild(detailDiv);
+    });
+
+    infoContainer.appendChild(shipSection);
 }
+
