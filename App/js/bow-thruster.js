@@ -1,5 +1,5 @@
 export function propsPopulate(data) {
-    const propsHtmlContainer = document.querySelector('.bowThrusters-html');
+    const propsHtmlContainer = document.querySelector('.bow-thrusters-html');
     const detailsContainer = document.querySelector('.details'); 
 
     // Check language preference from local storage
