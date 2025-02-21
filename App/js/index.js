@@ -15,6 +15,7 @@ import './vessel.js';
 import './menu.js'; 
 import './info.js'; 
 import './couplers.js'; 
+import './bow-thruster.js'; 
 
 
 
