@@ -4,10 +4,14 @@
         "props.json"
     ],
     "Amore": [
+        "bowThrusters.json",
         "couplers.json",
         "info.json",
         "props.json",
         "seals.json"
+    ],
+    "Bellisima": [
+        "bowThrusters.json"
     ],
     "California Princess": [
         "couplers.json",
