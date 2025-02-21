@@ -1,0 +1,22 @@
+{
+    "propDetails": [
+      {
+        "direction": "LH",
+        "serialNumber": "",
+        "info": "Metric M12 x 1.75 Pulling holes", 
+  
+        "PropNutSize": "1-1/8\"",
+        "NutRestraint": "3/16\" Allen",
+  
+        "diameter x pitch": "",
+        "markings": "",
+        "Bore": "",
+        "Material": ""
+      },
+      {
+        "direction": "RH",
+        "serialNumber": "",
+        "info": ""
+      }
+    ]
+  }
