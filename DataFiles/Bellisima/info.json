@@ -1,0 +1,22 @@
+{
+    "shipDetails": {
+      "name": "Bellisima",
+      "type": "",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "",
+      "callSign": "",
+      "flag": "",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "",
+      "beam": "",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}
