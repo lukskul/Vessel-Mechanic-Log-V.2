@@ -60,10 +60,10 @@ export function propsPopulate(data) {
     const nutKeys = ["PropNutSize", "NutRestraint"];
     nutKeys.forEach(key => {
         const nutDetailDiv = document.createElement('div');
-        nutDetailDiv.classList.add('detail-prop-row');
+        nutDetailDiv.classList.add('detail-b-row');
         nutDetailDiv.innerHTML = `
-            <div class="detail-prop-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
-            <div class="detail-prop-value">${data.propDetails[0][key] || ''}</div>
+            <div class="detail-b-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
+            <div class="detail-b-value">${data.propDetails[0][key] || ''}</div>
         `;
         nutSection.appendChild(nutDetailDiv);
     });
@@ -81,10 +81,10 @@ export function propsPopulate(data) {
     // Loop through the translated specsKeys
     Object.keys(specsKeys).forEach(key => {
         const specDetailDiv = document.createElement('div');
-        specDetailDiv.classList.add('detail-prop-row');
+        specDetailDiv.classList.add('detail-b-row');
         specDetailDiv.innerHTML = `
-            <div class="detail-prop-key">${specsKeys[key]}: </div>
-            <div class="detail-prop-value">${data.propDetails[0][key] || ''}</div>
+            <div class="detail-b-key">${specsKeys[key]}: </div>
+            <div class="detail-b-value">${data.propDetails[0][key] || ''}</div>
         `;
         specsSection.appendChild(specDetailDiv);
     });

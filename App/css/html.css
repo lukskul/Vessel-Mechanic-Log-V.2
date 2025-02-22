@@ -85,12 +85,12 @@ details summary::before {
     border-bottom: 1px solid; 
 }
 
-.detail-prop-row {
+.detail-b-row {
     overflow: hidden;  /* Clear the float */
     padding: 4px 0;
 }
 
-.detail-prop-key {
+.detail-b-key {
     float: left;
     color: #555;
     width: 50%;  /* You can adjust this width */
@@ -98,7 +98,7 @@ details summary::before {
     line-height: 2rem; 
 }
 
-.detail-prop-value {
+.detail-b-value {
     color: #00ff99;
     float: right;
     width: 50%;  /* You can adjust this width */

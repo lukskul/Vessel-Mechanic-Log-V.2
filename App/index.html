@@ -49,9 +49,9 @@
                 <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/coupler.svg" alt="Couplers">
                 <span data-translate="coupler">Couplers</span>
             </div>
-            <div class="task-option" data-task="shaftSeals">
-                <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/seal.svg" alt="Shaft Seals">
-                <span>S-Seals</span>
+            <div class="task-option" data-task="seals">
+                <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/rings.svg" alt="Shaft Seals">
+                <span>Seals</span>
             </div>
             <div class="task-option" data-task="shafts">
                 <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/shaft.svg" alt="Shafts">
@@ -64,10 +64,6 @@
             <div class="task-option" data-task="rudder">
                 <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/rudder.svg" alt="Rudder">
                 <span data-translate="rudder">Rudder</span>
-            </div>
-            <div class="task-option" data-task="rudderSeals">
-                <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/rings.svg" alt="Rudder Seals">
-                <span data-translate="rudderSeals">R-Seals</span>
             </div>
             <div class="task-option" data-task="seaScreens">
                 <img class="svg-icon" src="https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/screen.svg" alt="Screens">
@@ -97,16 +93,14 @@
     </div>
 
     <!-- Info Dropdown -->
-    <div id="info-dropdown" class="hidden">
+    <div id="info-dropdown" class="hidden infoDropdown">
         <input type="text" id="info-input" placeholder="Enter information here...">
     </div>
 
     <!-- Converter Container -->
-    <div id="converter-container" class="hidden">
-        <span data-translate="standard"></span>
-        <input type="text" id="inches-input" />
-        <input type="number" id="mm-input"/>
-        <span data-translate="metric"></span>
+    <div id="converter-container" class="hidden converterContainer">
+        <div id="converter" class="converter"></div>
+        <button id="toggle-table-button" class="button">></button>
     </div>
 
     <!-- Menu -->
