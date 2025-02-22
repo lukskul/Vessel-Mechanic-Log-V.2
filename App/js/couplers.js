@@ -53,10 +53,10 @@ export function couplersPopulate(data) {
     // Loop through the translated specKeys
     Object.keys(specKeys).forEach(key => {
         const specDetailDiv = document.createElement('div');
-        specDetailDiv.classList.add('detail-prop-row');
+        specDetailDiv.classList.add('detail-b-row');
         specDetailDiv.innerHTML = `
-            <div class="detail-prop-key">${specKeys[key]}: </div>
-            <div class="detail-prop-value">${data.couplerDetails[0][key] || ''}</div>
+            <div class="detail-b-key">${specKeys[key]}: </div>
+            <div class="detail-b-value">${data.couplerDetails[0][key] || ''}</div>
         `;
         specSection.appendChild(specDetailDiv);
     });

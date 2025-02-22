@@ -53,66 +53,6 @@
     opacity: 0;
 } 
 
-/* Converter CSS */
-
-/* Hidden by default */
-.hidden {
-    display: none;
-}
-
-/* Cyberpunk-style Converter UI */
-#converter-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 94vh; /* Adjust to fit above the menu */
-    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: #00ff99; /* Neon green text for cyberpunk feel */
-    font-size: 1.5rem;
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 0 20px rgba(0, 255, 153, 0.6); /* Glowing effect */
-    opacity: 0; /* Start hidden */
-    transition: opacity 0.3s ease, transform 0.5s ease-in-out; /* Smooth transition for appearing */
-    transform: translateY(-100%); /* Initially off-screen */
-}
-
-/* When visible, bring the container into view */
-#converter-container.visible {
-    opacity: 1;
-    transform: translateY(0); /* Slide into view */
-}
-
-/* Input fields with a neon glowing effect */
-#inches-input, #mm-input {
-    font-size: 1.5rem;
-    padding: 15px;
-    margin: 15px;
-    width: 70%;
-    text-align: center;
-    border: 2px solid #00ff99; /* Neon border */
-    background-color: rgba(0, 0, 0, 0.7); /* Dark background for inputs */
-    color: #00ff99; /* Neon text color */
-    border-radius: 8px;
-    outline: none;
-    transition: all 0.3s ease; /* Smooth transition for border and focus effects */
-}
-
-/* Input focus effect */
-#inches-input:focus, #mm-input:focus {
-    border-color: #ffffff; /* Change border to neon pink when focused */
-    box-shadow: 0 0 10px #5b5e76; /* Neon pink glowing effect */
-}
-
-/* Apply the neon animation to the converter's text */
-#converter-container {
-    animation: neon-glow 1.5s ease-in-out infinite alternate;
-}
-
 /* Bottom Menu Bar */
 .menu {
     position: fixed;
@@ -178,3 +118,82 @@
     width: 80%;
     color: white;
 }
+/* Hidden by default */
+.hidden {
+    display: none;
+    pointer-events: none;
+}
+
+/* Converter Container */
+#converter-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.5s ease-in-out;
+    transform: translateY(-100%);
+    padding: 20px;
+    overflow: hidden; /* Prevents page scrolling */
+}
+
+/* Scrollable Div */
+.converter {
+    width: 80%;
+    max-height: 80vh;
+    overflow-y: auto; /* Table scrolls inside here */
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.6);
+}
+
+/* When visible, bring the container into view */
+#converter-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+    display: flex; /* Show when visible */
+    pointer-events: auto;
+}
+
+/* Table Styling */
+.socket-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #00ff99;
+}
+
+.socket-table th, .socket-table td {
+    border: 1px solid grey;
+    padding: 8px;
+    text-align: left;
+}
+
+.socket-table th {
+    background-color: #111;
+    font-weight: bold;
+}
+
+.decimal {
+    color: grey;
+    font-size: 0.9em;
+}
+
+#toggle-table-button {
+    position: fixed;
+    top: 10%;
+    right: 20px;
+    background-color:rgba(0, 0, 0, 0.3);
+    color: white; 
+  }
+  
+
+  
+  
