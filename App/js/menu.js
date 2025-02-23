@@ -212,8 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${item.mm} mm</td>` : `
                 <td>${item.tap}</td>
                 <td>${item.drill.inches}</td>
-                <td>${item.drill.decimal}</td>
-                <td>${item.drill.mm} mm</td>`;
+                <td>${item.drill.decimal}</td>`;
             tbody.appendChild(row);
         });
 
