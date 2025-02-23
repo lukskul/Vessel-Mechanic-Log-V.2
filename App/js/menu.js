@@ -263,38 +263,49 @@ document.getElementById("search-ship-button").addEventListener("click", () => {
         return;
     }
 
+    const lang = localStorage.getItem("language") || "en";
+
+    // Open a blank tab first to avoid pop-up blockers on mobile
+    const newTab = window.open("", "_blank");
+
     // Fetch vessel info from info.json
     fetch(`https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${selectedBoat}/info.json`)
         .then(response => response.json())
         .then(data => {
             const vessel = data.shipDetails;
-            const lang = localStorage.getItem("language") || "en";
 
             if (!vessel || vessel.name !== selectedBoat) {
                 const errorMessage = lang === "es" ? "No hay datos disponibles" : "No Data Available";
                 showError(errorMessage);
+                newTab.close(); // Close the tab if there’s an error
                 return;
             }
 
             if (!vessel.mmsiNumber) {
-                const errorMessage = lang === "es" 
+                const errorMessage = lang === "es"
                     ? "Agregue un número MMSI para rastrear este buque"
                     : "Add a MMSI number to track this vessel";
                 showError(errorMessage);
+                newTab.close(); // Close the tab if there’s no MMSI number
                 return;
             }
 
             const mmsi = vessel.mmsiNumber;
+
+            // Save to localStorage
+            localStorage.setItem("selectedVessel", JSON.stringify({ name: selectedBoat, mmsi }));
+
+            // Construct MarineTraffic search URL
             const searchUrl = `https://www.marinetraffic.com/en/ais/details/ships/mmsi:${encodeURIComponent(mmsi)}`;
 
-
-            window.open(searchUrl, "_blank"); // Open in a new tab
+            // Navigate the pre-opened tab to the correct URL
+            newTab.location.href = searchUrl;
         })
         .catch(error => {
             console.error("Error fetching vessel info:", error);
+            newTab.close(); // Close the tab on error
         });
 });
-
 
 /** Return Button */
 document.addEventListener("DOMContentLoaded", () => {
