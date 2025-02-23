@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("toggle-table-button");
 
     let showingSockets = true;
+    let rotated = false; 
 
     const socketSizes = [
         { inches: "5/32", decimal: 0.15625, mm: 4 }, { inches: "3/16", decimal: 0.1875, mm: 5 }, { inches: "7/32", decimal: 0.21875, mm: 5.5 },
@@ -222,14 +223,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function toggleTable() {
         converter.innerHTML = "";
+
         if (showingSockets) {
             converter.appendChild(createTable(tapDrillSizes, 'tap'));
-            toggleButton.textContent = "<";
         } else {
-            converter.appendChild(createTable(socketSizes, 'socket'));
-            toggleButton.textContent = ">";
+            converter.appendChild(createTable(socketSizes, 'socket')); 
         }
+            // Add a spinning effect before the final rotation
+            toggleButton.style.transition = "transform 1s ease-in-out";
+            toggleButton.style.transform = `rotate(${rotated ? 0 : 1080}deg)`; // 3 full spins (360 * 3)
+
+            setTimeout(() => {
+                toggleButton.style.transition = "transform 0.5s ease-in-out";
+                toggleButton.style.transform = `rotate(${rotated ? 0 : 180}deg)`;
+                rotated = !rotated;
+            }, 1000); // Start final rotation after 1 second
+
         showingSockets = !showingSockets;
+     
     }
 
     convertButton.addEventListener("click", () => {
