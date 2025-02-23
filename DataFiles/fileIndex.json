@@ -4,7 +4,6 @@
         "props.json"
     ],
     "Amore": [
-        "bowThruster.json",
         "couplers.json",
         "info.json",
         "props.json",
@@ -29,5 +28,8 @@
     "Newport Hornblower": [
         "couplers.json",
         "info.json"
+    ],
+    "Test": [
+        "bowThruster.json"
     ]
 }
