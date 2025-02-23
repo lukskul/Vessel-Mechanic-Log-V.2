@@ -13,14 +13,6 @@ export function propsPopulate(data) {
     // Clear previous content
     detailsContainer.innerHTML = "";
 
-    // Define the keys for specs with English and Spanish translations
-    const specsKeys = {
-        "diameter x pitch": lang === "es" ? "Diámetro x Paso" : "Dia. x Pitch",
-        "markings": lang === "es" ? "Marcas" : "Markings",
-        "bore": lang === "es" ? "Agujero" : "Bore",
-        "material": lang === "es" ? "Material" : "Material"
-    };
-
     // Loop through propDetails and create dropdowns
     data.propDetails.forEach((prop, index) => {
         const detailsSection = document.createElement('div');
@@ -54,15 +46,19 @@ export function propsPopulate(data) {
     nutSection.classList.add("heading");
 
     const nutHeading = document.createElement("h3"); 
-    nutHeading.textContent = lang === 'es' ? "Tuerca:" : "Nut:";
+    nutHeading.textContent = lang === 'es' ? "Tuerca:" : "Prop Nut:";
     nutSection.appendChild(nutHeading);
 
-    const nutKeys = ["PropNutSize", "NutRestraint"];
-    nutKeys.forEach(key => {
+    const nutKeys = [
+        { key: "propNutSize", label: lang === "es" ? "Tamaño de la Tuerca" : "Nut Size" },
+        { key: "nutRestraint", label: lang === "es" ? "Restricción de la Tuerca" : "Nut Restraint" },
+        { key: "pullingHoles", label: lang === "es" ? "Agujeros de Extracción" : "Pulling Holes" }
+    ];
+    nutKeys.forEach(({key, label}) => {
         const nutDetailDiv = document.createElement('div');
         nutDetailDiv.classList.add('detail-b-row');
         nutDetailDiv.innerHTML = `
-            <div class="detail-b-key">${key.replace(/([A-Z])/g, ' $1')}: </div>
+            <div class="detail-b-key">${label}: </div>
             <div class="detail-b-value">${data.propDetails[0][key] || ''}</div>
         `;
         nutSection.appendChild(nutDetailDiv);
@@ -77,6 +73,14 @@ export function propsPopulate(data) {
     const specsHeading = document.createElement("h3");
     specsHeading.textContent = lang === 'es' ? "Especificaciones:" : "Specs:";
     specsSection.appendChild(specsHeading);
+
+    // Define the keys for specs with English and Spanish translations
+    const specsKeys = {
+        "diameter x pitch": lang === "es" ? "Diámetro x Paso" : "Dia. x Pitch",
+        "markings": lang === "es" ? "Marcas" : "Markings",
+        "bore": lang === "es" ? "Agujero" : "Bore",
+        "material": lang === "es" ? "Material" : "Material"
+    };
 
     // Loop through the translated specsKeys
     Object.keys(specsKeys).forEach(key => {
