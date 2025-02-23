@@ -15,10 +15,10 @@ export function shakeAlert() {
     shakeCounter++;
 
     if (shakeCounter > 2 && language === 'en') {
-        showError('Please select a vessel.');
+        showError('No Data Available.');
         shakeCounter = 0; 
     } else if (shakeCounter > 2 && language === 'es') {
-        showError('Por favor, seleccione una embarcación');
+        showError('No hay datos disponibles');
         shakeCounter = 0; 
     }
 }
