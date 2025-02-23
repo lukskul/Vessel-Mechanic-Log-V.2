@@ -1,4 +1,5 @@
 import { clearPageContent } from "./vessel.js";
+import { showError } from "./alert.js";
 
 /** Information Button */
 document.addEventListener("DOMContentLoaded", () => {
@@ -253,7 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
     converter.appendChild(createTable(socketSizes, 'socket'));
 });
 
-
 /** Ship Search */
 document.getElementById("search-ship-button").addEventListener("click", () => {
     const selectedBoat = localStorage.getItem("selectedBoat"); // Retrieve the selected boat
@@ -263,11 +263,37 @@ document.getElementById("search-ship-button").addEventListener("click", () => {
         return;
     }
 
-    // Construct the MarineTraffic search URL with the selected boat name
-    const searchUrl = `https://www.marinetraffic.com/en/ais/index/search/all?keyword=${encodeURIComponent(selectedBoat)}`;
+    // Fetch vessel info from info.json
+    fetch(`https://lukskul.github.io/Vessel-Mechanic-Log-V.2/DataFiles/${selectedBoat}/info.json`)
+        .then(response => response.json())
+        .then(data => {
+            const vessel = data.shipDetails;
+            const lang = localStorage.getItem("language") || "en";
 
-    window.open(searchUrl, "_blank"); // Open in a new tab
+            if (!vessel || vessel.name !== selectedBoat) {
+                const errorMessage = lang === "es" ? "No hay datos disponibles" : "No Data Available";
+                showError(errorMessage);
+                return;
+            }
+
+            if (!vessel.mmsiNumber) {
+                const errorMessage = lang === "es" 
+                    ? "Agregue un número MMSI para rastrear este buque"
+                    : "Add a MMSI number to track this vessel";
+                showError(errorMessage);
+                return;
+            }
+
+            const mmsi = vessel.mmsiNumber;
+            const searchUrl = `https://www.marinetraffic.com/en/ais/details/ships/mmsi:${mmsi}`;
+
+            window.open(searchUrl, "_blank"); // Open in a new tab
+        })
+        .catch(error => {
+            console.error("Error fetching vessel info:", error);
+        });
 });
+
 
 /** Return Button */
 document.addEventListener("DOMContentLoaded", () => {
