@@ -118,11 +118,6 @@
     width: 80%;
     color: white;
 }
-/* Hidden by default */
-.hidden {
-    display: none;
-    pointer-events: none;
-}
 
 /* Converter Container */
 #converter-container {
@@ -147,6 +142,7 @@
 /* Scrollable Div */
 .converter {
     width: 100%;
+    margin-top:10%; 
     max-height: 80vh;
     overflow-y: auto; /* Table scrolls inside here */
     background: black;
@@ -186,13 +182,8 @@
     font-size: 0.9em;
 }
 
-#toggle-table-button {
-    position: fixed;
-    top: 10%;
-    right: 20px;
-    background-color:rgba(0, 0, 0, 0.3);
-    color: white; 
-  }
+
+
   
 
   
