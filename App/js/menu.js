@@ -285,7 +285,8 @@ document.getElementById("search-ship-button").addEventListener("click", () => {
             }
 
             const mmsi = vessel.mmsiNumber;
-            const searchUrl = `https://www.marinetraffic.com/en/ais/details/ships/mmsi:${mmsi}`;
+            const searchUrl = `https://www.marinetraffic.com/en/ais/details/ships/mmsi:${encodeURIComponent(mmsi)}`;
+
 
             window.open(searchUrl, "_blank"); // Open in a new tab
         })
