@@ -5,13 +5,14 @@
       "serialNumber": "",
       "info": "", 
 
-      "PropNutSize": "",
-      "NutRestraint": "",
+      "propNutSize": "",
+      "nutRestraint": "",
+      "pullingHoles": "", 
 
       "diameter x pitch": "",
       "markings": "",
-      "Bore": "",
-      "Material": ""
+      "bore": "",
+      "material": ""
     },
     {
       "direction": "",

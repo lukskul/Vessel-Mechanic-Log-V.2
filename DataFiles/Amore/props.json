@@ -6,13 +6,14 @@
       "serialNumber": "",
       "info": "", 
 
-      "PropNutSize": "3 7/8",
-      "NutRestraint": "",
+      "propNutSize": "3 7/8",
+      "nutRestraint": "",
+      "pulling holes": "",
 
       "diameter x pitch": "",
       "markings": "",
-      "Bore": "",
-      "Material": "Nibral"
+      "bore": "",
+      "material": "Nibral"
     },
     {
       "direction": "LH",

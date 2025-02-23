@@ -15,10 +15,10 @@ export function propsPopulate(data) {
 
     // Define the keys for specs with English and Spanish translations
     const specsKeys = {
-        "diameter x pitch": lang === "es" ? "Diámetro x Paso" : "Diameter x Pitch",
+        "diameter x pitch": lang === "es" ? "Diámetro x Paso" : "Dia. x Pitch",
         "markings": lang === "es" ? "Marcas" : "Markings",
-        "Bore": lang === "es" ? "Agujero" : "Bore",
-        "Material": lang === "es" ? "Material" : "Material"
+        "bore": lang === "es" ? "Agujero" : "Bore",
+        "material": lang === "es" ? "Material" : "Material"
     };
 
     // Loop through propDetails and create dropdowns
@@ -29,8 +29,8 @@ export function propsPopulate(data) {
         // Create a dropdown using the "direction" key as the label
         const dropdown = document.createElement('details');
         const summary = document.createElement('summary');
-        dropdown.setAttribute('open', '');
-        summary.textContent = prop.direction || (lang === 'es' ? "Dirección desconocida" : "Unknown Direction");
+        dropdown.setAttribute('close', '');
+        summary.textContent = prop.direction || (lang === 'es' ? "Dirección desconocida" : "N/A");
         dropdown.appendChild(summary);
 
         // Add serial number inside dropdown

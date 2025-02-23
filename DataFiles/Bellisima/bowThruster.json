@@ -5,13 +5,14 @@
         "serialNumber": "",
         "info": "", 
   
-        "PropNutSize": "1-1/8\"",
-        "NutRestraint": "3/16\" Allen",
+        "propNutSize": "1-1/8\"",
+        "nutRestraint": "3/16\" Allen", 
+        "pullingHoles": "", 
   
         "diameter x pitch": "",
         "markings": "",
-        "Bore": "",
-        "Material": ""
+        "bore": "",
+        "material": ""
       },
       {
         "direction": "RH",
