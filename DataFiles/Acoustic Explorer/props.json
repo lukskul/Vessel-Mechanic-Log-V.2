@@ -5,13 +5,14 @@
         "serialNumber": "D B-94-5377",
         "info": "", 
 
-        "PropNutSize": "",
-        "NutRestraint": "",
+        "propNutSize": "",
+        "nutRestraint": "",
+        "pullingHoles": "", 
 
         "diameter x pitch": "62 x 60",
         "markings": "MADE IN MEXICO",
-        "Bore": "",
-        "Material": "Nibral"
+        "bore": "",
+        "material": "Nibral"
       },
       {
         "direction": "LH Stbd",
