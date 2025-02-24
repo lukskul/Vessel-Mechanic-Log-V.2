@@ -1,5 +1,6 @@
 {
     "Acoustic Explorer": [
+        "bowThruster.json",
         "info.json",
         "props.json"
     ],
@@ -30,8 +31,10 @@
         "info.json"
     ],
     "Surfrider": [
+        "couplers.json",
         "info.json",
-        "rudder.json"
+        "rudder.json",
+        "seals.json"
     ],
     "Test": [
         "bowThruster.json"
