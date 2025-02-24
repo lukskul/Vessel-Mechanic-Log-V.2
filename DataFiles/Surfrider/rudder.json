@@ -1,17 +1,15 @@
 {
-    "rudderDetails": [
-      {
-        "position": "Stbd",
-        "info": "", 
-  
-        "pinchBolts": "33 mm",
-        "nutRestraint": "",
-        "setScrews": "8mm Upper and Lower 3 Bolt Ring."
-
-      },
-      {
-        "position": "Port",
-        "info": ""
-      }
-    ]
+  "rudderDetails": [
+    {
+      "position": "Stbd",
+      "info": "",
+      "pinchBolts": "33 mm Hex thru bolt",
+      "nutRestraint": "",
+      "setScrews": "8mm Hex bolts (2x collar rings. One above the table and one below)"
+    },
+    {
+      "position": "Port",
+      "info": ""
+    }
+  ]
 }
