@@ -33,6 +33,7 @@
     "Surfrider": [
         "couplers.json",
         "info.json",
+        "props.json",
         "rudder.json",
         "seals.json"
     ],
