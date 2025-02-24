@@ -29,7 +29,9 @@
         "couplers.json",
         "info.json"
     ],
-    "Surfrider": [],
+    "Surfrider": [
+        "rudder.json"
+    ],
     "Test": [
         "bowThruster.json"
     ]

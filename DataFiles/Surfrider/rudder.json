@@ -1,0 +1,17 @@
+{
+    "rudderDetails": [
+      {
+        "position": "Stbd",
+        "info": "", 
+  
+        "pinchBolts": "33 mm",
+        "nutRestraint": "",
+        "setScrews": "8mm Upper and Lower 3 Bolt Ring."
+
+      },
+      {
+        "position": "Port",
+        "info": ""
+      }
+    ]
+  }
