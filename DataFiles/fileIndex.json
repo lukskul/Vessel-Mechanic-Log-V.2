@@ -30,6 +30,7 @@
         "info.json"
     ],
     "Surfrider": [
+        "info.json",
         "rudder.json"
     ],
     "Test": [
