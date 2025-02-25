@@ -13,9 +13,12 @@ import './language.js';
 import './alert.js'; 
 import './vessel.js'; 
 import './menu.js'; 
-import './info.js'; 
-import './couplers.js'; 
-import './bowThruster.js'; 
+import './tasks/info.js'; 
+import './tasks/couplers.js'; 
+import './tasks/bowThruster.js'; 
+import './tasks/props.js'; 
+import './tasks/rudder.js'; 
+import './tasks/seals.js'; 
 
 
 

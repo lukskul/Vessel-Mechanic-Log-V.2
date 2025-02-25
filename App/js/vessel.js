@@ -120,14 +120,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    // **Re-activate previous task on page reload**
     if (currentVesselName && currentTask) {
         // If a vessel and task are already selected, activate the "info" task by default
         activateTask(currentTask);
     }
 });
 
-/** Select Vessel & Activate 'info' Task Automatically */
 async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
     currentVesselName = vesselName;
     localStorage.setItem("selectedBoat", vesselName);
@@ -168,61 +166,48 @@ async function selectVessel(vesselName, vesselData, input, suggestionsBox) {
     displayTasks(vesselName, vesselFiles);
 
     // **Automatically select the 'info' task after vessel selection**
-    activateTask("info");  // Activate the 'info' task by default
+    activateTask("info"); 
 }
 
-/** Set new active task */
 function activateTask(taskName) {
-    const taskOptions = document.querySelectorAll(".task-option");
+    const allTasks = document.querySelectorAll(".task-option");
+    
+    // Remove active class from all tasks
+    allTasks.forEach(task => task.classList.remove("active"));
 
-    // Clear previously active task
-    taskOptions.forEach(opt => opt.classList.remove("active"));
-
-    // Ensure the taskName and currentVesselName are valid
-    if (currentTask && currentVesselName) {
-        // Find the new task
-        const activeTask = document.querySelector(`.task-option[data-task="${taskName}"]`);
-        
-        if (activeTask) {
-            activeTask.classList.add("active");
-            currentTask = taskName;
-            localStorage.setItem("currentTask", taskName); // Store task in localStorage
-            loadTaskData(currentVesselName, taskName); // Load task-specific data
-        } else {
-            console.warn(`Task '${taskName}' not found.`);
-        }
-    } else {
-        console.warn("currentTask or currentVesselName is missing. Skipping task activation.");
-    }
-}
-
-/** Load Task Data */
-async function loadTaskData(vesselName, taskName) {
-    if (!vesselName || !taskName) {
-        console.warn("Vessel or task not selected. Aborting load.");
-        return;
+    // Add active class only to the current task
+    const currentTask = document.querySelector(`[data-task="${taskName}"]`);
+    if (currentTask) {
+        currentTask.classList.add("active");
     }
 
-    // Load the HTML page for the selected task
+    localStorage.setItem("currentTask", taskName);
     loadHTML();
 }
 
-/** Dynamically pull JSON files and watch for content updates */
+/** Dynamically create HTML based on task name and watch for content updates */
 export function loadHTML() {
     const taskName = localStorage.getItem("currentTask");
-    const htmlPath = `https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/html/${taskName}.html`;
 
-    fetch(htmlPath)
-        .then(response => response.text())
-        .then(data => {
-            const container = document.getElementById("html-container");
-            container.innerHTML = data;
+    const container = document.getElementById("html-container");
+    container.innerHTML = '';
 
-            // Start observing for dynamic content
-            loadTaskJSON(); 
-            watchDynamicContent();
-        })
-        .catch(error => console.error("Error loading HTML:", error));
+    const taskDiv = document.createElement('div');
+    taskDiv.className = `${taskName}-html`; // Dynamic class name
+
+    const detailsDiv = document.createElement('div');
+    detailsDiv.className = 'details';
+    detailsDiv.id = 'vessel-details';
+
+    taskDiv.appendChild(detailsDiv);
+    container.appendChild(taskDiv);
+
+    // Example of adding task-specific content
+    detailsDiv.innerHTML = `<p>Details for ${taskName}</p>`;
+
+    // Start observing for dynamic content
+    loadTaskJSON(); 
+    watchDynamicContent();
 }
 
 /** MutationObserver to detect and populate dynamically loaded content */
@@ -267,7 +252,7 @@ async function loadTaskJSON() {
         const data = await response.json();
         // Dynamically import the task function based on the currentTask value
         try {
-            const taskModule = await import(`./${currentTask}.js`); // Assuming you have a file per task
+            const taskModule = await import(`./tasks/${currentTask}.js`); // Assuming you have a file per task
             const functionName = `${currentTask}Populate`;
 
             if (typeof taskModule[functionName] === "function") {
