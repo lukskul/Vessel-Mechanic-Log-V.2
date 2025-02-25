@@ -1,20 +1,42 @@
+
 {
-    "sealsDetails": [
-      {
-        "position": "",
-        "info": "", 
-        "type": "", 
-
-        "setScrews": ""
-
+  "sealsDetails": [
+    {
+      "rudder_seals": {
+        "manufacturer": "",
+        "model_number": "",
+        "seal_type": "Lip Seals",
+        "installation_date": "",
+        "recommended_replacement_interval": "",
+        "Service Specs": {
+            "packing size": "", 
+            "packing count": "", 
+            "compression": "", 
+            "set screws": "",
+            "bolt_size": "",
+            "torque_value": ""
+        },
+        "required_tools": [],
+        "notes": ""
       },
-      {
-        "position": "Rudder",
-        "info": "",
-        "type": "Lip Seals", 
-
-        "setScrews": ""
-
+      "shaft_seals": {
+        "manufacturer": "",
+        "model_number": "",
+        "seal_type": "",
+        "installation_date": "",
+        "recommended_replacement_interval": "",
+        "Service Specs": {
+            "packing size": "", 
+            "packing count": "", 
+            "compression": "", 
+            "set screws": "",
+            "bolt_size": "",
+            "torque_value": ""
+        },
+        "required_tools": [],
+        "notes": ""
       }
-    ]
+    }
+    
+  ]
 }
