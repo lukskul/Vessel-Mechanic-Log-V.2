@@ -189,7 +189,7 @@ document.getElementById("search-ship-button").addEventListener("click", () => {
         .then(data => {
             const vessel = data.shipDetails;
 
-            if (!vessel || vessel.name !== selectedBoat) {
+            if (!vessel || selectedBoat) {
                 const errorMessage = lang === "es" ? "No hay datos disponibles" : "No Data Available";
                 showError(errorMessage);
                 newTab.close(); // Close the tab if there’s an error
