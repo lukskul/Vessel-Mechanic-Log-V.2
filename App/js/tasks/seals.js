@@ -10,91 +10,101 @@ export function sealsPopulate(data) {
     // Clear previous content
     detailsContainer.innerHTML = "";
 
-    // Check if there are seals details in the data
-    if (data.sealsDetails.length === 0) {
-        console.warn("No seals details available.");
-        return;
-    }
-
-    // Create Rudder Seal 
-    const rudderDiv = document.createElement('div');
-    rudderDiv.classList.add( 'container'); 
-
-    const titleDiv = document.createElement( 'div' ); 
-    titleDiv.classList.add( 'heading'); 
-
-    const rudderTitle = document.createElement('h3');
-    rudderTitle.textContent = 'Rudder Seal';
-    rudderDiv.appendChild(rudderTitle);
-
-    const rudderSpecs = document.createElement('div');
-    rudderSpecs.classList.add('html-container');
-    
-    // Populate Rudder Seals
-    let rudderSealsFound = false; // Flag to check if any seal types exist
-    data.sealsDetails.forEach(detail => {
-        if (detail.rudder_seals && detail.rudder_seals.seal_type) {
-            const sealType = detail.rudder_seals.seal_type;
-            const rudderItem = document.createElement('div');
-            rudderItem.classList.add('dropdown-item');
-            rudderItem.textContent = sealType; // Display seal_type in the dropdown item
-            rudderSpecs.appendChild(rudderItem);
-            rudderSealsFound = true; // If we find a seal, we set the flag
+    // Translation setup
+    const language = localStorage.getItem('language') || 'en';
+    const translations = {
+        en: {
+            manufacturer: 'Manufacturer',
+            model_number: 'Model Number',
+            seal_type: 'Seal Type',
+            installation_date: 'Installation Date',
+            recommended_replacement_interval: 'Recommended Replacement Interval',
+            "packing size": "Packing Size",
+            "packing count": "Packing Count",
+            compression: "Compression",
+            "set screws": "Set Screws",
+            bolt_size: "Bolt Size",
+            torque_value: "Torque Value",
+            notes: "Notes"
+        },
+        es: {
+            manufacturer: 'Fabricante',
+            model_number: 'Número de modelo',
+            seal_type: 'Tipo de sello',
+            installation_date: 'Fecha de instalación',
+            recommended_replacement_interval: 'Intervalo de reemplazo recomendado',
+            "packing size": "Tamaño de empaque",
+            "packing count": "Cantidad de empaques",
+            compression: "Compresión",
+            "set screws": "Tornillos de fijación",
+            bolt_size: "Tamaño del perno",
+            torque_value: "Valor de torque",
+            notes: "Notas"
         }
-    });
+    };
 
-    // If no Rudder seals are found, show a fallback message
-    if (!rudderSealsFound) {
-        const noSealItem = document.createElement('div');
-        noSealItem.classList.add('dropdown-item');
-        noSealItem.textContent = 'No Rudder Seal Information Available';
-        rudderSpecs.appendChild(noSealItem); // Append to rudderSpecs, not rudderDiv
-    }
+    // Helper function to create sections
+    function createSealSection(title, sealData) {
+        const objectDiv = document.createElement('div');
+        objectDiv.classList.add('container');
 
-    // Append rudderSpecs (not rudderDiv) to the container
-    rudderDiv.appendChild(rudderSpecs);
-    detailsContainer.appendChild(rudderDiv);
+        const headingDiv = document.createElement('div');
+        headingDiv.classList.add('heading');
+        objectDiv.appendChild(headingDiv);
 
+        const objectTitle = document.createElement('h3');
+        objectTitle.textContent = title;
+        headingDiv.appendChild(objectTitle);
 
-/*************Shaft Seal   */
+        const specsDiv = document.createElement('div');
+        specsDiv.classList.add('html-container');
 
+        let itemsFound = false;
 
-    // Create Shaft Seal Dropdown (template for Shaft Seal)
-    const shaftDiv = document.createElement('div');
-    shaftDiv.classList.add( 'container'); 
+        if (sealData) {
+            Object.keys(sealData).forEach(key => {
+                const value = sealData[key];
+                const translatedKey = translations[language][key] || key;
 
-    const titleDiv2 = document.createElement( 'div' ); 
-    titleDiv2.classList.add( 'heading');
+                if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                    // If it's a nested object like "Service Specs"
+                    Object.keys(value).forEach(subKey => {
+                        const subValue = value[subKey];
+                        const translatedSubKey = translations[language][subKey] || subKey;
 
-    const shaftTitle = document.createElement('h3');
-    shaftTitle.textContent = 'Shaft Seal';
-    shaftDiv.appendChild(shaftTitle);
-
-    const shaftSpecs = document.createElement('div');
-    shaftSpecs.classList.add('html-container');
-    
-    // Populate Shaft Seals
-    let shaftSealsFound = false; // Flag to check if any seal types exist
-    data.sealsDetails.forEach(detail => {
-        if (detail.shaft_seals && detail.shaft_seals.seal_type) {
-            const sealType = detail.shaft_seals.seal_type;
-            const shaftItem = document.createElement('div');
-            shaftItem.classList.add('dropdown-item');
-            shaftItem.textContent = sealType; // Display seal_type in the dropdown item
-            shaftSpecs.appendChild(shaftItem);
-            shaftSealsFound = true; // If we find a seal, we set the flag
+                        if (subValue) {
+                            const itemDiv = document.createElement('div');
+                            itemDiv.classList.add('dropdown-item');
+                            itemDiv.textContent = `${translatedSubKey}: ${subValue}`;
+                            specsDiv.appendChild(itemDiv);
+                            itemsFound = true;
+                        }
+                    });
+                } else if (value) {
+                    // Normal key-value pairs
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('dropdown-item');
+                    itemDiv.textContent = `${translatedKey}: ${value}`;
+                    specsDiv.appendChild(itemDiv);
+                    itemsFound = true;
+                }
+            });
         }
-    });
 
-    // If no Shaft seals are found, show a fallback message
-    if (!shaftSealsFound) {
-        const noSealItem = document.createElement('div');
-        noSealItem.classList.add('dropdown-item');
-        noSealItem.textContent = 'No Shaft Seal Information Available';
-        shaftSpecs.appendChild(noSealItem); // Append to shaftSpecs, not shaftDiv
+        if (!itemsFound) {
+            const noItemDiv = document.createElement('div');
+            noItemDiv.classList.add('dropdown-item');
+            noItemDiv.textContent = language === 'es' ? 'No hay información disponible' : 'No Information Available';
+            specsDiv.appendChild(noItemDiv);
+        }
+
+        objectDiv.appendChild(specsDiv);
+        detailsContainer.appendChild(objectDiv);
     }
 
-    // Append shaftSpecs (not shaftDiv) to the container
-    shaftDiv.appendChild(shaftSpecs);
-    detailsContainer.appendChild(shaftDiv);
+    // Loop through sealsDetails and create sections for rudder_seals and shaft_seals
+    data.sealsDetails.forEach(detail => {
+        createSealSection(language === 'es' ? 'Sellos del Timón' : 'Rudder Seals', detail.rudder_seals);
+        createSealSection(language === 'es' ? 'Sellos del Eje' : 'Shaft Seals', detail.shaft_seals);
+    });
 }

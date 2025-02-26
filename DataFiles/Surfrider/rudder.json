@@ -3,9 +3,13 @@
     {
       "position": "Stbd",
       "info": "",
+      
+      "shaftNut": "", 
       "pinchBolts": "33 mm Hex thru bolt",
       "nutRestraint": "",
-      "setScrews": "8mm Hex bolts (2x collar rings. One above the table and one below)"
+      "setScrews": "8mm Hex bolts (2x collar rings. One above the table and one below)",
+      "bearing": ""
+
     },
     {
       "position": "Port",

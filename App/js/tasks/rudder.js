@@ -43,6 +43,7 @@ export function rudderPopulate(data) {
     rudderAssembly.appendChild(tillerArm);
 
     const tillerArmKeys = [
+        { key: "shaftNut", label: lang === "es" ? "Tamaño de la Tuerca" : "Shaft Nut" }, 
         { key: "pinchBolts", label: lang === "es" ? "Tornillos De Pellizco" : "Pinch Bolts" },
         { key: "nutRestraint", label: lang === "es" ? "Restricción de la Tuerca" : "Nut Restraint" },
         { key: "setScrews", label: lang === "es" ? "Tornillos Prisioneros" : "Set Screws" }
@@ -52,7 +53,7 @@ export function rudderPopulate(data) {
         rudderDetailDiv.classList.add('detail-b-row');
         rudderDetailDiv.innerHTML = `
             <div class="detail-b-key">${label}: </div>
-            <div class="detail-b-value">${data.rudderDetails[0][key] || ''}</div>
+            <div class="detail-b-value">${data.rudderDetails[0][key] || 'None'}</div>
         `;
         rudderAssembly.appendChild(rudderDetailDiv);
     });
