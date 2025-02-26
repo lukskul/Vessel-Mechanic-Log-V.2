@@ -5,9 +5,9 @@
         "info": "", 
 
         "nut": "3\"",
-        "pinchBolts": "",
+        "pinchBolts": "None",
         "nutRestraint": "3/16\" x 5\" cotter pin",
-        "setScrews": ""
+        "setScrews": "None"
 
       },
       {
