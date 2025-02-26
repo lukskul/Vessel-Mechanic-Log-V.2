@@ -4,10 +4,11 @@
         "position": "Port",
         "info": "", 
 
-        "nut": "3\"",
+        "shaftNut": "3\"",
         "pinchBolts": "None",
         "nutRestraint": "3/16\" x 5\" cotter pin",
-        "setScrews": "None"
+        "setScrews": "None",
+        "bearing": "Composite Bearing Freeze Fit"
 
       },
       {

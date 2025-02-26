@@ -16,7 +16,6 @@
             "bolt_size": "",
             "torque_value": ""
         },
-        "required_tools": [],
         "notes": ""
       },
       "shaft_seals": {
@@ -33,7 +32,6 @@
             "bolt_size": "",
             "torque_value": ""
         },
-        "required_tools": [],
         "notes": ""
       }
     }
