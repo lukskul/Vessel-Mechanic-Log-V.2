@@ -14,7 +14,6 @@ export function infoPopulate(data) {
 
     // Define translations for ship details
     const shipKeys = {
-        "name": lang === "es" ? "Nombre" : "Name",
         "type": lang === "es" ? "Tipo" : "Type",
         "manufacturer": lang === "es" ? "Fabricante" : "Manufacturer",
         "imoNumber": lang === "es" ? "Número IMO" : "IMO Number",
