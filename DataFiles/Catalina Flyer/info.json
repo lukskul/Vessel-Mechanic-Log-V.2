@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Passenger",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "367001740",
+      "callSign": "WTD8887",
+      "flag": "USA",
+      "yearBuilt": "1988",
+      "owner": "",
+      "homePort": "",
+      "length": "36 meters",
+      "beam": "12 meters",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}
