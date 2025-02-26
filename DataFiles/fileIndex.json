@@ -18,7 +18,16 @@
         "couplers.json",
         "info.json"
     ],
+    "Catalina Flyer": [
+        "info.json",
+        "rudder.json",
+        "seals.json"
+    ],
     "Ketau": [
+        "info.json",
+        "props.json"
+    ],
+    "Legacy": [
         "info.json",
         "props.json"
     ],
