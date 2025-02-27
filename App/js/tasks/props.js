@@ -1,5 +1,4 @@
 export function propsPopulate(data) {
-    const propsHtmlContainer = document.querySelector('.props-html');
     const detailsContainer = document.querySelector('.details'); 
 
     // Check language preference from local storage
@@ -16,9 +15,9 @@ export function propsPopulate(data) {
     // Loop through propDetails and create dropdowns
     data.propDetails.forEach((prop, index) => {
         const detailsSection = document.createElement('div');
-        detailsSection.classList.add('dropdown-section');
+        detailsSection.classList.add('dropdown-section', `object-${index + 1}`); // Dynamically assigning class like object-1, object-2, etc.
 
-        // Create a dropdown using the "direction" key as the label
+        // Create dropdown using the "direction" key as the label
         const dropdown = document.createElement('details');
         const summary = document.createElement('summary');
         dropdown.setAttribute('close', '');
@@ -37,7 +36,10 @@ export function propsPopulate(data) {
         infoDiv.innerHTML = ` ${prop.info || '<i>""</i>'}`;
         dropdown.appendChild(infoDiv);
 
+        // Append the dropdown to the section
         detailsSection.appendChild(dropdown);
+
+        // Append the section to the details container
         detailsContainer.appendChild(detailsSection);
     });
 

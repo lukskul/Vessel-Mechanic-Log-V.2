@@ -202,9 +202,6 @@ export function loadHTML() {
     taskDiv.appendChild(detailsDiv);
     container.appendChild(taskDiv);
 
-    // Example of adding task-specific content
-    detailsDiv.innerHTML = `<p>Details for ${taskName}</p>`;
-
     // Start observing for dynamic content
     loadTaskJSON(); 
     watchDynamicContent();
@@ -256,6 +253,7 @@ async function loadTaskJSON() {
             const functionName = `${currentTask}Populate`;
 
             if (typeof taskModule[functionName] === "function") {
+
                 taskModule[functionName](data);  // Call the dynamically imported function
             } else {
                 console.error(`Function ${functionName} does not exist in ${currentTask}.js`);

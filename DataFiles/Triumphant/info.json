@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Passenger",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "367580930",
+      "callSign": "WDG8773",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "25.4 meters",
+      "beam": "9 meters",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}
