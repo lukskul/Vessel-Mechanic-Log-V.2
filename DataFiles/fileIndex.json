@@ -48,5 +48,9 @@
     ],
     "Test": [
         "bowThruster.json"
+    ],
+    "Triumphant": [
+        "info.json",
+        "props.json"
     ]
 }
