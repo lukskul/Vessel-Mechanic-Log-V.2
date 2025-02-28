@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Passenger",
+      "manufacturer": "manufacturer",
+      "imoNumber": "12345",
+      "mmsiNumber": "",
+      "callSign": "32443",
+      "flag": "USA",
+      "yearBuilt": "2000",
+      "owner": "Nasa",
+      "homePort": "San Diego",
+      "length": "32 ft",
+      "beam": "20 ft",
+      "draft": "5 ft",
+      "grossTonnage": "10,000",
+      "deadweightTonnage": "10,000",
+      "engineType": "Diesel",
+      "enginePower": "500Hp",
+      "maxSpeed": "12"
+    }
+}

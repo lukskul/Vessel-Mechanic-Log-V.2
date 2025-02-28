@@ -43,6 +43,7 @@ export function propsPopulate(data) {
         detailsContainer.appendChild(detailsSection);
     });
 
+
     // Create Nut Section
     const nutSection = document.createElement("div");
     nutSection.classList.add("heading");
