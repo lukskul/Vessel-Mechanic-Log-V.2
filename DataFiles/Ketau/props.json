@@ -1,7 +1,7 @@
 {
   "propDetails": [
     {
-      "direction": "",
+      "direction": "LH",
       "serialNumber": "",
       "info": "", 
 
@@ -15,7 +15,7 @@
       "material": ""
     },
     {
-      "direction": "",
+      "direction": "RH",
       "serialNumber": "",
       "info": ""
     }

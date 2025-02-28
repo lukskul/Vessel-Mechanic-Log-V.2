@@ -2,7 +2,7 @@
 {
   "propDetails": [
     {
-      "direction": "RH",
+      "direction": "LH",
       "serialNumber": "",
       "info": "", 
 
@@ -16,7 +16,7 @@
       "material": "Nibral"
     },
     {
-      "direction": "LH",
+      "direction": "RH",
       "serialNumber": "",
       "info": ""
     }
