@@ -47,7 +47,8 @@
         "seals.json"
     ],
     "Test": [
-        "bowThruster.json"
+        "bowThruster.json",
+        "props.json"
     ],
     "Triumphant": [
         "info.json",
