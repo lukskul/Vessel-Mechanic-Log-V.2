@@ -13,12 +13,18 @@ export function bowThrusterPopulate(data) {
     // Clear previous content
     detailsContainer.innerHTML = "";
 
+    // Create a wrapper to keep dropdown styles separate
+    const dropdownContainer = document.createElement('div');
+    dropdownContainer.classList.add('dropdown-container');
+    detailsContainer.appendChild(dropdownContainer);
+
+
     // Loop through propDetails and create dropdowns
     data.propDetails.forEach((prop, index) => {
         const detailsSection = document.createElement('div');
-        detailsSection.classList.add('dropdown-section');
+        detailsSection.classList.add('dropdown-section', `object-${index + 1}`); // Dynamically assigning class like object-1, object-2, etc.
 
-        // Create a dropdown using the "direction" key as the label
+        // Create dropdown using the "direction" key as the label
         const dropdown = document.createElement('details');
         const summary = document.createElement('summary');
         dropdown.setAttribute('close', '');
@@ -37,8 +43,25 @@ export function bowThrusterPopulate(data) {
         infoDiv.innerHTML = ` ${prop.info || '<i>""</i>'}`;
         dropdown.appendChild(infoDiv);
 
+        const dropdowns = data.propDetails.length;
+
+        if (dropdowns === 1) {
+            dropdownContainer.classList.add('one-item');
+        } else if (dropdowns === 2) {
+            dropdownContainer.classList.add('two-items');
+        } else if (dropdowns === 3) {
+            dropdownContainer.classList.add('three-items');
+        } else if (dropdowns >= 4) {
+            dropdownContainer.classList.add('four-items');
+        }
+
+
+        // Append the dropdown to the section
         detailsSection.appendChild(dropdown);
-        detailsContainer.appendChild(detailsSection);
+
+        // Append the section to the details container
+        dropdownContainer.appendChild(detailsSection);
+
     });
 
     // Create Nut Section

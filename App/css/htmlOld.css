@@ -20,88 +20,8 @@
 .details {
     display: grid;
     padding-left: 2%; 
+    max-width: 600px; /* Adjust as needed */
 }
-
-.dropdown-container {
-    display: flex;
-    gap: 10px;
-}
-
-.dropdown-section {
-    flex: 1;
-    text-align: center;
-    max-width: 100%; /* Ensure they don’t shrink too much */
-}
-
-.one-item .object-1 summary {
-    padding-left: 42%; 
-    width: 100%;
-}
-
-.two-items .dropdown-section:first-child {
-    text-align: center;
-}
-
-.two-items .dropdown-section:last-child {
-    text-align: center;
-}
-
-.three-items .dropdown-section:first-child {
-    text-align: center;
-}
-
-.three-items .dropdown-section:nth-child(2) {
-    text-align: center;
-}
-
-.three-items .dropdown-section:last-child {
-    text-align: center;
-}
-
-.four-items .dropdown-section {
-    text-align: center;
-}
-
-.dropdown-section.object-1 .summary {
-    margin-top: 1%; 
-    text-align: center  
-}
-
-details {
-    display: block;
-    margin-bottom: 10px;
-}
-
-details[open] summary::before {
-    transform: rotate(90deg);
-}
-
-details summary {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-weight: bold;
-    list-style: none;
-}
-
-details summary::-webkit-details-marker {
-    display: none;
-    -webkit-appearance: none;
-}
-
-details summary::before {
-    content: "▶";
-    display: inline-block;
-    margin-right: 3%;
-    transition: transform 0.3s ease;
-}
-
-.heading h3 {
-    margin-top: 5%; 
-    margin-bottom: 3%; 
-    border-bottom: 1px solid; 
-}
-
 
 .detail-row {
     display: flex; /* Switch to flex for inline behavior */
@@ -123,6 +43,53 @@ details summary::before {
     padding: 5px 10px;
     text-align: left;
     flex: 1; /* Allows it to take up remaining space */
+}
+
+.dropdown-section {
+    float: right;
+    width: 95%; 
+}
+
+details {
+    display: block;
+    margin-bottom: 10px;
+    text-align: right; /* Align contents inside dropdown */
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+    -webkit-appearance: none;
+}
+
+details summary::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 3%;
+    transition: transform 0.3s ease;
+}
+
+.section-info {
+    margin-top: 1%; 
+    text-align: right; /* Ensures serial number and info are right-aligned */
+}
+
+.heading h3 {
+    margin-top: 5%; 
+    margin-bottom: 3%; 
+    border-bottom: 1px solid; 
 }
 
 .detail-b-row {
