@@ -1,0 +1,23 @@
+{
+  "propDetails": [
+    {
+      "direction": "LH",
+      "serialNumber": "BDP150313",
+      "info": "Pitch reduced from 32\"", 
+
+      "propNutSize": "",
+      "nutRestraint": "",
+      "pullingHoles": "",
+
+      "diameter x pitch": "34\"d x 28\"p",
+      "markings": "MADE IN MEXICO",
+      "bore": "",
+      "material": "Bronze"
+    },
+    {
+      "direction": "RH",
+      "serialNumber": "BDP150312",
+      "info": "Pitch reduced from 32\""
+    }
+  ]
+}

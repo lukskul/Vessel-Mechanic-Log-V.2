@@ -37,7 +37,8 @@
     ],
     "Newport Hornblower": [
         "couplers.json",
-        "info.json"
+        "info.json",
+        "props.json"
     ],
     "Surfrider": [
         "couplers.json",
