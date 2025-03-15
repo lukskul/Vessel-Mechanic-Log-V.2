@@ -90,10 +90,16 @@ details summary::-webkit-details-marker {
 }
 
 details summary::before {
-    content: "▶";
+    content: "";
     display: inline-block;
-    margin-right: 3%;
+    width: 35px; 
+    height: 35px;
+    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/props.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px; 
     transition: transform 0.3s ease;
+    filter: invert(1); 
 }
 
 .heading h3 {
