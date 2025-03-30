@@ -80,7 +80,7 @@ details summary {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: bold; 
     list-style: none;
 }
 
@@ -94,7 +94,7 @@ details summary::before {
     display: inline-block;
     width: 35px; 
     height: 35px;
-    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/props.svg');
+    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/more.svg');
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 8px; 
