@@ -18,6 +18,10 @@
         "couplers.json",
         "info.json"
     ],
+    "Caravelle": [
+        "info.json",
+        "props.json"
+    ],
     "Catalina Flyer": [
         "info.json",
         "rudder.json",
