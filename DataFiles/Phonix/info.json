@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Sailing Vessel",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "368381530",
+      "callSign": "WDP7407",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "10 m",
+      "beam": "4 m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}
