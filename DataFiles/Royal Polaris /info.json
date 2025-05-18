@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": " Passenger Fishing Vessel",
+      "manufacturer": "",
+      "imoNumber": "8655382",
+      "mmsiNumber": "367050490",
+      "callSign": "WYM7156",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "30.63 m",
+      "beam": "9.14 m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}
