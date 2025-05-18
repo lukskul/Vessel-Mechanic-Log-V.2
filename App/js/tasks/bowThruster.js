@@ -27,6 +27,7 @@ export function bowThrusterPopulate(data) {
         // Create dropdown using the "direction" key as the label
         const dropdown = document.createElement('details');
         const summary = document.createElement('summary');
+        summary.classList.add('drop-down-image-prop'); 
         dropdown.setAttribute('close', '');
         summary.textContent = prop.direction || (lang === 'es' ? "Dirección desconocida" : "N/A");
         dropdown.appendChild(summary);

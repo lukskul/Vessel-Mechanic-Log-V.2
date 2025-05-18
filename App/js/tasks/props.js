@@ -17,7 +17,6 @@ export function propsPopulate(data) {
     dropdownContainer.classList.add('dropdown-container');
     detailsContainer.appendChild(dropdownContainer);
 
-
     // Loop through propDetails and create dropdowns
     data.propDetails.forEach((prop, index) => {
         const detailsSection = document.createElement('div');
@@ -26,6 +25,7 @@ export function propsPopulate(data) {
         // Create dropdown using the "direction" key as the label
         const dropdown = document.createElement('details');
         const summary = document.createElement('summary');
+        summary.classList.add('drop-down-image-prop'); 
         dropdown.setAttribute('close', '');
         summary.textContent = prop.direction || (lang === 'es' ? "Dirección desconocida" : "N/A");
         dropdown.appendChild(summary);

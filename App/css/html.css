@@ -91,15 +91,18 @@ details summary::-webkit-details-marker {
 
 details summary::before {
     content: "";
-    display: inline-block;
+}
+
+.drop-down-image-prop::before {
+    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/props.svg'); 
     width: 35px; 
     height: 35px;
-    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/more.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
+    display: inline-block;
     margin-right: 8px; 
     transition: transform 0.3s ease;
     filter: invert(1); 
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .heading h3 {
