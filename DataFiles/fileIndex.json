@@ -39,6 +39,10 @@
         "couplers.json",
         "info.json"
     ],
+    "Newport Flyer": [
+        "info.json",
+        "props.json"
+    ],
     "Newport Hornblower": [
         "couplers.json",
         "info.json",

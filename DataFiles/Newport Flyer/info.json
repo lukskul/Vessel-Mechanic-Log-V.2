@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "High Speed Craft",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "367715000",
+      "callSign": "WDC5079",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "23m",
+      "beam": "10m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}
