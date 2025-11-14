@@ -53,6 +53,10 @@
         "info.json",
         "props.json"
     ],
+    "Phantom": [
+        "couplers.json",
+        "info.json"
+    ],
     "Phonix": [
         "info.json"
     ],

@@ -1,0 +1,18 @@
+{
+    "couplerDetails": [
+      {
+        "location": "Stbd",
+        "info": "Regular Thread", 
+  
+        "Coupler Bolt": "65mm",
+        "Retaining Nut": "3/16\"Allen set Screws x 2",
+        "Safety Lock": "", 
+
+        "Removal Info": "Special adaptor nut with 2 7/16\" x 2-1/4\" bolts. Attach to nut to remove"
+      },
+      {
+        "location": "Port",
+        "info": "Reverse Thread"
+      }
+    ]
+}

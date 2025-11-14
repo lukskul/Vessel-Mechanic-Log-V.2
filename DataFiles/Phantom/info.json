@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Pleasure craft",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "8647842",
+      "callSign": "",
+      "flag": "",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "31.51m",
+      "beam": "",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

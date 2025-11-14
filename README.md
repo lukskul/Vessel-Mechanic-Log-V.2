@@ -8,8 +8,12 @@ Version 2 of the Vessel Mechanic Log is a **read-only** system, allowing users t
 - ⚡ **Lightweight** – Optimized for speed and minimal resource usage.  
 - 🌐 **Decentralized** – Fully functional on **IPFS** and **GitHub Pages**, no backend required.  
 
-## Things To Do    
-- Create en or es check and change the array of english words with spanish words in props.js file. Good Luck!  
+## 🔹 Adding New Vesslels
+How do i add new Vessels? Why are my added Vessels not showing up on the app?
+### **1. Before adding any new Vessels you MUST DO THIS!! **
+// Run : node watcher.js
+What Does it Do? **watcher.js**. This file will update the fileIndex.json array. 
+
 
 # 🚀 - Contributing Guide
 
@@ -57,3 +61,9 @@ Clone the forked repository to your local machine:
 ```sh
 git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO.git
 cd YOUR-FORKED-REPO
+
+
+## Things To Do    
+- Create en or es check and change the array of english words with spanish words in props.js file. Good Luck!  
+
+
