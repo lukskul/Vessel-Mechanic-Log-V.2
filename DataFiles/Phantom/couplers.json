@@ -4,11 +4,11 @@
         "location": "Stbd",
         "info": "Regular Thread", 
   
-        "Coupler Bolt": "65mm",
-        "Retaining Nut": "3/16\"Allen set Screws x 2",
-        "Safety Lock": "", 
+        "Coupler Bolt": "27mm",
+        "Retaining Nut": "65mm Slugging Wrench",
+        "Safety Lock": "3/16\"Allen set Screws x 2", 
 
-        "Removal Info": "Special adaptor nut with 2 7/16\" x 2-1/4\" bolts. Attach to nut to remove"
+        "Removal Info": "Special adaptor nut on Boat requires two 7/16\" and 2-1/4\" long bolts. Attach bolts to nut to remove"
       },
       {
         "location": "Port",
