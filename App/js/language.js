@@ -3,7 +3,7 @@ export let language = localStorage.getItem("language") || "en"; // Get saved lan
 const languageSelectButton = document.getElementById("language-select");
 
 function changeLanguage(newLang) {
-    fetch(`https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/language/${newLang}.json`)
+    fetch(`https://lukskul.github.io/Vessel-Mechanic-Log/App/language/${newLang}.json`)
         .then(response => response.json())
         .then(data => {
             document.querySelectorAll("[data-translate]").forEach(element => {
