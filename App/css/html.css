@@ -94,7 +94,7 @@ details summary::before {
 }
 
 .drop-down-image-prop::before {
-    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/props.svg'); 
+    background-image: url('https://lukskul.github.io/Vessel-Mechanic-Log/App/icons/props.svg'); 
     width: 35px; 
     height: 35px;
     display: inline-block;
