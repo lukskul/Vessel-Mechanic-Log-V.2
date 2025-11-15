@@ -260,7 +260,7 @@ const languageIcon = languageSelectButton.querySelector("img");
 // Function to update the button icon based on the current language
 function updateLanguageIcon() {
     const currentLang = localStorage.getItem("language") || "en";
-    languageIcon.src = currentLang === "en" ? "//lukskul.github.io/Vessel-Mechanic-Log/App/icons/usa.svg" : "//lukskul.github.io/Vessel-Mechanic-Log-V.2/App/icons/mexico.svg";
+    languageIcon.src = currentLang === "en" ? "//lukskul.github.io/Vessel-Mechanic-Log/App/icons/usa.svg" : "//lukskul.github.io/Vessel-Mechanic-Log/App/icons/mexico.svg";
 }
 
 // Run the function on page load to ensure the correct icon is displayed
