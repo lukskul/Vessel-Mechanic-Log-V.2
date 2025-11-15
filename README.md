@@ -1,14 +1,14 @@
-# Vessel Mechanic Log V.2  
+# Vessel Mechanic Log   
 
 ## Overview  
-Version 2 of the Vessel Mechanic Log is a **read-only** system, allowing users to reference vessel data and specifications. This lightweight version is designed to run on **IPFS** without requiring a traditional server to fetch or push data.  
+ Vessel Mechanic Log is a **read-only** system, allowing users to reference vessel data and specifications. This lightweight Data log is designed to run on **IPFS** without requiring a traditional server to fetch or push data.  
 
 ## Features  
 - 📄 **Read-Only Access** – Users can view vessel data but cannot modify it.  
 - ⚡ **Lightweight** – Optimized for speed and minimal resource usage.  
 - 🌐 **Decentralized** – Fully functional on **IPFS** and **GitHub Pages**, no backend required.  
 
-## 🔹 Adding New Vesslels
+## 🔹 Adding New Vessels
 How do i add new Vessels? Why are my added Vessels not showing up on the app?
 ### **1. Before adding any new Vessels you MUST DO THIS!! **
 // Run : node watcher.js
