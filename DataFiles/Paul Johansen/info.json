@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Pleasure Craft",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "303494000",
+      "callSign": "WDN6569",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "23m",
+      "beam": "6m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

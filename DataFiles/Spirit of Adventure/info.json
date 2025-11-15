@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Passenger",
+      "manufacturer": "",
+      "imoNumber": "8229729",
+      "mmsiNumber": "367185130",
+      "callSign": "WAV5237",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "26m",
+      "beam": "8m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

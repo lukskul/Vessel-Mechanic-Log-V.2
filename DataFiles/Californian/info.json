@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Sailing Vessel",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "366877880",
+      "callSign": "WDB2619",
+      "flag": "USA",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "26m",
+      "beam": "8m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

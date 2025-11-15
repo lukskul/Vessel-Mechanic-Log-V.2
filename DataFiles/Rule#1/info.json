@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Pleasure Craft",
+      "manufacturer": "",
+      "imoNumber": "9539901",
+      "mmsiNumber": "319133700",
+      "callSign": "ZGHK3",
+      "flag": "Cayman Is",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "39.6m",
+      "beam": "7.9m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

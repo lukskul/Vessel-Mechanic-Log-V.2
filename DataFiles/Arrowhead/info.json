@@ -1,0 +1,21 @@
+{
+    "shipDetails": {
+      "type": "Pleasure Craft",
+      "manufacturer": "",
+      "imoNumber": "",
+      "mmsiNumber": "538070248",
+      "callSign": "V7KN3",
+      "flag": "Marshall Is",
+      "yearBuilt": "",
+      "owner": "",
+      "homePort": "",
+      "length": "34m",
+      "beam": "6m",
+      "draft": "",
+      "grossTonnage": "",
+      "deadweightTonnage": "",
+      "engineType": "",
+      "enginePower": "",
+      "maxSpeed": ""
+    }
+}

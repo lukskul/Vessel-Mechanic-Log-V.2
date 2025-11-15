@@ -10,6 +10,10 @@
         "props.json",
         "seals.json"
     ],
+    "Arrowhead": [
+        "info.json",
+        "props.json"
+    ],
     "Bellisima": [
         "bowThruster.json",
         "info.json"
@@ -17,6 +21,10 @@
     "California Princess": [
         "couplers.json",
         "info.json"
+    ],
+    "Californian": [
+        "info.json",
+        "props.json"
     ],
     "Caravelle": [
         "info.json",
@@ -28,6 +36,10 @@
         "seals.json"
     ],
     "Channel Cat": [
+        "couplers.json",
+        "info.json"
+    ],
+    "Getaway": [
         "couplers.json",
         "info.json"
     ],
@@ -53,6 +65,10 @@
         "info.json",
         "props.json"
     ],
+    "Paul Johansen": [
+        "bowThruster.json",
+        "info.json"
+    ],
     "Phantom": [
         "couplers.json",
         "info.json"
@@ -60,7 +76,24 @@
     "Phonix": [
         "info.json"
     ],
+    "Rent Spent": [
+        "info.json",
+        "props.json"
+    ],
     "Royal Polaris ": [
+        "info.json",
+        "props.json"
+    ],
+    "Rule#1": [
+        "info.json",
+        "props.json"
+    ],
+    "Sapphire Star": [
+        "info.json",
+        "props.json"
+    ],
+    "Spirit of Adventure": [
+        "couplers.json",
         "info.json",
         "props.json"
     ],

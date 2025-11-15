@@ -1,0 +1,23 @@
+{
+  "propDetails": [
+    {
+      "direction": "LH",
+      "serialNumber": "",
+      "info": "", 
+
+      "propNutSize": "",
+      "nutRestraint": "",
+      "pullingHoles": "Three 5/8\"",
+
+      "diameter x pitch": "",
+      "markings": "",
+      "bore": "",
+      "material": "Ni-bral"
+    },
+    {
+      "direction": "RH",
+      "serialNumber": "",
+      "info": ""
+    }
+  ]
+}
