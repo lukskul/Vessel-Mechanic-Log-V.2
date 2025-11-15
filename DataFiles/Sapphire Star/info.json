@@ -1,7 +1,7 @@
 {
     "shipDetails": {
       "type": "Pleasure Craft",
-      "manufacturer": "",
+      "manufacturer": "Unknown",
       "imoNumber": "",
       "mmsiNumber": "368164150",
       "callSign": "WDL7863",
@@ -14,7 +14,7 @@
       "draft": "",
       "grossTonnage": "",
       "deadweightTonnage": "",
-      "engineType": "",
+      "engineType": "",  
       "enginePower": "",
       "maxSpeed": ""
     }
