@@ -35,7 +35,7 @@ To start contributing, you'll need a GitHub account and a basic understanding of
    Download your forked repository to your local machine.
 
 3. **Create a new branch**:  
-   It’s always a good practice to create a new branch for each new feature or fix.
+   It’s always a good practice to create a new branch for each new feature or fix.  npm run start to create a working app and see your changes on the fly. 
 
 4. **Make your changes**:  
    Work on the code, documentation, or tests based on the issue or feature you're tackling.
@@ -61,9 +61,35 @@ Clone the forked repository to your local machine:
 ```sh
 git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO.git
 cd YOUR-FORKED-REPO
+```
 
+---
 
-## Things To Do    
-- Create en or es check and change the array of english words with spanish words in props.js file. Good Luck!  
+## 🔹 Things to Do
 
+## Always need to translate the site
+- Create **en / es** toggle and replace the English word array with Spanish words in `props.js`.  
 
+## Page builds  
+- [x] info.json  
+- [x] thruster.json  
+- [ ] anchor.json  
+- [ ] engine.json  
+- [ ] coupler.json  
+- [ ] seals.json  
+- [ ] shaft.json  
+- [x] props.json  
+- [ ] rudder.json  
+- [ ] seascreens.json  
+- [ ] zinc.json  
+- [ ] door.json  
+- [ ] generator.json  
+- [ ] motor.json  
+- [ ] plus.json
+
+## Progress  
+```
+[####-----------------] 27%
+
+ ```
+ ### _Good luck!_
