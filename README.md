@@ -47,7 +47,7 @@ To start contributing, you'll need a GitHub account and a basic understanding of
    After committing your changes, push your branch to your GitHub fork.
 
 7. **Create a Pull Request**:  
-   Submit a PR to the original repository to merge your changes. This is where the project maintainers review your changes.
+   Submit a PR to the original repository to merge your changes. This is where I review your changes.
 
 ---
 

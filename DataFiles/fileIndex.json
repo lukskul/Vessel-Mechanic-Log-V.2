@@ -105,9 +105,19 @@
         "seals.json"
     ],
     "Test": [
+        "anchor.json",
         "bowThruster.json",
+        "couplers.json",
+        "engine.json",
+        "generator.json",
         "info.json",
-        "props.json"
+        "motor.json",
+        "props.json",
+        "rudder.json",
+        "seals.json",
+        "seascreen.json",
+        "shaft.json",
+        "zinc.json"
     ],
     "Triumphant": [
         "info.json",
