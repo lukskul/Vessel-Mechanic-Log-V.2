@@ -66,14 +66,6 @@ cd YOUR-FORKED-REPO
 ---
 
 ## 🔹 Things to Do
-## Progress  
-
-[####-----------------] 27%
-
-![Progress](https://progress-bar.dev/27/?title=Complete&width=400)
-
- _Good luck!_
-
 
 ## Always need to translate the site
 - Create **en / es** toggle and replace the English word array with Spanish words in `props.js`.  
@@ -95,3 +87,9 @@ cd YOUR-FORKED-REPO
 - [ ] motor.json  
 - [ ] plus.json
 
+## Progress  
+```
+[####-----------------] 27%
+
+ ```
+ ### _Good luck!_
