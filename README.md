@@ -61,16 +61,16 @@ Clone the forked repository to your local machine:
 ```sh
 git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO.git
 cd YOUR-FORKED-REPO
-
-
-## Progress  
-**4 / 15 completed (26.7%)**
-
-![Progress](https://progress-bar.dev/27/?title=Complete&width=400)
+```
 
 ---
 
-  _Good luck!_
+## 🔹 Things to Do
+## Progress  
+
+[####-----------------] 27%
+
+ _Good luck!_
 
 
 ## Always need to translate the site
@@ -92,3 +92,4 @@ cd YOUR-FORKED-REPO
 - [ ] generator.json  
 - [ ] motor.json  
 - [ ] plus.json
+
