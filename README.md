@@ -70,6 +70,8 @@ cd YOUR-FORKED-REPO
 
 [####-----------------] 27%
 
+![Progress](https://progress-bar.dev/27/?title=Complete&width=400)
+
  _Good luck!_
 
 
