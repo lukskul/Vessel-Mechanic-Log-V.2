@@ -19,6 +19,7 @@ import './tasks/bowThruster.js';
 import './tasks/props.js'; 
 import './tasks/rudder.js'; 
 import './tasks/seals.js'; 
+import './tasks/zincs.js'; 
 
 
 
