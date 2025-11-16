@@ -48,15 +48,3 @@
 import { loadHTML, clearPageContent } from './task.js';
 
 
-## Task Rendering Flow
-
-```mermaid
-flowchart TD
-    A[User selects vessel] --> B[task.js fetches vessel JSON index]
-    B --> C[Fetch available task JSON files for selected vessel]
-    C --> D[Update task menu with available tasks]
-    D --> E[User clicks a task]
-    E --> F[task.js dynamically imports tasks/<taskName>.js]
-    F --> G[Call <taskName>Populate(data) with JSON content]
-    G --> H[Render task HTML in #html-container]
-    H --> I[MutationObserver watches for dynamic content changes]
