@@ -9,7 +9,7 @@
 
 ---
 
-## Structure
+## Structure Components
 
 ### 1. Data Fetching
 - `fetchVesselData()` → Loads the master list of vessels from the remote JSON index.
