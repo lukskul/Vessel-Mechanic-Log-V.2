@@ -1,0 +1,23 @@
+{
+    "propDetails": [
+      {
+        "direction": "RH Stbd",
+        "serialNumber": "",
+        "info": "", 
+  
+        "propNutSize": "15/16\"",
+        "nutRestraint": "Cotter Pin",
+        "pullingHoles": "3/8\"", 
+  
+        "diameter x pitch": "",
+        "markings": "",
+        "bore": "",
+        "material": ""
+      },
+      {
+        "direction": "LH Port",
+        "serialNumber": "",
+        "info": ""
+      }
+    ]
+  }
