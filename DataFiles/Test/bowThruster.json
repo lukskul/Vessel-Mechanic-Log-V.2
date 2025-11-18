@@ -3,7 +3,7 @@
       {
         "direction": "LH",
         "serialNumber": "12345",
-        "info": "Port", 
+        "info": "Stern Port", 
   
         "propNutSize": "4\"",
         "nutRestraint": "3/4\" Cotter Pin",
@@ -15,18 +15,18 @@
         "material": "Nibral"
       },
       {
-        "direction": "LH",
+        "direction": "RH",
         "serialNumber": "12344",
-        "info": "Middle Port"
+        "info": "Stern Stbd"
       },
       {
-        "direction": "RH",
+        "direction": "LH",
         "serialNumber": "1233",
-        "info": "Middle Stbd"
+        "info": "Bow Port"
       },      {
         "direction": "RH",
         "serialNumber": "1232",
-        "info": "Stbd"
+        "info": "Bow Stbd"
       }
     ]  
   }
