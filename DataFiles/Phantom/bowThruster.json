@@ -1,9 +1,9 @@
 {
     "propDetails": [
       {
-        "direction": "RH Stbd",
+        "direction": "RH",
         "serialNumber": "",
-        "info": "Stern Thruster", 
+        "info": "Stbd Stern Thruster", 
   
         "propNutSize": "15/16\"",
         "nutRestraint": "Cotter Pin",
@@ -15,19 +15,19 @@
         "material": ""
       },
       {
-        "direction": "LH Port",
+        "direction": "LH",
         "serialNumber": "",
-        "info": "Stern Thruster"
+        "info": "Port Stern Thruster"
       },
       {
-        "direction": "RH Stbd",
+        "direction": "RH",
         "serialNumber": "",
-        "info": "Bow Thruster"
+        "info": "Stbd Bow Thruster"
       },
       {
-        "direction": "LH Port",
+        "direction": "LH",
         "serialNumber": "",
-        "info": "Bow Thruster"
+        "info": "Port Bow Thruster"
       }
     ]
   }
