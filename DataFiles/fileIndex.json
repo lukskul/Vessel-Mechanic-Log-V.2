@@ -71,7 +71,8 @@
     ],
     "Phantom": [
         "couplers.json",
-        "info.json"
+        "info.json", 
+        "bowThruster.json"
     ],
     "Phonix": [
         "info.json"
