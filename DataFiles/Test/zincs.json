@@ -1,12 +1,73 @@
 {
-    "zincDetails": [
-      {
-        "count": "", 
-        "markings": "",
-        "material": ""
-      },
-      {
-        "info": ""
-      }
-    ]
-  }
+  "title": "Zinc Retrieval",
+  "description": "Document and remove all sacrificial anodes from the vessel. Record type, size, material, and quantity.",
+
+  "locations": [
+    {
+      "name": "Shaft",
+      "notes": "Main propulsion shaft zincs",
+
+      "zincs": [
+        {
+          "type": "Shaft Collar",
+          "size": "1-1/4 in",
+          "material": "Zinc",
+          "quantity": 2,
+          "partNumber": "COL-125-Z",
+          "placement": "Forward and aft of strut",
+          "photoBefore": "",
+          "photoAfter": "",
+          "mechanicNotes": ""
+        }
+      ]
+    },
+
+    {
+      "name": "Rudder",
+      "notes": "Zincs mounted on both rudders",
+
+      "zincs": [
+        {
+          "type": "Rudder Plate",
+          "size": "3 x 5 in",
+          "material": "Zinc",
+          "quantity": 2,
+          "partNumber": "",
+          "placement": "Center-mounted, port and starboard",
+          "photoBefore": "",
+          "photoAfter": "",
+          "mechanicNotes": ""
+        }
+      ]
+    },
+
+    {
+      "name": "Hull",
+      "notes": "Various block and plate anodes attached to the hull",
+
+      "zincs": [
+        {
+          "type": "Diver Plate",
+          "size": "6 x 12 in",
+          "material": "Zinc",
+          "quantity": 1,
+          "partNumber": "",
+          "placement": "Port midship",
+          "photoBefore": "",
+          "photoAfter": "",
+          "mechanicNotes": ""
+        },
+        {
+          "type": "Diver Plate",
+          "size": "6 x 12 in",
+          "material": "Zinc",
+          "quantity": 1,
+          "placement": "Starboard midship",
+          "photoBefore": "",
+          "photoAfter": "",
+          "mechanicNotes": ""
+        }
+      ]
+    }
+  ]
+}
