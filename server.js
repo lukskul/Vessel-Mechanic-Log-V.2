@@ -4,10 +4,13 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files
+// Serve static files from dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Catch-all route for index.html (must be last)
+// Serve JSON files from DataFiles
+app.use('/DataFiles', express.static(path.join(__dirname, 'DataFiles')));
+
+// Catch-all route (must be last)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'app', 'index.html'));
 });
