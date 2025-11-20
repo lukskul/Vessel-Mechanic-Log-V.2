@@ -105,7 +105,7 @@ h2 {
 
 .socket-table caption {
     position: sticky;
-    top: -1px; /* keeps it above sticky headers */
+    top: -20px; /* keeps it above sticky headers */
     z-index: 15;
     background: rgb(0, 0, 0);
     padding: 10px;
