@@ -91,11 +91,11 @@ h2 {
 .socket-table thead th {
     position: sticky;
     top: 0;              /* stick to top */
-    background-color: #fff; /* make sure it has a background */
+    background-color: #000000; /* make sure it has a background */
     z-index: 10;         /* above table rows */
     padding: 8px;
     text-align: left;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #01a71d;
 }
 
 #converter {
@@ -104,7 +104,7 @@ h2 {
 }
 
 .socket-table caption {
-    font-size: 1.5em;  /* bigger text */
+    font-size: 1em;  /* bigger text */
     font-weight: bold;
     margin-bottom: 10px; /* spacing from the table */
     caption-side: top;   /* default, but ensures it stays on top */
