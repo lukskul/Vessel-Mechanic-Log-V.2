@@ -78,18 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tapDrillSizes = [
         // Standard Tap to Drill Bit Sizes (Inches)
-        { tap: "4-40", drill: { inches: "#43", decimal: 0.0890, mm: 2.26 } },
-        { tap: "6-32", drill: { inches: "#36", decimal: 0.1065, mm: 2.71 } },
-        { tap: "8-32", drill: { inches: "#29", decimal: 0.1360, mm: 3.45 } },
-        { tap: "10-24", drill: { inches: "#25", decimal: 0.1495, mm: 3.80 } },
-        { tap: "10-32", drill: { inches: "#21", decimal: 0.1590, mm: 4.04 } },
-        { tap: "1/4\"-20", drill: { inches: "#7", decimal: 0.2010, mm: 5.11 } },
-        { tap: "5/16\"-18", drill: { inches: "F", decimal: 0.2570, mm: 6.53 } },
-        { tap: "3/8\"-16", drill: { inches: "5/16\"", decimal: 0.3125, mm: 7.94 } },
-        { tap: "7/16\"-14", drill: { inches: "U", decimal: 0.3680, mm: 9.35 } },
-        { tap: "1/2\"-13", drill: { inches: "27/64\"", decimal: 0.4219, mm: 10.72 } },
-        { tap: "5/8\"-11", drill: { inches: "17/32\"", decimal: 0.5312, mm: 13.49 } },
-        { tap: "3/4\"-10", drill: { inches: "21/32\"", decimal: 0.6562, mm: 16.67 } },
+        { tap: "4-40", drill: { inches: "#43", decimal: 0.0890} },
+        { tap: "6-32", drill: { inches: "#36", decimal: 0.1065} },
+        { tap: "8-32", drill: { inches: "#29", decimal: 0.1360} },
+        { tap: "10-24", drill: { inches: "#25", decimal: 0.1495} },
+        { tap: "10-32", drill: { inches: "#21", decimal: 0.1590} },
+        { tap: "1/4\"-20", drill: { inches: "#7", decimal: 0.2010} },
+        { tap: "5/16\"-18", drill: { inches: "F", decimal: 0.2570} },
+        { tap: "3/8\"-16", drill: { inches: "5/16\"", decimal: 0.3125} },
+        { tap: "7/16\"-14", drill: { inches: "U", decimal: 0.3680} },
+        { tap: "1/2\"-13", drill: { inches: "27/64\"", decimal: 0.4219} },
+        { tap: "5/8\"-11", drill: { inches: "17/32\"", decimal: 0.5312} },
+        { tap: "3/4\"-10", drill: { inches: "21/32\"", decimal: 0.6562} },
     
         // Metric Tap to Drill Bit Sizes
         { tap: "Metric Tap", drill: { inches: "Drill Bit", decimal: 0, mm: 0 }}, 
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Caption
         const caption = document.createElement("caption");
         if (type === 'socket') caption.textContent = "Standard Socket Size Correlation Metric Socket Size";
-        else if (type === 'tap') caption.textContent = "Tap New Hole chart";
+        else if (type === 'tap') caption.textContent = "New Hole Tap and Drill chart";
         else if (type === 'dimple') caption.textContent = "Set Screw Dimple chart";
         table.appendChild(caption);
 

@@ -90,7 +90,7 @@ h2 {
 
 .socket-table thead th {
     position: sticky;
-    top: 0;              /* stick to top */
+    top: 1px;              /* stick to top */
     background-color: #000000; /* make sure it has a background */
     z-index: 10;         /* above table rows */
     padding: 8px;
@@ -107,8 +107,8 @@ h2 {
     position: sticky;
     top: -1px; /* keeps it above sticky headers */
     z-index: 15;
-    background: white;
+    background: rgb(0, 0, 0);
     padding: 10px;
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: bold;
 }
