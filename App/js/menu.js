@@ -143,9 +143,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Caption
         const caption = document.createElement("caption");
-        if (type === 'socket') caption.textContent = "Standard Socket Size Correlation to Metric Socket Size";
-        else if (type === 'tap') caption.textContent = "New Hole Tap correct Drill Bit relation Chart";
-        else if (type === 'dimple') caption.textContent = "Set Screw Dimple correct Drill Bit Chart";
+        if (type === 'socket') caption.textContent = "Standard Socket Size Correlation Metric Socket Size";
+        else if (type === 'tap') caption.textContent = "Tap New Hole chart";
+        else if (type === 'dimple') caption.textContent = "Set Screw Dimple chart";
         table.appendChild(caption);
 
         // Headers
@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <th>Tap Size</th>
                         <th>Drill Bit Standard</th>
                         <th>Drill Bit Decimal</th>
-                        <th>Drill Bit Metric</th>
                     </tr>`;
             } else if (type === 'dimple') {
                 thead.innerHTML = `
