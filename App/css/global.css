@@ -88,4 +88,25 @@ h2 {
     top: 9%; 
 }
 
+.socket-table thead th {
+    position: sticky;
+    top: 0;              /* stick to top */
+    background-color: #fff; /* make sure it has a background */
+    z-index: 10;         /* above table rows */
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #ccc;
+}
 
+#converter {
+    max-height: 400px; /* or whatever fits your layout */
+    overflow-y: auto;
+}
+
+.socket-table caption {
+    font-size: 1.5em;  /* bigger text */
+    font-weight: bold;
+    margin-bottom: 10px; /* spacing from the table */
+    caption-side: top;   /* default, but ensures it stays on top */
+    text-align: left;    /* optional */
+}

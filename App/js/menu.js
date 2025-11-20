@@ -45,15 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const convertButton = document.getElementById("convert");
     const tableContainer = document.getElementById("converter-container");
     const converter = document.getElementById("converter");
     const toggleButton = document.getElementById("toggle-table-button");
 
-    let showingSockets = true;
-    let rotated = false; 
+    let chartIndex = 0; // Tracks which chart to show
 
+    // --- Data arrays ---
     const socketSizes = [
         { inches: "5/32", decimal: 0.15625, mm: 4 }, { inches: "3/16", decimal: 0.1875, mm: 5 }, { inches: "7/32", decimal: 0.21875, mm: 5.5 },
         { inches: "1/4", decimal: 0.25, mm: 6 }, { inches: "9/32", decimal: 0.28125, mm: 7 }, { inches: "5/16", decimal: 0.3125, mm: 8 },
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { inches: "2-15/16", decimal: 2.9375, mm: 75 }, { inches: "3", decimal: 3.0, mm: 76 }
     ]; 
 
+
     const tapDrillSizes = [
         // Standard Tap to Drill Bit Sizes (Inches)
         { tap: "4-40", drill: { inches: "#43", decimal: 0.0890, mm: 2.26 } },
@@ -90,83 +92,144 @@ document.addEventListener("DOMContentLoaded", function () {
         { tap: "3/4\"-10", drill: { inches: "21/32\"", decimal: 0.6562, mm: 16.67 } },
     
         // Metric Tap to Drill Bit Sizes
-        { tap: "M3 x 0.5", drill: { inches: "", decimal: 0.0984, mm: 2.5 } },
-        { tap: "M4 x 0.7", drill: { inches: "", decimal: 0.1299, mm: 3.3 } },
-        { tap: "M5 x 0.8", drill: { inches: "", decimal: 0.1654, mm: 4.2 } },
-        { tap: "M6 x 1.0", drill: { inches: "", decimal: 0.1969, mm: 5.0 } },
-        { tap: "M8 x 1.25", drill: { inches: "", decimal: 0.2677, mm: 6.8 } },
-        { tap: "M10 x 1.5", drill: { inches: "", decimal: 0.3346, mm: 8.5 } },
-        { tap: "M12 x 1.75", drill: { inches: "", decimal: 0.4016, mm: 10.2 } },
-        { tap: "M14 x 2.0", drill: { inches: "", decimal: 0.4724, mm: 12.0 } },
-        { tap: "M16 x 2.0", drill: { inches: "", decimal: 0.5512, mm: 14.0 } },
-        { tap: "M20 x 2.5", drill: { inches: "", decimal: 0.6889, mm: 17.5 } }
+        { tap: "Metric Tap", drill: { inches: "Drill Bit", decimal: 0, mm: 0 }}, 
+        { tap: "M3 x 0.5", drill: { inches: "3/32", decimal: 0.0984, mm: 2.5 } },
+        { tap: "M4 x 0.7", drill: { inches: "9/64", decimal: 0.1299, mm: 3.3 } },
+        { tap: "M5 x 0.8", drill: { inches: "11/64", decimal: 0.1654, mm: 4.2 } },
+        { tap: "M6 x 1.0", drill: { inches: "13/64", decimal: 0.1969, mm: 5.0 } },
+        { tap: "M8 x 1.25", drill: { inches: "7/32", decimal: 0.2677, mm: 6.8 } },
+        { tap: "M10 x 1.5", drill: { inches: "11/32", decimal: 0.3346, mm: 8.5 } },
+        { tap: "M12 x 1.75", drill: { inches: "13/32", decimal: 0.4016, mm: 10.2 } },
+        { tap: "M14 x 2.0", drill: { inches: "15/32", decimal: 0.4724, mm: 12.0 } },
+        { tap: "M16 x 2.0", drill: { inches: "9/16", decimal: 0.5512, mm: 14.0 } },
+        { tap: "M20 x 2.5", drill: { inches: "11/16", decimal: 0.6889, mm: 17.5 } }
+
     ];
 
+    const dimplingSizes = [
+        { bolt: "1/16", drill: { inches: "#43", decimal: 0.0890 } },
+        { bolt: "3/32", drill: { inches: "#36", decimal: 0.1065 } },
+        { bolt: "1/8", drill: { inches: "#29", decimal: 0.1360 } },
+        { bolt: "5/32", drill: { inches: "#25", decimal: 0.1495 } },
+        { bolt: "3/16", drill: { inches: "#21", decimal: 0.1590 } },
+        { bolt: "7/32", drill: { inches: "#18", decimal: 0.1695 } },
+        { bolt: "1/4", drill: { inches: "#14", decimal: 0.1820 } },
+        { bolt: "9/32", drill: { inches: "#11", decimal: 0.1910 } },
+        { bolt: "5/16", drill: { inches: "F", decimal: 0.2570 } },
+        { bolt: "11/32", drill: { inches: "G", decimal: 0.2610 } },
+        { bolt: "3/8", drill: { inches: "5/16", decimal: 0.3125 } },
+        { bolt: "7/16", drill: { inches: "U", decimal: 0.3680 } },
+        { bolt: "1/2", drill: { inches: "27/64", decimal: 0.4219 } },
+        { bolt: "9/16", drill: { inches: "17/32", decimal: 0.5312 } },
+        { bolt: "5/8", drill: { inches: "21/32", decimal: 0.6562 } },
+        { bolt: "11/16", drill: { inches: "11/16", decimal: 0.6875 } },
+        { bolt: "3/4", drill: { inches: "23/32", decimal: 0.7188 } },
+        { bolt: "13/16", drill: { inches: "3/4", decimal: 0.75 } },
+        { bolt: "7/8", drill: { inches: "25/32", decimal: 0.7812 } },
+        { bolt: "15/16", drill: { inches: "13/16", decimal: 0.8125 } },
+        { bolt: "1", drill: { inches: "27/32", decimal: 0.8438 } },
+    ];
+
+    const charts = [
+        { data: socketSizes, type: 'socket' },
+        { data: tapDrillSizes, type: 'tap' },
+        { data: dimplingSizes, type: 'dimple' }
+    ];
+
+    // --- Table creation function ---
     function createTable(data, type) {
         const table = document.createElement("table");
         table.classList.add("socket-table");
 
+        // Caption
+        const caption = document.createElement("caption");
+        if (type === 'socket') caption.textContent = "Standard Socket Size Correlation to Metric Socket Size";
+        else if (type === 'tap') caption.textContent = "New Hole Tap correct Drill Bit relation Chart";
+        else if (type === 'dimple') caption.textContent = "Set Screw Dimple correct Drill Bit Chart";
+        table.appendChild(caption);
+
+        // Headers
         const thead = document.createElement("thead");
-        thead.innerHTML = type === 'socket' ? `
-            <tr class="fixed">
-                <th>Standard</th>
-                <th>Decimal</th>
-                <th>Metric</th>
-            </tr>` : `
-            <tr class="fixed">
-                <th>Tap Size</th>
-                <th>Drill Bit Size</th>
-            </tr>`;
+
+            if (type === 'socket') {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Standard</th>
+                        <th>Decimal</th>
+                        <th>Metric</th>
+                    </tr>`;
+            } else if (type === 'tap') {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Tap Size</th>
+                        <th>Drill Bit Standard</th>
+                        <th>Drill Bit Decimal</th>
+                        <th>Drill Bit Metric</th>
+                    </tr>`;
+            } else if (type === 'dimple') {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Set Screw Size</th>
+                        <th>Drill Bit Standard</th>
+                        <th>Drill Bit Decimal</th>
+                    </tr>`;
+            }
 
         table.appendChild(thead);
 
+        // Rows
         const tbody = document.createElement("tbody");
         data.forEach(item => {
             const row = document.createElement("tr");
-            row.innerHTML = type === 'socket' ? `
+        if (type === 'socket') {
+            row.innerHTML = `
                 <td>${item.inches}</td>
-                <td class="decimal">${item.decimal}</td>
-                <td>${item.mm} mm</td>` : `
+                <td>${item.decimal}</td>
+                <td>${item.mm} mm</td>`;
+        } else if (type === 'tap') { // your tap/drill table
+            row.innerHTML = `
                 <td>${item.tap}</td>
                 <td>${item.drill.inches}</td>
+                <td>${item.drill.decimal}</td>
+                <td>${item.drill.mm}</td>`;
+        } else if (type === 'dimple') { // new dimpling table
+            row.innerHTML = `
+                <td>${item.bolt}</td>
+                <td>${item.drill.inches}</td>
                 <td>${item.drill.decimal}</td>`;
+        }
+
             tbody.appendChild(row);
         });
-
         table.appendChild(tbody);
+
         return table;
     }
 
+    // --- Toggle function ---
     function toggleTable() {
-        converter.innerHTML = "";
+        converter.innerHTML = ""; // Clear current table
 
-        if (showingSockets) {
-            converter.appendChild(createTable(tapDrillSizes, 'tap'));
-        } else {
-            converter.appendChild(createTable(socketSizes, 'socket')); 
-        }
-            // Add a spinning effect before the final rotation
-            toggleButton.style.transition = "transform 1s ease-in-out";
-            toggleButton.style.transform = `rotate(${rotated ? 0 : 1080}deg)`; // 3 full spins (360 * 3)
+        const chart = charts[chartIndex];
+        converter.appendChild(createTable(chart.data, chart.type));
 
-            setTimeout(() => {
-                toggleButton.style.transition = "transform 0.5s ease-in-out";
-                toggleButton.style.transform = `rotate(${rotated ? 0 : 180}deg)`;
-                rotated = !rotated;
-            }, 1000); // Start final rotation after 1 second
+        // Rotate toggle button
+        toggleButton.style.transition = "transform 1s ease-in-out";
+        toggleButton.style.transform = `rotate(${chartIndex * 360 + 360}deg)`;
 
-        showingSockets = !showingSockets;
-     
+        chartIndex = (chartIndex + 1) % charts.length; // Move to next chart
     }
 
+    // --- Event listeners ---
     convertButton.addEventListener("click", () => {
         tableContainer.classList.toggle("visible");
     });
 
     toggleButton.addEventListener("click", toggleTable);
 
-    // Show the socket table by default
-    converter.appendChild(createTable(socketSizes, 'socket'));
+    // --- Show first chart by default ---
+    converter.appendChild(createTable(charts[0].data, charts[0].type));
+    chartIndex = 1; // Next click shows second chart
 });
 
 /** Ship Search */

@@ -1,6 +1,6 @@
 {
   "title": "Zinc Retrieval",
-  "description": "Document and remove all sacrificial anodes from the vessel. Record type, size, material, and quantity.",
+  "description": "Document and remove all anodes from the vessel. Record type, size, material, and quantity.",
 
   "locations": [
     {
