@@ -104,9 +104,11 @@ h2 {
 }
 
 .socket-table caption {
-    font-size: 1em;  /* bigger text */
+    position: sticky;
+    top: -1px; /* keeps it above sticky headers */
+    z-index: 15;
+    background: white;
+    padding: 10px;
+    font-size: 1.6rem;
     font-weight: bold;
-    margin-bottom: 10px; /* spacing from the table */
-    caption-side: top;   /* default, but ensures it stays on top */
-    text-align: left;    /* optional */
 }
