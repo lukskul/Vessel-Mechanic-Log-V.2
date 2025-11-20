@@ -143,9 +143,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Caption
         const caption = document.createElement("caption");
-        if (type === 'socket') caption.textContent = "Standard Socket Size Correlation to Metric Socket Size Chart";
-        else if (type === 'tap') caption.textContent = "New Hole Tap - Correct Drill Bit relation Chart";
-        else if (type === 'dimple') caption.textContent = "Set Screw Dimple - Correct Drill Bit Chart";
+        if (type === 'socket') caption.textContent = "Standard Socket Size Correlation to Metric Socket Size";
+        else if (type === 'tap') caption.textContent = "New Hole Tap correct Drill Bit relation Chart";
+        else if (type === 'dimple') caption.textContent = "Set Screw Dimple correct Drill Bit Chart";
         table.appendChild(caption);
 
         // Headers
@@ -162,16 +162,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 thead.innerHTML = `
                     <tr>
                         <th>Tap Size</th>
-                        <th>Drill Bit Size (Standard)</th>
-                        <th>Drill Bit Size (Decimal)</th>
-                        <th>Drill Bit Size (Metric)</th>
+                        <th>Drill Bit Standard</th>
+                        <th>Drill Bit Decimal</th>
+                        <th>Drill Bit Metric</th>
                     </tr>`;
             } else if (type === 'dimple') {
                 thead.innerHTML = `
                     <tr>
                         <th>Set Screw Size</th>
-                        <th>Drill Bit Size (Standard)</th>
-                        <th>Drill Bit Size (Decimal)</th>
+                        <th>Drill Bit Standard</th>
+                        <th>Drill Bit Decimal</th>
                     </tr>`;
             }
 
@@ -231,159 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
     converter.appendChild(createTable(charts[0].data, charts[0].type));
     chartIndex = 1; // Next click shows second chart
 });
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const convertButton = document.getElementById("convert");
-//     const tableContainer = document.getElementById("converter-container");
-//     const converter = document.getElementById("converter");
-//     const toggleButton = document.getElementById("toggle-table-button");
-
-//     let showingSockets = true;
-//     let rotated = false; 
-
-//     const socketSizes = [
-//         { inches:    "Standard", decimal:    "Thousands", mm:     "Metric"},
-//         { inches: "5/32", decimal: 0.15625, mm: 4 }, { inches: "3/16", decimal: 0.1875, mm: 5 }, { inches: "7/32", decimal: 0.21875, mm: 5.5 },
-//         { inches: "1/4", decimal: 0.25, mm: 6 }, { inches: "9/32", decimal: 0.28125, mm: 7 }, { inches: "5/16", decimal: 0.3125, mm: 8 },
-//         { inches: "11/32", decimal: 0.34375, mm: 9 }, { inches: "3/8", decimal: 0.375, mm: 10 }, { inches: "7/16", decimal: 0.4375, mm: 11 },
-//         { inches: "1/2", decimal: 0.5, mm: 13 }, { inches: "9/16", decimal: 0.5625, mm: 14 }, { inches: "5/8", decimal: 0.625, mm: 16 },
-//         { inches: "11/16", decimal: 0.6875, mm: 17 }, { inches: "3/4", decimal: 0.75, mm: 19 }, { inches: "13/16", decimal: 0.8125, mm: 21 },
-//         { inches: "7/8", decimal: 0.875, mm: 22 }, { inches: "15/16", decimal: 0.9375, mm: 24 }, { inches: "1", decimal: 1.0, mm: 25 },
-//         { inches: "1-1/16", decimal: 1.0625, mm: 27 }, { inches: "1-1/8", decimal: 1.125, mm: 29 }, { inches: "1-3/16", decimal: 1.1875, mm: 30 },
-//         { inches: "1-1/4", decimal: 1.25, mm: 32 }, { inches: "1-5/16", decimal: 1.3125, mm: 34 }, { inches: "1-3/8", decimal: 1.375, mm: 35 },
-//         { inches: "1-7/16", decimal: 1.4375, mm: 36 }, { inches: "1-1/2", decimal: 1.5, mm: 38 }, { inches: "1-9/16", decimal: 1.5625, mm: 40 },
-//         { inches: "1-5/8", decimal: 1.625, mm: 41 }, { inches: "1-11/16", decimal: 1.6875, mm: 43 }, { inches: "1-3/4", decimal: 1.75, mm: 44 },
-//         { inches: "1-13/16", decimal: 1.8125, mm: 46 }, { inches: "1-7/8", decimal: 1.875, mm: 48 }, { inches: "1-15/16", decimal: 1.9375, mm: 49 },
-//         { inches: "2", decimal: 2.0, mm: 50 }, { inches: "2-1/16", decimal: 2.0625, mm: 52 }, { inches: "2-1/8", decimal: 2.125, mm: 54 },
-//         { inches: "2-3/16", decimal: 2.1875, mm: 55 }, { inches: "2-1/4", decimal: 2.25, mm: 57 }, { inches: "2-5/16", decimal: 2.3125, mm: 59 },
-//         { inches: "2-3/8", decimal: 2.375, mm: 60 }, { inches: "2-7/16", decimal: 2.4375, mm: 62 }, { inches: "2-1/2", decimal: 2.5, mm: 63 },
-//         { inches: "2-9/16", decimal: 2.5625, mm: 65 }, { inches: "2-5/8", decimal: 2.625, mm: 67 }, { inches: "2-11/16", decimal: 2.6875, mm: 68 },
-//         { inches: "2-3/4", decimal: 2.75, mm: 70 }, { inches: "2-13/16", decimal: 2.8125, mm: 72 }, { inches: "2-7/8", decimal: 2.875, mm: 73 },
-//         { inches: "2-15/16", decimal: 2.9375, mm: 75 }, { inches: "3", decimal: 3.0, mm: 76 }
-//     ]; 
-
-//     const tapDrillSizes = [
-//         // Standard Tap to Drill Bit Sizes (Inches)
-//         { tap: "Tap Size", drill: { inches: "Drill Bit", decimal: 0, mm: 0 } },
-//         { tap: "4-40", drill: { inches: "#43", decimal: 0.0890, mm: 2.26 } },
-//         { tap: "6-32", drill: { inches: "#36", decimal: 0.1065, mm: 2.71 } },
-//         { tap: "8-32", drill: { inches: "#29", decimal: 0.1360, mm: 3.45 } },
-//         { tap: "10-24", drill: { inches: "#25", decimal: 0.1495, mm: 3.80 } },
-//         { tap: "10-32", drill: { inches: "#21", decimal: 0.1590, mm: 4.04 } },
-//         { tap: "1/4\"-20", drill: { inches: "#7", decimal: 0.2010, mm: 5.11 } },
-//         { tap: "5/16\"-18", drill: { inches: "F", decimal: 0.2570, mm: 6.53 } },
-//         { tap: "3/8\"-16", drill: { inches: "5/16\"", decimal: 0.3125, mm: 7.94 } },
-//         { tap: "7/16\"-14", drill: { inches: "U", decimal: 0.3680, mm: 9.35 } },
-//         { tap: "1/2\"-13", drill: { inches: "27/64\"", decimal: 0.4219, mm: 10.72 } },
-//         { tap: "5/8\"-11", drill: { inches: "17/32\"", decimal: 0.5312, mm: 13.49 } },
-//         { tap: "3/4\"-10", drill: { inches: "21/32\"", decimal: 0.6562, mm: 16.67 } },
-    
-//         // Metric Tap to Drill Bit Sizes
-//         { tap: "Metric Tap", drill: { inches: "Drill Bit", decimal: 0, mm: 0 }}, 
-//         { tap: "M3 x 0.5", drill: { inches: "3/32", decimal: 0.0984, mm: 2.5 } },
-//         { tap: "M4 x 0.7", drill: { inches: "9/64", decimal: 0.1299, mm: 3.3 } },
-//         { tap: "M5 x 0.8", drill: { inches: "11/64", decimal: 0.1654, mm: 4.2 } },
-//         { tap: "M6 x 1.0", drill: { inches: "13/64", decimal: 0.1969, mm: 5.0 } },
-//         { tap: "M8 x 1.25", drill: { inches: "7/32", decimal: 0.2677, mm: 6.8 } },
-//         { tap: "M10 x 1.5", drill: { inches: "11/32", decimal: 0.3346, mm: 8.5 } },
-//         { tap: "M12 x 1.75", drill: { inches: "13/32", decimal: 0.4016, mm: 10.2 } },
-//         { tap: "M14 x 2.0", drill: { inches: "15/32", decimal: 0.4724, mm: 12.0 } },
-//         { tap: "M16 x 2.0", drill: { inches: "9/16", decimal: 0.5512, mm: 14.0 } },
-//         { tap: "M20 x 2.5", drill: { inches: "11/16", decimal: 0.6889, mm: 17.5 } }
-
-//     ];
-
-// converter.appendChild(createTable(socketSizes, 'socket'));
-// converter.appendChild(createTable(tapDrillSizes, 'tap'));
-// converter.appendChild(createTable(dimplingSizes, 'dimpling')); // Add your third table data array
-
-// function createTable(data, type) {
-//     const table = document.createElement("table");
-//     table.classList.add("socket-table");
-
-//     // Add caption based on table type
-//     const caption = document.createElement("caption");
-//     if (type === 'socket') caption.textContent = "Standard Socket Sizes and Metric Relation Chart";
-//     else if (type === 'tap') caption.textContent = "Tap Drill Sizes Table";
-//     else if (type === 'dimpling') caption.textContent = "Dimpling Set Screw Drill Chart";
-//     table.appendChild(caption);
-
-//     // Add the correct column headers
-//     const thead = document.createElement("thead");
-//     if (type === 'socket') {
-//         thead.innerHTML = `
-//             <tr>
-//                 <th>Standard</th>
-//                 <th>Decimal</th>
-//                 <th>Metric</th>
-//             </tr>`;
-//     } else if (type === 'tap' || type === 'dimpling') {
-//         thead.innerHTML = `
-//             <tr>
-//                 <th>Tap Size</th>
-//                 <th>Drill Bit Size (Standard)</th>
-//                 <th>Drill Bit Size (Decimal)</th>
-//                 <th>Drill Bit Size (Metric)</th>
-//             </tr>`;
-//     }
-
-//     table.appendChild(thead);
-
-//     // Populate table rows
-//     const tbody = document.createElement("tbody");
-//     data.forEach(item => {
-//         const row = document.createElement("tr");
-//         if (type === 'socket') {
-//             row.innerHTML = `
-//                 <td>${item.inches}</td>
-//                 <td>${item.decimal}</td>
-//                 <td>${item.mm} mm</td>`;
-//         } else {
-//             row.innerHTML = `
-//                 <td>${item.tap}</td>
-//                 <td>${item.drill.inches}</td>
-//                 <td>${item.drill.decimal}</td>
-//                 <td>${item.drill.mm}</td>`;
-//         }
-//         tbody.appendChild(row);
-//     });
-
-//     table.appendChild(tbody);
-//     return table;
-// }
-
-//     function toggleTable() {
-//         converter.innerHTML = "";
-
-//         if (showingSockets) {
-//             converter.appendChild(createTable(tapDrillSizes, 'tap'));
-//         } else {
-//             converter.appendChild(createTable(socketSizes, 'socket')); 
-//         }
-//             // Add a spinning effect before the final rotation
-//             toggleButton.style.transition = "transform 1s ease-in-out";
-//             toggleButton.style.transform = `rotate(${rotated ? 0 : 1080}deg)`; // 3 full spins (360 * 3)
-
-//             setTimeout(() => {
-//                 toggleButton.style.transition = "transform 0.5s ease-in-out";
-//                 toggleButton.style.transform = `rotate(${rotated ? 0 : 180}deg)`;
-//                 rotated = !rotated;
-//             }, 1000); // Start final rotation after 1 second
-
-//         showingSockets = !showingSockets;
-     
-//     }
-
-//     convertButton.addEventListener("click", () => {
-//         tableContainer.classList.toggle("visible");
-//     });
-
-//     toggleButton.addEventListener("click", toggleTable);
-
-//     // Show the socket table by default
-//     converter.appendChild(createTable(socketSizes, 'socket'));
-// });
 
 /** Ship Search */
 document.getElementById("search-ship-button").addEventListener("click", () => {
