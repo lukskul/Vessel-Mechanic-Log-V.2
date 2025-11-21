@@ -180,7 +180,7 @@
 /* Sticky Caption */
 .socket-table caption {
     position: sticky;
-    top: 0;
+    top: -4%;
     z-index: 20;
     background: black;
     padding: 12px;
@@ -192,7 +192,7 @@
 /* Sticky Header Row */
 .socket-table thead th {
     position: sticky;
-    top: 40px;                  /* sits below caption cleanly */
+    top: 8%;                  /* sits below caption cleanly */
     background-color: #000;
     z-index: 15;
     padding: 13px;
