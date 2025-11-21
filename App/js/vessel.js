@@ -1,7 +1,7 @@
 import { shakeAlert } from "./alert";
 
-//const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/fileIndex.json";
-const repoUrl = "../DataFiles/fileIndex.json";
+const repoUrl = "https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/fileIndex.json";
+//const repoUrl = "../DataFiles/fileIndex.json";
 
 let currentVesselName = localStorage.getItem("selectedBoat") || "";
 let currentTask = ""; 
@@ -18,8 +18,8 @@ async function fetchVesselData() {
 }
 
 async function fetchVesselFiles(vesselName, selectedLanguage) {
-    //const indexUrl = `https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/fileIndex.json`;
-    const indexUrl = "../DataFiles/fileIndex.json";
+    const indexUrl = `https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/fileIndex.json`;
+    //const indexUrl = "../DataFiles/fileIndex.json";
 
     try {
         const indexResponse = await fetch(indexUrl);
@@ -31,8 +31,8 @@ async function fetchVesselFiles(vesselName, selectedLanguage) {
             const filesData = [];
     
             for (let file of files) {
-                //const filePath = `https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/${vesselName}/${file}`;
-                const filePath = `../DataFiles/${vesselName}/${file}`;
+                const filePath = `https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/${vesselName}/${file}`;
+                //const filePath = `../DataFiles/${vesselName}/${file}`;
     
                 try {
                     const response = await fetch(filePath);
@@ -243,8 +243,8 @@ async function loadTaskJSON() {
         return;
     }
 
-    //const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/${vesselName}/${currentTask}.json`;
-    const taskFilePath = `../DataFiles/${vesselName}/${currentTask}.json`;
+    const taskFilePath = `https://lukskul.github.io/Vessel-Mechanic-Log/DataFiles/${vesselName}/${currentTask}.json`;
+    //const taskFilePath = `../DataFiles/${vesselName}/${currentTask}.json`;
 
     try {
         const response = await fetch(taskFilePath);

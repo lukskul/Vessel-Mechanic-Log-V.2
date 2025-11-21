@@ -92,18 +92,17 @@ document.addEventListener("DOMContentLoaded", function () {
         { tap: "3/4\"-10", drill: { inches: "21/32\"", decimal: 0.6562} },
     
         // Metric Tap to Drill Bit Sizes
-        { tap: "Metric Tap", drill: { inches: "Drill Bit", decimal: 0, mm: 0 }}, 
-        { tap: "M3 x 0.5", drill: { inches: "3/32", decimal: 0.0984, mm: 2.5 } },
-        { tap: "M4 x 0.7", drill: { inches: "9/64", decimal: 0.1299, mm: 3.3 } },
-        { tap: "M5 x 0.8", drill: { inches: "11/64", decimal: 0.1654, mm: 4.2 } },
-        { tap: "M6 x 1.0", drill: { inches: "13/64", decimal: 0.1969, mm: 5.0 } },
-        { tap: "M8 x 1.25", drill: { inches: "7/32", decimal: 0.2677, mm: 6.8 } },
-        { tap: "M10 x 1.5", drill: { inches: "11/32", decimal: 0.3346, mm: 8.5 } },
-        { tap: "M12 x 1.75", drill: { inches: "13/32", decimal: 0.4016, mm: 10.2 } },
-        { tap: "M14 x 2.0", drill: { inches: "15/32", decimal: 0.4724, mm: 12.0 } },
-        { tap: "M16 x 2.0", drill: { inches: "9/16", decimal: 0.5512, mm: 14.0 } },
-        { tap: "M20 x 2.5", drill: { inches: "11/16", decimal: 0.6889, mm: 17.5 } }
-
+        { tap: "Metric Tap", drill: { inches: "Drill Bit", decimal: 0}}, 
+        { tap: "M3 x 0.5", drill: { inches: "3/32", decimal: 0.0984} },
+        { tap: "M4 x 0.7", drill: { inches: "9/64", decimal: 0.1299} },
+        { tap: "M5 x 0.8", drill: { inches: "11/64", decimal: 0.1654} },
+        { tap: "M6 x 1.0", drill: { inches: "13/64", decimal: 0.1969} },
+        { tap: "M8 x 1.25", drill: { inches: "7/32", decimal: 0.2677} },
+        { tap: "M10 x 1.5", drill: { inches: "11/32", decimal: 0.3346} },
+        { tap: "M12 x 1.75", drill: { inches: "13/32", decimal: 0.4016} },
+        { tap: "M14 x 2.0", drill: { inches: "15/32", decimal: 0.4724} },
+        { tap: "M16 x 2.0", drill: { inches: "9/16", decimal: 0.5512} },
+        { tap: "M20 x 2.5", drill: { inches: "11/16", decimal: 0.6889} }
     ];
 
     const dimplingSizes = [
