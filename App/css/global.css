@@ -88,27 +88,3 @@ h2 {
     top: 9%; 
 }
 
-.socket-table thead th {
-    position: sticky;
-    top: -6px;              /* stick to top */
-    background-color: #000000; /* make sure it has a background */
-    z-index: 10;         /* above table rows */
-    padding: 13px;
-    text-align: left;
-    border-bottom: 2px solid #01a71d;
-}
-
-#converter {
-    max-height: 400px; /* or whatever fits your layout */
-    overflow-y: auto;
-}
-
-.socket-table caption {
-    position: sticky;
-    top: -20px; /* keeps it above sticky headers */
-    z-index: 15;
-    background: rgb(0, 0, 0);
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-}
