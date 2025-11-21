@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Caption
         const caption = document.createElement("caption");
         if (type === 'socket') caption.textContent = "Standard Socket to Metric Socket";
-        else if (type === 'tap') caption.textContent = "(New Hole) Tap and Drill chart";
+        else if (type === 'tap') caption.textContent = "Tap and Drill Chart (New Hole)";
         else if (type === 'dimple') caption.textContent = "Set Screw Dimple chart";
         table.appendChild(caption);
 
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (type === 'dimple') {
                 thead.innerHTML = `
                     <tr>
-                        <th>SetScrew</th>
+                        <th>Set Screw</th>
                         <th>Drill Bit</th>
                         <th>...</th>
                     </tr>`;
