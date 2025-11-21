@@ -1,110 +1,107 @@
 export function sealsPopulate(data) {
-    const detailsContainer = document.querySelector('.details');
+    const container = document.getElementById("html-container");
+    container.innerHTML = "";
 
-    // Check if data is valid
-    if (!data || !Array.isArray(data.sealsDetails)) {
-        console.error("Missing or incorrect details. Expecting an array.");
-        return;
+    const lang = localStorage.getItem('language') || 'en';
+
+    // Title
+    const title = document.createElement("h1");
+    title.className = "text-2xl font-semibold mb-4";
+    title.textContent = data.title || (lang === "es" ? "Sellos" : "Seals");
+    container.appendChild(title);
+
+    // Description
+    if (data.description) {
+        const desc = document.createElement("p");
+        desc.className = "mb-4 text-gray-700";
+        desc.textContent = data.description;
+        container.appendChild(desc);
     }
 
-    // Clear previous content
-    detailsContainer.innerHTML = "";
+    // Wrap all dropdowns
+    const dropdownContainer = document.createElement("div");
+    dropdownContainer.classList.add("dropdown-container");
+    container.appendChild(dropdownContainer);
 
-    // Translation setup
-    const language = localStorage.getItem('language') || 'en';
-    const translations = {
-        en: {
-            manufacturer: 'Manufacturer',
-            model_number: 'Model Number',
-            seal_type: 'Seal Type',
-            installation_date: 'Installation Date',
-            recommended_replacement_interval: 'Recommended Replacement Interval',
-            "packing size": "Packing Size",
-            "packing count": "Packing Count",
-            compression: "Compression",
-            "set screws": "Set Screws",
-            bolt_size: "Bolt Size",
-            torque_value: "Torque Value",
-            notes: "Notes"
-        },
-        es: {
-            manufacturer: 'Fabricante',
-            model_number: 'Número de modelo',
-            seal_type: 'Tipo de sello',
-            installation_date: 'Fecha de instalación',
-            recommended_replacement_interval: 'Intervalo de reemplazo recomendado',
-            "packing size": "Tamaño de empaque",
-            "packing count": "Cantidad de empaques",
-            compression: "Compresión",
-            "set screws": "Tornillos de fijación",
-            bolt_size: "Tamaño del perno",
-            torque_value: "Valor de torque",
-            notes: "Notas"
+    const seals = data.sealDetails || [];
+
+    seals.forEach((seal, index) => {
+        const section = document.createElement("div");
+        section.classList.add("dropdown-section", `seal-object-${index + 1}`);
+
+        const dropdown = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.classList.add("drop-down-image-prop");
+
+        summary.textContent =
+            seal.location ||
+            seal.type ||
+            (lang === "es" ? "Sello" : "Seal");
+
+        dropdown.appendChild(summary);
+
+        // Info box
+        const infoWrapper = document.createElement("div");
+        infoWrapper.classList.add("section-info", "mt-3");
+
+        Object.keys(seal).forEach(key => {
+            if (key === "photo" || key === "notes") return; // handled separately
+
+            const row = document.createElement("div");
+            row.classList.add("detail-b-row");
+
+            row.innerHTML = `
+                <div class="detail-b-key">${formatLabel(key, lang)}:</div>
+                <div class="detail-b-value">${seal[key]}</div>
+            `;
+
+            infoWrapper.appendChild(row);
+        });
+
+        // Photo
+        if (seal.photo) {
+            const img = document.createElement("img");
+            img.src = seal.photo;
+            img.className = "w-full rounded-lg mt-3";
+            infoWrapper.appendChild(img);
         }
+
+        // Notes
+        const notesBox = document.createElement("textarea");
+        notesBox.placeholder = lang === "es" ? "Notas..." : "Notes...";
+        notesBox.className = "w-full p-2 border rounded-lg bg-gray-100 mt-3";
+        notesBox.value = seal.notes || "";
+        infoWrapper.appendChild(notesBox);
+
+        dropdown.appendChild(infoWrapper);
+        section.appendChild(dropdown);
+        dropdownContainer.appendChild(section);
+    });
+
+    // Match bow thruster column count
+    const count = seals.length;
+    dropdownContainer.classList.remove("one-item", "two-items", "three-items", "four-items");
+    dropdownContainer.classList.add(
+        count === 1 ? "one-item" :
+        count === 2 ? "two-items" :
+        count === 3 ? "three-items" : "four-items"
+    );
+}
+
+// Helper: convert JSON keys to readable labels
+function formatLabel(key, lang) {
+    const labels = {
+        serialNumber: lang === "es" ? "Número de Serie" : "Serial Number",
+        manufacturer: lang === "es" ? "Fabricante" : "Manufacturer",
+        model: "Model",
+        type: lang === "es" ? "Tipo" : "Type",
+        location: lang === "es" ? "Ubicación" : "Location",
+        shaftSize: lang === "es" ? "Tamaño del Eje" : "Shaft Size",
+        bellowsSize: lang === "es" ? "Tamaño del Fuelle" : "Bellows Size",
+        shaftDia: lang === "es" ? "Diámetro del Eje" : "Shaft Dia.",
+        housingDia: lang === "es" ? "Diámetro de la Carcasa" : "Housing Dia.",
+        sealSize: lang === "es" ? "Tamaño del Sello" : "Seal Size"
     };
 
-    // Helper function to create sections
-    function createSealSection(title, sealData) {
-        const objectDiv = document.createElement('div');
-        objectDiv.classList.add('container');
-
-        const headingDiv = document.createElement('div');
-        headingDiv.classList.add('heading');
-        objectDiv.appendChild(headingDiv);
-
-        const objectTitle = document.createElement('h3');
-        objectTitle.textContent = title;
-        headingDiv.appendChild(objectTitle);
-
-        const specsDiv = document.createElement('div');
-        specsDiv.classList.add('html-container');
-
-        let itemsFound = false;
-
-        if (sealData) {
-            Object.keys(sealData).forEach(key => {
-                const value = sealData[key];
-                const translatedKey = translations[language][key] || key;
-
-                if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-                    // If it's a nested object like "Service Specs"
-                    Object.keys(value).forEach(subKey => {
-                        const subValue = value[subKey];
-                        const translatedSubKey = translations[language][subKey] || subKey;
-
-                        if (subValue) {
-                            const itemDiv = document.createElement('div');
-                            itemDiv.classList.add('dropdown-item');
-                            itemDiv.textContent = `${translatedSubKey}: ${subValue}`;
-                            specsDiv.appendChild(itemDiv);
-                            itemsFound = true;
-                        }
-                    });
-                } else if (value) {
-                    // Normal key-value pairs
-                    const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('dropdown-item');
-                    itemDiv.textContent = `${translatedKey}: ${value}`;
-                    specsDiv.appendChild(itemDiv);
-                    itemsFound = true;
-                }
-            });
-        }
-
-        if (!itemsFound) {
-            const noItemDiv = document.createElement('div');
-            noItemDiv.classList.add('dropdown-item');
-            noItemDiv.textContent = language === 'es' ? 'No hay información disponible' : 'No Information Available';
-            specsDiv.appendChild(noItemDiv);
-        }
-
-        objectDiv.appendChild(specsDiv);
-        detailsContainer.appendChild(objectDiv);
-    }
-
-    // Loop through sealsDetails and create sections for rudder_seals and shaft_seals
-    data.sealsDetails.forEach(detail => {
-        createSealSection(language === 'es' ? 'Sellos del Timón' : 'Rudder Seals', detail.rudder_seals);
-        createSealSection(language === 'es' ? 'Sellos del Eje' : 'Shaft Seals', detail.shaft_seals);
-    });
+    return labels[key] || key.replace(/([A-Z])/g, " $1");
 }

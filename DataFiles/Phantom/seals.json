@@ -1,0 +1,21 @@
+{
+  "sealsDetails": [
+    {
+      "type": "Lip Seals",        
+      "manufacturer": "",
+      "model_number": "",
+      "seal_type": "",
+      "installation_date": "Nov 2025",
+      "recommended_replacement_interval": "",
+      "service_specs": {
+        "packing_size": "",
+        "packing_count": "",
+        "compression": "",
+        "set_screws": "",
+        "bolt_size": "",
+        "torque_value": ""
+      },
+      "notes": "Shaft hasn't been serviced.  Two Prior seal wear lines"
+    }
+  ]
+}

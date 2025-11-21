@@ -70,9 +70,10 @@
         "info.json"
     ],
     "Phantom": [
+        "bowThruster.json",
         "couplers.json",
-        "info.json", 
-        "bowThruster.json"
+        "info.json",
+        "seals.json"
     ],
     "Phonix": [
         "info.json"
