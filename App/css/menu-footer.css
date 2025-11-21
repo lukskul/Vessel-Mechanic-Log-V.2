@@ -119,7 +119,7 @@
     color: white;
 }
 
-/* Converter Container */
+/* Fullscreen Converter Overlay */
 #converter-container {
     position: fixed;
     top: 0;
@@ -133,82 +133,74 @@
     z-index: 1000;
     box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.5s ease-in-out;
     transform: translateY(-100%);
+    transition: opacity 0.3s ease, transform 0.5s ease-in-out;
     padding: 20px;
-    overflow: hidden; /* Prevents page scrolling */
+    overflow: hidden;
 }
 
-/* Scrollable Div */
+/* Slide-in Active State */
+#converter-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Inner Scrollable Area */
 .converter {
-    width: 100%; 
-    max-height: 80vh;
-    overflow-y: auto; /* Table scrolls inside here */
+    width: 100%;
+    max-height: 90vh;            /* gives more screen height */
+    overflow-y: auto;
     background: black;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 255, 153, 0.6);
 }
 
-/* When visible, bring the container into view */
-#converter-container.visible {
-    opacity: 1;
-    transform: translateY(0);
-    display: flex; /* Show when visible */
-    pointer-events: auto;
-}
-
-/* Table Styling */
+/* Table */
 .socket-table {
     width: 100%;
     border-collapse: collapse;
     color: #00ff99;
 }
 
-.socket-table th, .socket-table td {
+.socket-table th,
+.socket-table td {
     border: 1px solid grey;
     padding: 8px;
     text-align: left;
 }
 
+/* Table Headers */
 .socket-table th {
     background-color: #111;
     font-weight: bold;
 }
 
+/* Sticky Caption */
+.socket-table caption {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: black;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 2px solid #01a71d;
+}
+
+/* Sticky Header Row */
+.socket-table thead th {
+    position: sticky;
+    top: 40px;                  /* sits below caption cleanly */
+    background-color: #000;
+    z-index: 15;
+    padding: 13px;
+    border-bottom: 2px solid #01a71d;
+}
+
+/* Decimal Cells */
 .decimal {
     color: grey;
     font-size: 0.9em;
 }
-
-.socket-table thead th {
-    position: sticky;
-    top: -6px;              /* stick to top */
-    background-color: #000000; /* make sure it has a background */
-    z-index: 10;         /* above table rows */
-    padding: 13px;
-    text-align: left;
-    border-bottom: 2px solid #01a71d;
-}
-
-#converter {
-    max-height: 400px; /* or whatever fits your layout */
-    overflow-y: auto;
-}
-
-.socket-table caption {
-    position: sticky;
-    top: -20px; /* keeps it above sticky headers */
-    z-index: 15;
-    background: rgb(0, 0, 0);
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-
-
-  
-
-  
-  
