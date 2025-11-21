@@ -142,8 +142,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Caption
         const caption = document.createElement("caption");
-        if (type === 'socket') caption.textContent = "Standard Socket Size Correlation Metric Socket Size";
-        else if (type === 'tap') caption.textContent = "New Hole Tap and Drill chart";
+        if (type === 'socket') caption.textContent = "Standard Socket to Metric Socket";
+        else if (type === 'tap') caption.textContent = "(New Hole) Tap and Drill chart";
         else if (type === 'dimple') caption.textContent = "Set Screw Dimple chart";
         table.appendChild(caption);
 
@@ -160,16 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (type === 'tap') {
                 thead.innerHTML = `
                     <tr>
-                        <th>Tap Size</th>
-                        <th>Drill Bit Standard</th>
-                        <th>Drill Bit Decimal</th>
+                        <th>Tap</th>
+                        <th>Drill Bit</th>
+                        <th>...</th>
                     </tr>`;
             } else if (type === 'dimple') {
                 thead.innerHTML = `
                     <tr>
-                        <th>Set Screw Size</th>
-                        <th>Drill Bit Standard</th>
-                        <th>Drill Bit Decimal</th>
+                        <th>SetScrew</th>
+                        <th>Drill Bit</th>
+                        <th>...</th>
                     </tr>`;
             }
 
@@ -188,8 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
             row.innerHTML = `
                 <td>${item.tap}</td>
                 <td>${item.drill.inches}</td>
-                <td>${item.drill.decimal}</td>
-                <td>${item.drill.mm}</td>`;
+                <td>${item.drill.decimal}</td>`;
         } else if (type === 'dimple') { // new dimpling table
             row.innerHTML = `
                 <td>${item.bolt}</td>
