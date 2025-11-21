@@ -143,8 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Caption
         const caption = document.createElement("caption");
         if (type === 'socket') caption.textContent = "Standard Socket to Metric Socket";
-        else if (type === 'tap') caption.textContent = "Tap and Drill Chart\u00A0\(New Hole)";
-        else if (type === 'dimple') caption.textContent = "Set Screw Dimple chart\u00A0\u00A0";
+        else if (type === 'tap') caption.textContent = "Tap and Drill Chart\u00A0\u00A0\u00A0\u00A0\u00A0\(New Hole)";
+        else if (type === 'dimple') caption.textContent = "Set Screw Dimple chart\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\)";
         table.appendChild(caption);
 
         // Headers
